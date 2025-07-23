@@ -1,0 +1,80 @@
+.landing {
+    width: 100%;
+    height: 100vh;
+    min-height: calc(100vh - 40px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.landing__back {
+    width: 100%;
+    min-height: calc(100vh - 40px);
+    border-radius: 40px;
+    background-image: url('/landing/back.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    box-sizing: border-box;
+}
+/* Добавляем эти стили к существующим */
+
+.hero__bottom-block {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: auto;
+    max-width: 30%;
+    background-color: #E7392F;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.hero__bottom-block:hover {
+    background-color: rgba(231, 57, 47, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.hero__bottom-block:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid white;
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+.bottom-block__arrow {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.bottom-block__title {
+    color: white;
+    font-size: 34px;
+    line-height: 1.2;
+    margin: 0;
+    padding-right: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* section 2 */
+
+.second_block{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}

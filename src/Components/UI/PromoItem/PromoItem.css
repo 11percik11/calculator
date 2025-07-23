@@ -1,0 +1,32 @@
+/* PromoItem.css */
+.promo-item {
+    background-color: #3E3736;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.promo-item__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.promo-item__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: white;
+    padding: 16px;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
