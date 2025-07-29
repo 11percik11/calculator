@@ -1,5 +1,6 @@
 import './NotFound.css';
 import { useNavigate } from 'react-router-dom';
+import {Button} from "@/Components/UI/Button/Button";
 
 export const NotFound = () => {
     const navigate = useNavigate();
@@ -12,12 +13,13 @@ export const NotFound = () => {
                 <p className="not-found__description">
                     Кажется, мы не можем найти страницу, которую вы ищете.
                 </p>
-                <button
+                <Button
                     onClick={() => navigate('/')}
-                    className="not-found__button"
-                >
-                    Вернуться на главную
-                </button>
+                    text="Вернуться на главную"
+                    color="custom"
+                    className="measurer-button"
+                    />
+
             </div>
         </div>
     );

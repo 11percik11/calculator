@@ -1,0 +1,52 @@
+.spinner {
+    display: inline-block;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    border-style: solid;
+    border-bottom-color: transparent;
+}
+
+/* Размеры */
+.spinner.sm {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+}
+
+.spinner.md {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+}
+
+.spinner.lg {
+    width: 24px;
+    height: 24px;
+    border-width: 3px;
+}
+
+/* Цвета */
+.spinner.light {
+    border-color: white;
+    border-bottom-color: transparent;
+}
+
+.spinner.dark {
+    border-color: #333;
+    border-bottom-color: transparent;
+}
+
+.spinner.primary {
+    border-color: #352C2B;
+    border-bottom-color: transparent;
+}
+
+.spinner.current {
+    border-color: currentColor;
+    border-bottom-color: transparent;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

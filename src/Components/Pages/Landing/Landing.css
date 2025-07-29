@@ -26,55 +26,317 @@
 .hero__bottom-block {
     position: absolute;
     left: 20px;
+    right: 20px;
     bottom: 20px;
     width: auto;
-    max-width: 30%;
+    max-width: 90%; /* Увеличиваем для мобильных */
     background-color: #E7392F;
     border-radius: 30px;
     padding: 20px;
     display: flex;
-    align-items: flex-end;
     flex-direction: column;
-    gap: 10px;
+    align-items: flex-end;
+    gap: 20px; /* Расстояние между текстом и стрелкой */
     transition: all 0.3s ease;
+    z-index: 10;
 }
 
-.hero__bottom-block:hover {
-    background-color: rgba(231, 57, 47, 0.8);
-    backdrop-filter: blur(5px);
-}
-
-.hero__bottom-block:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 3px solid white;
-    border-radius: 30px;
-    pointer-events: none;
+/* Расположение элементов внутри блока */
+.bottom-block__title {
+    color: white;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-right: 40px;
+    text-align: left; /* Текст прижимаем к левому краю */
+    flex-grow: 1; /* Занимает все доступное пространство */
 }
 
 .bottom-block__arrow {
     width: 40px;
     height: 40px;
     object-fit: contain;
+    flex-shrink: 0; /* Запрещаем уменьшение */
 }
 
-.bottom-block__title {
-    color: white;
-    font-size: 34px;
-    line-height: 1.2;
-    margin: 0;
-    padding-right: 40px;
-    text-transform: uppercase;
-    font-weight: 700;
+/* Адаптация для разных экранов */
+@media (min-width: 768px) {
+    .hero__bottom-block {
+        max-width: 60%;
+    }
+    .bottom-block__title {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero__bottom-block {
+        max-width: 50%;
+    }
+    .bottom-block__title {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero__bottom-block {
+        max-width: 40%;
+    }
+    .bottom-block__title {
+        font-size: 34px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero__bottom-block {
+        max-width: 30%;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .hero__bottom-block {
+        padding: 15px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        gap: 10px;
+    }
+
+    .bottom-block__title {
+        font-size: 18px;
+    }
+
+    .bottom-block__arrow {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Ховер-эффекты (только для десктопов) */
+@media (hover: hover) {
+    .hero__bottom-block:hover {
+        background-color: rgba(231, 57, 47, 0.8);
+        backdrop-filter: blur(5px);
+    }
+
+    .hero__bottom-block:hover::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 3px solid white;
+        border-radius: 30px;
+        pointer-events: none;
+    }
 }
 
 /* section 2 */
 
 .second_block{
     padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* section 3 */
+
+.third-block{
+    height: auto;
+    background-color: white;
+    border-radius: 40px;
     padding-bottom: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.third-block-title-header{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    padding: 0 20%;
+}
+.third-block-title-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    padding: 0 30%;
+}
+
+.third-block-full-catalog{
+    display: flex;
+    padding: 20px;
+    padding-right: 50%;
+    margin: 0 20px;
+    color: white;
+    flex-direction: column;
+    text-align: start;
+    align-items: flex-start;
+    border-radius: 40px;
+    background-image: url('/landing/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.third-block-full-catalog-title{
+    font-size: 3rem;
+}
+.third-block-full-catalog-description{
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.third-block-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+/* section 4 */
+
+.four_block{
+    padding-bottom: 40px;
+}
+
+/* section 5 */
+.five-block {
+    margin-bottom: 40px;
+    display: flex;
+    min-height: 500px; /* Минимальная высота блока */
+    width: 100%;
+    position: relative;
+    color: white; /* Белый текст для всего блока */
+}
+.five-block-description{
+    font-weight: 300;
+}
+
+.five-block-left,
+.five-block-right {
+    flex: 1; /* Одинаковая ширина */
+    min-height: 100%;
+    position: relative;
+}
+
+/* Левый блок с фоновым изображением */
+.five-block-left {
+    background-image: url(/landing/bg-two.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    border-radius: 40px;
+    gap: 30px;
+    padding: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Контент левого блока */
+.five-block-content {
+    max-width: 600px;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.five-block-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: left; /* Текст прилегает к левому краю */
+    line-height: 1.3;
+}
+
+.five-block-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: left; /* Текст прилегает к левому краю */
+    line-height: 1.5;
+}
+
+/* Правый блок с фоновым изображением */
+.five-block-right {
+    background-image: url('/landing/zamer.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+}
+
+/* Кнопка (уже готовая) */
+.five-block-call-button {
+    --button-text-color: #E7392F !important;
+    margin-top: 20px;
+}
+
+/* Затемнение фона для лучшей читаемости текста */
+.five-block-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .five-block {
+        flex-direction: column;
+    }
+
+    .five-block-left,
+    .five-block-right {
+        min-height: 400px;
+    }
+
+    .five-block-content {
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+
+    .five-block-content h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .five-block-content h2 {
+        font-size: 24px;
+    }
+
+    .five-block-content p {
+        font-size: 16px;
+    }
+}
+
+
+.benefits-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 32px;
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .benefits-section {
+        padding: 50px 15px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
 }

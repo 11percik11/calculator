@@ -10,10 +10,11 @@
     left: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between; /* Распределяем пространство между блоками */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 16px;
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 .header__left,
@@ -21,7 +22,7 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    flex: 0 0 auto; /* Запрещаем растягивание */
+    flex: 0 0 auto;
 }
 
 .header__center {
@@ -33,13 +34,13 @@
     transform: translateX(-50%);
 }
 
-
 .header__logo {
     height: 7em;
     position: relative;
     top: 1em;
     width: auto;
     margin: 0 20px;
+    transition: all 0.3s ease;
 }
 
 .header-text {
@@ -52,34 +53,96 @@
     font-size: 16px;
     text-transform: uppercase;
     white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .header-text:hover {
     color: #E7392F;
 }
+@media (max-width: 1563px) {
+    .header-text {
+        font-size: 14px;
+    }
+    .header__center {
+        gap: 20px;
+    }
+}
+/* Адаптивность */
+@media (max-width: 1484px) {
+    .header-text {
+        display: none;
+    }
+    .header__center {
+        gap: 20px;
+    }
+}
 
-/* Адаптивность для меньших экранов */
 @media (max-width: 1200px) {
     .header__center {
         gap: 15px;
     }
-    .header-text {
-        font-size: 14px;
+    .header__logo {
+        height: 6em;
+        margin: 0 15px;
     }
 }
 
 @media (max-width: 992px) {
     .header {
-        padding: 0 15px;
+        height: 70px;
+        padding: 0 12px;
     }
-    .header__center {
-        display: none; /* Скрываем центральное меню на мобильных */
+
+    /* Скрываем текст навигации */
+    .header-text {
+        display: none;
     }
+
+    .header__logo {
+        height: 5em;
+        top: 0.8em;
+        margin: 0;
+    }
+
+    /* Уменьшаем кнопки */
     .header__left,
     .header__right {
-        flex: 1;
+        gap: 10px;
     }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+        margin: 10px 20px;
+        border-radius: 60px;
+    }
+
+    /* Скрываем текст на кнопках */
+    .BrownButton span {
+        display: none;
+    }
+
+    /* Уменьшаем отступы */
+    .header__left,
     .header__right {
-        justify-content: flex-end;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        padding: 0 8px;
+    }
+
+
+    /* Скрываем кнопку калькулятора */
+    .header__left .BrownButton:nth-child(2) {
+        display: none;
+    }
+
+    /* Скрываем иконку на кнопке вызова замерщика */
+    .header__right .BrownButton:nth-child(2) img {
+        display: none;
     }
 }

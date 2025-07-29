@@ -1,5 +1,5 @@
-.brown-button {
-    background-color: #352C2B;
+.red-button {
+    background-color: #E7392F;
     color: white;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
@@ -19,13 +19,13 @@
     overflow: hidden;
 }
 
-.brown-button:hover {
+.red-button:hover {
     background-color: rgba(217, 217, 217, 0.2);
     backdrop-filter: blur(29px);
     -webkit-backdrop-filter: blur(29px);
 }
 
-.brown-button:hover::after {
+.red-button:hover::after {
     content: '';
     position: absolute;
     top: 0;
@@ -37,30 +37,14 @@
     pointer-events: none;
 }
 
-.brown-button__icon {
+.red-button__icon {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.brown-button__text {
+.red-button__text {
     white-space: nowrap;
     position: relative;
     z-index: 1;
-}
-
-@media (max-width: 1080px) {
-
-    .brown-button{
-        padding: 15px 15px;
-    }
-    .brown-button__text {
-        display: none;
-    }
-
-    /* Уменьшаем отступы */
-    .header__left,
-    .header__right {
-        gap: 8px;
-    }
 }

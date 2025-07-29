@@ -1,0 +1,68 @@
+.third-block-stars {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.third-block-stars img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.8s ease;
+}
+
+/* Центральная звезда (самая яркая и крупная) */
+.third-block-stars img:nth-child(1) {
+    transform: translateX(-50%) scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Ближние боковые звезды (чуть меньше и тусклее) */
+.third-block-stars img:nth-child(2),
+.third-block-stars img:nth-child(3) {
+    width: 24px;
+    height: 24px;
+}
+
+/* Дальние боковые звезды (еще меньше и тусклее) */
+.third-block-stars img:nth-child(4),
+.third-block-stars img:nth-child(5) {
+    width: 18px;
+    height: 18px;
+}
+
+/* Класс для анимации */
+.third-block-stars.animate img:nth-child(1) {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.third-block-stars.animate img:nth-child(2) {
+    opacity: 1;
+    transform: translateX(-50%) translateX(-200%);
+    transition-delay: 0.5s;
+}
+
+.third-block-stars.animate img:nth-child(3) {
+    opacity: 1;
+    transform: translateX(-50%) translateX(200%);
+    transition-delay: 0.5s;
+}
+
+.third-block-stars.animate img:nth-child(4) {
+    opacity: 1;
+    transform: translateX(-50%) translateX(-500%);
+    transition-delay: 0.4s;
+}
+
+.third-block-stars.animate img:nth-child(5) {
+    opacity: 1;
+    transform: translateX(-50%) translateX(500%);
+    transition-delay: 0.4s;
+}

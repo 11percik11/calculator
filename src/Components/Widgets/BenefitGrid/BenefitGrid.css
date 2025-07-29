@@ -1,0 +1,35 @@
+.benefit-grid-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.benefit-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+}
+
+.benefit-grid > * {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+@media (max-width: 768px) {
+    .benefit-grid {
+        gap: 15px;
+    }
+
+    .benefit-grid > * {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefit-grid > * {
+        min-width: 100%;
+    }
+}
