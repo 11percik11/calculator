@@ -38,6 +38,7 @@
     height: 7em;
     position: relative;
     top: 1em;
+    cursor: pointer;
     width: auto;
     margin: 0 20px;
     transition: all 0.3s ease;

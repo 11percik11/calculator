@@ -1,0 +1,100 @@
+/* Основные стили блока */
+.catalog-promo-block {
+    display: flex;
+    position: relative;
+    color: white;
+    border-radius: 40px;
+    margin: 0 0 40px;
+    background-image: url('/landing/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  /* Контентная область */
+  .catalog-promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 50%;
+  }
+  
+  /* Заголовок */
+  .catalog-promo-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  /* Описание */
+  .catalog-promo-description {
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+  
+  /* Группа кнопок */
+  .catalog-promo-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 1200px) {
+    .catalog-promo-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .catalog-promo-block {
+      min-height: 400px;
+      padding: 30px;
+    }
+    
+    .catalog-promo-content {
+      max-width: 60%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .catalog-promo-block {
+      background-position: 70% center;
+      padding: 25px;
+    }
+    
+    .catalog-promo-content {
+      max-width: 100%;
+    }
+    
+    .catalog-promo-title {
+      font-size: 2rem;
+    }
+    
+    .catalog-promo-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .catalog-promo-block {
+      margin: 0 10px 30px;
+      padding: 20px;
+      min-height: 350px;
+    }
+    
+    .catalog-promo-title {
+      font-size: 1.5rem;
+    }
+    
+    .catalog-promo-description {
+      font-size: 14px;
+    }
+  }

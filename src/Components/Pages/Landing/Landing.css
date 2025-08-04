@@ -149,8 +149,8 @@
     background-color: white;
     border-radius: 40px;
     padding-bottom: 20px;
-    text-align: center;
     margin-bottom: 40px;
+    padding: 1px 20px;
 }
 .third-block-title-header{
     font-family: 'Open Sans', sans-serif;
@@ -163,37 +163,6 @@
     font-weight: 100;
     font-size: 15px;
     padding: 0 30%;
-}
-
-.third-block-full-catalog{
-    display: flex;
-    padding: 20px;
-    padding-right: 50%;
-    margin: 0 20px;
-    color: white;
-    flex-direction: column;
-    text-align: start;
-    align-items: flex-start;
-    border-radius: 40px;
-    background-image: url('/landing/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    box-sizing: border-box;
-}
-
-.third-block-full-catalog-title{
-    font-size: 3rem;
-}
-.third-block-full-catalog-description{
-    font-weight: 100;
-    font-size: 15px;
-}
-
-.third-block-buttons{
-    display: flex;
-    gap: 10px;
 }
 
 /* section 4 */

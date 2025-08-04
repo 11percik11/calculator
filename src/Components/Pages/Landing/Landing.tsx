@@ -5,7 +5,8 @@ import CatalogPreviewGrid from "@/Components/Widgets/CatalogPreviewGrid/CatalogP
 import {Button} from "@/Components/UI/Button/Button";
 import NewsGrid from "@/Components/Widgets/NewsGrid/NewsGrid";
 import { BenefitGrid } from '@/Components/Widgets/BenefitGrid/BenefitGrid';
-import Footer from "@/Components/Widgets/Footer/Footer";
+import {Footer} from "@/Components/Widgets/Footer/Footer";
+import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
 
 
 const benefitsData = [
@@ -123,49 +124,7 @@ export const Landing = () => {
                 </div>
                 <CatalogPreviewGrid/>
 
-                <div className='third-block-full-catalog'>
-                    {/* Фоновое изображение */}
-
-                    {/* Контент */}
-                    <div className="third-block-content">
-                        <h2 className='third-block-full-catalog-title'>
-                            НАШУ ПРОДУКЦИЮ ВЫБИРАЮТ УЖЕ БОЛЬШЕ 20-ти ЛЕТ
-                        </h2>
-                        <p className='third-block-full-catalog-description'>
-                            Если вы затрудняетесь с выбором или "заблудились" в нашей продукции, - обратитесь к нашему
-                            специалисту. Вам бесплатно помогут с выбором.
-                        </p>
-
-                        <div className="third-block-buttons">
-                            <Button
-                                text="Перейти в полную версию каталога"
-                                icon={<img src="/header/dots.svg" alt="Каталог"/>}
-                                variant="solid"
-                                color="custom"
-                                customColor="#FFFFFF"
-                                className="catalog-button"
-                            />
-
-                            <Button
-                                text="Вызвать замерщика"
-                                icon={<img src="/landing/ruler.svg" alt="Замерщик"/>}
-                                variant="outline"
-                                color="custom"
-                                customColor="#FFFFFF"
-                                className="measurer-button"
-                            />
-
-                            <Button
-                                icon={<img src="/landing/call-white.svg" alt="Позвонить"/>}
-                                variant="outline"
-                                color="custom"
-                                customColor="#FFFFFF"
-                                className="call-button"
-                            />
-                        </div>
-
-                    </div>
-                </div>
+                <CatalogPromoBlock/>
             </section>
 
             <section className='four_block'>
@@ -195,6 +154,7 @@ export const Landing = () => {
                 <h2 className="section-title">Наши преимущества</h2>
                 <BenefitGrid benefits={benefitsData}/>
             </section>
+            <Footer/>
         </div>
     );
 };
