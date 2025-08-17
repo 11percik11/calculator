@@ -21,6 +21,11 @@
 
 }
 
+
+@font-face {
+  font-family: "Open Sans Condensed ExtraBold";
+  src: url(/fonts/opensanscondensed-extrabold.woff2);
+}
 /* Базовый сброс стилей */
 *, *::before, *::after {
   box-sizing: border-box;

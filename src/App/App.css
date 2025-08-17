@@ -2,3 +2,48 @@
   margin: 0;
   padding: 0;
 }
+
+
+.header-white{
+  color: #FFFBF4;
+  font-family: "Open Sans", sans-serif;
+  font-size: 4.5rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 110%; /* 4.95rem */
+  letter-spacing: -0.0495rem;
+  text-transform: uppercase;
+}
+
+.header-black{
+  color: #352C2B;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 4.5rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 110%; /* 4.95rem */
+  letter-spacing: -0.0495rem;
+  text-transform: uppercase;
+}
+
+.regular-text-white{
+  color: #FFFBF4;
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 1.875rem */
+  letter-spacing: -0.01375rem;
+}
+
+.regular-text-black{
+  color: #1E1E1E;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.875rem */
+  letter-spacing: -0.01375rem;
+}

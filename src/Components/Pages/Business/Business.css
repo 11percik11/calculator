@@ -10,3 +10,8 @@
     padding-top: 7rem;
 }
 
+@media (max-width: 768px) {
+    .business{
+        padding-top: 5rem;
+    }
+}

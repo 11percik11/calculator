@@ -3,8 +3,8 @@
     display: flex;
     position: relative;
     color: white;
-    border-radius: 40px;
-    margin: 0 0 40px;
+    border-radius: 30px;
+    margin: 0 0 20px;
     background-image: url('/landing/bg.png');
     background-size: cover;
     background-position: center;
@@ -24,6 +24,7 @@
   
   /* Заголовок */
   .catalog-promo-title {
+    font-family: "Open Sans Condensed ExtraBold";
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 20px;
@@ -85,7 +86,6 @@
   
   @media (max-width: 576px) {
     .catalog-promo-block {
-      margin: 0 10px 30px;
       padding: 20px;
       min-height: 350px;
     }

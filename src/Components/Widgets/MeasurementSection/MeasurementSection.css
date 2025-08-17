@@ -6,72 +6,110 @@
   margin-bottom: 40px;
 }
 
-/* Блок с контентом */
-.content-block {
+/* Общие стили для обоих блоков */
+.content-block,
+.image-block {
   flex: 1;
   border-radius: 40px;
   position: relative;
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  min-height: 400px;
   display: flex;
 }
 
-.content-overlay {
+/* Стили для блока с текстом (content-block) */
+.content-block .content-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 40px;
+  box-sizing: border-box;
 }
 
+/* Стили для блока с изображением (image-block) */
+.image-block .content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* Общие стили для текстового контента */
 .text-content {
-  max-width: 600px;
-  color: white;
-  position: relative;
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   z-index: 2;
+  gap: 15px;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
-.text-content h2 {
+.header-white {
+  color: #FFFBF4;
+  font-family: "Open Sans", sans-serif;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 110%;
+  letter-spacing: -0.0495rem;
   text-transform: uppercase;
-  font-size: 32px;
-  margin-bottom: 20px;
-  line-height: 1.3;
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-.text-content p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 30px;
-  font-weight: 300;
-}
-
-/* Блок с изображением */
-.image-block {
-  flex: 1;
-  border-radius: 40px;
-  background-size: cover;
-  background-position: center;
+.regular-text-white {
+  color: #FFFBF4;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.01375rem;
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Кнопка */
 .cta-button {
   margin-top: 20px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1rem;
+  background: #FFFBF4;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Адаптивность */
-@media (max-width: 992px) {
-  .measurement-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  
-  .content-block,
-  .image-block {
-    min-height: 400px;
+@media (max-width: 1200px) {
+  .header-white {
+    font-size: 2.5rem;
   }
   
   .content-overlay {
@@ -79,16 +117,118 @@
   }
 }
 
-@media (max-width: 576px) {
-  .text-content h2 {
-    font-size: 24px;
+@media (max-width: 1092px) {
+  .measurement-container {
+    flex-direction: column;
+    min-height: auto;
+    gap: 15px;
   }
   
-  .text-content p {
-    font-size: 16px;
+  .content-block,
+  .image-block {
+    min-height: 350px;
+    border-radius: 30px;
+    width: 100%;
+  }
+  
+  .content-overlay {
+    padding: 25px;
+  }
+
+  .content-block .content-overlay{
+    position: relative;
+    padding: 10px;
+  }  
+  .header-white {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-white {
+    font-size: 2rem;
+    letter-spacing: -0.03rem;
+  }
+  
+  .regular-text-white {
+    font-size: 0.9rem;
   }
   
   .content-overlay {
     padding: 20px;
+  }
+  
+  .text-content {
+    gap: 10px;
+  }
+  
+
+}
+
+@media (max-width: 576px) {
+  .measurement-container {
+    margin-bottom: 30px;
+  }
+  
+  .header-white {
+    font-size: 1.8rem;
+    line-height: 120%;
+  }
+  
+  .regular-text-white {
+    font-size: 0.85rem;
+    line-height: 140%;
+  }
+  
+  .content-block,
+  .image-block {
+    min-height: 300px;
+    border-radius: 20px;
+  }
+  
+  .content-overlay {
+    padding: 15px;
+  }
+  
+}
+
+@media (max-width: 400px) {
+  .header-white {
+    font-size: 1.5rem;
+    letter-spacing: -0.02rem;
+  }
+  
+  .regular-text-white {
+    font-size: 0.8rem;
+    line-height: 135%;
+  }
+  
+  .content-block,
+  .image-block {
+    min-height: 250px;
+  }
+  
+  .content-overlay {
+    padding: 10px;
+  }
+  
+  .text-content {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 350px) {
+  .header-white {
+    font-size: 1.3rem;
+    line-height: 125%;
+  }
+  
+  .regular-text-white {
+    font-size: 0.75rem;
+  }
+  
+  .cta-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
   }
 }

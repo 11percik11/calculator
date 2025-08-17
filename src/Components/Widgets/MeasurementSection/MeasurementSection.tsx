@@ -15,7 +15,7 @@ interface MeasurementSectionProps {
   };
 }
 
-const MeasurementSection = ({
+export const MeasurementSection = ({
   title = "Замерка окон нашими специалистами гарантирует, что ваши шторы \"встанут как надо\"",
   description = "Наши замерщики учитывают все особенности ваших окон, чтобы шторы идеально легли и выглядели безупречно. Точный замер — залог идеальной посадки штор и стильного интерьера.",
   leftBackground = "/landing/bg-two.png",
@@ -33,8 +33,8 @@ const MeasurementSection = ({
       <div className="content-block" style={{ backgroundImage: `url(${leftBackground})` }}>
         <div className="content-overlay">
           <div className="text-content">
-            <h2>{title}</h2>
-            <p>{description}</p>
+            <h2 className='header-white'>{title}</h2>
+            <p className='regular-text-white'>{description}</p>
             <Button {...buttonProps} className="cta-button" />
           </div>
         </div>

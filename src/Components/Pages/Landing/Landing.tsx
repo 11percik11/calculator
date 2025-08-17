@@ -2,11 +2,11 @@ import './Landing.css';
 import PromoGrid from "@/Components/Widgets/PromoGrid/PromoGrid";
 import StarAnimation from "@/Components/UI/StartAnimation/StartAnimation";
 import CatalogPreviewGrid from "@/Components/Widgets/CatalogPreviewGrid/CatalogPreviewGrid";
-import {Button} from "@/Components/UI/Button/Button";
 import NewsGrid from "@/Components/Widgets/NewsGrid/NewsGrid";
 import { BenefitGrid } from '@/Components/Widgets/BenefitGrid/BenefitGrid';
 import {Footer} from "@/Components/Widgets/Footer/Footer";
 import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
+import MeasurementSection from '@/Components/Widgets/MeasurementSection/MeasurementSection';
 
 
 const benefitsData = [
@@ -132,22 +132,22 @@ export const Landing = () => {
             </section>
 
             <section className='five-block'>
-                <div className='five-block-left'>
-                    <h2>замерка окон нашими специалистами гарантирует, что ваши шторы “встанут как надо”</h2>
-                    <p className='five-block-description'>Наши замерщики учитывают все особенности ваших окон, чтобы
+                
+
+                <MeasurementSection 
+                            title="замерка окон нашими специалистами гарантирует, что ваши шторы “встанут как надо”"
+                            description="Наши замерщики учитывают все особенности ваших окон, чтобы
                         шторы идеально легли и выглядели безупречно. Точный замер — залог идеальной посадки штор и
-                        стильного интерьера.</p>
-                    <Button
-                        text="вызвать замерщика бесплатно"
-                        icon={<img src="/header/call.svg" alt="Каталог"/>}
-                        variant="solid"
-                        color="custom"
-                        customColor="#FFFFFF"
-                        className="five-block-call-button"
-                    />
-                </div>
-                <div className='five-block-right'>
-                </div>
+                        стильного интерьера."
+                            rightImage='/landing/zamer.png'
+                            buttonProps={{
+                                text: "Заказать звонок специалиста",
+                                icon: <img src="/header/call.svg" alt="Замер" />,
+                                color: "custom",
+                                customColor: "#FFFFFF",
+                                onClick: () => console.log('Замер заказан')
+                            }}
+                        />
             </section>
             <section className="benefits-section">
                 <StarAnimation/>
