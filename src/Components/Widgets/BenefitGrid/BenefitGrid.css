@@ -10,6 +10,8 @@
     justify-content: center;
     gap: 40px;
     max-width: 1200px;
+    font-family: "Open Sans Condensed ExtraBold", sans-serif;
+
 }
 
 .benefit-grid > * {

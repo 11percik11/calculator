@@ -1,6 +1,6 @@
+import { Button } from '@/Components/UI/Button/Button';
 import './CatalogCard.css';
-import {RedButton} from "@/Components/UI/RedButton/RedButton";
-import AddToCartBtn from "@/Components/UI/AddToCartBtn/AddToCartBtn";
+import { useNavigate } from 'react-router';
 
 interface CatalogCardProps {
     image: string;
@@ -9,6 +9,12 @@ interface CatalogCardProps {
 }
 
 const CatalogCard = ({ image, title, price }: CatalogCardProps) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/catalog');
+    };
+
     return (
         <div className="catalog-card">
             <div className="card-image">
@@ -16,11 +22,17 @@ const CatalogCard = ({ image, title, price }: CatalogCardProps) => {
             </div>
             <div className="card-content">
                 <h3 className="card-title">{title}</h3>
+                <span className="card-price">{price}</span>
                 <div className="card-footer">
-                    <span className="card-price">{price}</span>
                     <div className="card-actions">
-                        <AddToCartBtn />
-                        <RedButton  icon={<img src="/landing/white-calc.svg" alt="Калькулятор" />} />
+                        <Button
+                            text='Перейти в каталог'
+                            fullWidth = {true}
+                            customColor='#E7392F'
+                            onClick={handleClick}
+                            hoverEffect='underline'
+                            color='custom'
+                                                        />
                     </div>
                 </div>
             </div>

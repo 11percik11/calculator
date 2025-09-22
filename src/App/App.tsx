@@ -1,7 +1,14 @@
-import { Router } from './Router/Router';
+import { RouterProvider } from 'react-router';
+import { router } from './Router/Router';
+import { CookiesBanner } from '@/Components/UI/CookiesBanner/CookiesBanner';
 
 export const App = () => {
-  return <Router />;
+  return (<>
+  <RouterProvider router={router} />       
+  <CookiesBanner />
+  </>
+  
+  );
 };
 
-export default App
+export default App;

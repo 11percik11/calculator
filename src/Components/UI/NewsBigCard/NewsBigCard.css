@@ -8,7 +8,7 @@
 }
 
 .news-big-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
 }
 
 .news-big-card__container {

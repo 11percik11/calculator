@@ -1,7 +1,7 @@
 .add-to-cart-button {
     background-color: #E7392F;
     color: white;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans Condensed", sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
     border: none;
@@ -22,6 +22,7 @@
 .add-to-cart-button:hover {
     background-color: rgba(217, 217, 217, 0.2);
     backdrop-filter: blur(29px);
+    color: #000;
     -webkit-backdrop-filter: blur(29px);
 }
 

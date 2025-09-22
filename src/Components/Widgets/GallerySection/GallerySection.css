@@ -3,7 +3,6 @@
     border-radius: 30px;
     padding: 40px;
     margin: 20px auto;
-    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
@@ -20,7 +19,7 @@
   .gallery-title {
     color: #352C2B;
     text-align: center;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans Condensed ExtraBold", sans-serif;
     font-size: 3rem;
     font-style: normal;
     font-weight: 800;
@@ -28,6 +27,8 @@
     letter-spacing: -0.0495rem;
     text-transform: uppercase;
     will-change: transform, opacity;
+    margin: 0;
+    margin-bottom: 20px;
   }
   
   .gallery-title.animated {
@@ -35,15 +36,13 @@
   }
   
   .gallery-description {
-    color: #1E1E1E;
     text-align: center;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 1.875rem */
-    letter-spacing: -0.01375rem;
-    will-change: transform, opacity;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-family: "Montserrat";
+    font-weight: 100;
   }
   
   .gallery-description.animated {

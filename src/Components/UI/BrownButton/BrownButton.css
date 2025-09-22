@@ -1,9 +1,9 @@
 .brown-button {
     background-color: #352C2B;
     color: white;
-    font-family: "Open Sans Condensed ExtraBold";
+    font-family: "Open Sans Condensed", sans-serif;
     color: #FFF;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-style: normal;
     font-weight: 700;
     line-height: 150%; /* 2.25rem */

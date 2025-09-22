@@ -1,0 +1,49 @@
+/* CookiesBanner.css */
+.cookies-banner {
+    font-family: 'Open Sans Condensed';
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    max-width: 500px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .cookies-content h3 {
+    margin: 0 0 12px 0;
+    color: #352C2B;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  
+  .cookies-content p {
+    margin: 0 0 20px 0;
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+    font-family: 'Montserrat';
+  }
+  
+  .cookies-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .cookies-banner {
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+    }
+    
+    .cookies-buttons {
+      flex-direction: column;
+    }
+  }

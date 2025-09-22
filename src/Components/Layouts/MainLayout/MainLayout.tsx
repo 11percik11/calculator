@@ -1,5 +1,5 @@
 import './MainLayout.css';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { Header } from '@/Components/Widgets/Header/Header'
 
 export const MainLayout = () => {

@@ -1,5 +1,5 @@
 import './NotFound.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import {Button} from "@/Components/UI/Button/Button";
 
 export const NotFound = () => {

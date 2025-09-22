@@ -7,12 +7,12 @@
 .button {
     background-color: #352C2B;
     color: white;
-    font-family: 'Open Sans Condensed ExtraBold';
+    font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
     border: none;
     border-radius: 110px;
-    padding: 15px 20px;
+    padding: 12px 20px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +64,6 @@
 }
 
 .button.lg {
-    padding: 14px 28px;
     font-size: 16px;
     gap: 10px;
 }

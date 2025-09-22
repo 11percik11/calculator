@@ -1,74 +1,199 @@
 import { Footer } from '@/Components/Widgets/Footer/Footer';
-import './News.css'
+import './News.css';
 import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
 import StarAnimation from '@/Components/UI/StartAnimation/StartAnimation';
 import { NewsBigCard } from '@/Components/UI/NewsBigCard/NewsBigCard';
+import { getAllNews } from '@/Api/queries';
+import { useState, useEffect } from 'react';
 
-const newsData = [
-    {
-        title: "Новые тенденции в дизайне жалюзи 2023",
-        imageUrl: "https://i.pinimg.com/736x/3a/10/d0/3a10d02fae10b83f550b0287293c183c.jpg",
-        description: "Обзор последних трендов в оформлении окон с помощью современных жалюзи и рулонных штор."
-    },
-    {
-        title: "Как выбрать жалюзи для офиса",
-        imageUrl: "https://i.pinimg.com/736x/61/57/cf/6157cf5f308c143ffe8463a1432ea646.jpg",
-        description: "Практические советы по подбору оптимальных решений для рабочих пространств."
-    },
-    {
-        title: "Автоматизация штор - будущее уже здесь",
-        imageUrl: "https://i.pinimg.com/736x/91/0d/35/910d35c5525dddb61286b9ffa672d416.jpg",
-        description: "Технологии умного дома для управления естественным освещением в помещениях."
-    },
-    {
-        title: "Материалы для жалюзи: что выбрать?",
-        imageUrl: "https://i.pinimg.com/736x/ee/62/39/ee62399d0eede62bd150dda34f61b1e0.jpg",
-        description: "Сравнение различных материалов по долговечности, практичности и эстетике."
-    },
-    {
-        title: "Новые тенденции в дизайне жалюзи 2023",
-        imageUrl: "https://i.pinimg.com/736x/3a/10/d0/3a10d02fae10b83f550b0287293c183c.jpg",
-        description: "Обзор последних трендов в оформлении окон с помощью современных жалюзи и рулонных штор."
-    },
-    {
-        title: "Как выбрать жалюзи для офиса",
-        imageUrl: "https://i.pinimg.com/736x/61/57/cf/6157cf5f308c143ffe8463a1432ea646.jpg",
-        description: "Практические советы по подбору оптимальных решений для рабочих пространств."
-    },
-    {
-        title: "Автоматизация штор - будущее уже здесь",
-        imageUrl: "https://i.pinimg.com/736x/91/0d/35/910d35c5525dddb61286b9ffa672d416.jpg",
-        description: "Технологии умного дома для управления естественным освещением в помещениях."
-    },
-    {
-        title: "Материалы для жалюзи: что выбрать?",
-        imageUrl: "https://i.pinimg.com/736x/ee/62/39/ee62399d0eede62bd150dda34f61b1e0.jpg",
-        description: "Сравнение различных материалов по долговечности, практичности и эстетике."
-    }
-];
+interface NewsItem {
+  id: number;
+  title: string;
+  description?: string;
+  image: string;
+  isPreview: boolean;
+}
 
 export const News = () => {
-    return (
-        <div className="news">
-            <div className="news__container">
-                <StarAnimation/>
-                <h2 className="news__header">СТАТЬИ И НОВОСТИ</h2>
-                <p className='news__text'>Всё о жалюзи и рулонных шторах: тренды, технологии, советы и примеры решений для бизнеса и дома</p>
-                <div className="news__grid">
-                    {newsData.map((news, index) => (
-                        <NewsBigCard
-                            key={index}
-                            title={news.title}
-                            imageUrl={news.imageUrl}
-                            description={news.description}
-                        />
-                    ))}
-                </div>
-            </div>
-           <CatalogPromoBlock/>
-            <Footer />
-        </div>
+  const [newsData, setNewsData] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [itemsPerPage] = useState(8);
+
+  const fetchNews = async (page: number) => {
+    try {
+      setLoading(true);
+      const response = await getAllNews(page, itemsPerPage);
+      
+      setNewsData(response.data);
+      setTotalPages(response.meta.pagination.totalPages);
+      setError(null);
+    } catch (err) {
+      console.error('Ошибка при загрузке новостей:', err);
+      setError('Не удалось загрузить новости.');
+      setNewsData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchNews(currentPage);
+  }, [currentPage]);
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const renderPagination = () => {
+    if (totalPages <= 1) return null;
+
+    const pages = [];
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+    if (endPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    // Кнопка "Назад"
+    pages.push(
+      <button
+        key="prev"
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="pagination-prev"
+      >
+        ←
+      </button>
     );
+
+    // Первая страница
+    if (startPage > 1) {
+      pages.push(
+        <button
+          key={1}
+          onClick={() => handlePageChange(1)}
+          className="pagination-button"
+        >
+          1
+        </button>
+      );
+      if (startPage > 2) {
+        pages.push(<span key="ellipsis1" className="pagination-ellipsis">...</span>);
+      }
+    }
+
+    // Основные страницы
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`pagination-button ${currentPage === i ? 'active' : ''}`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    // Последняя страница
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        pages.push(<span key="ellipsis2" className="pagination-ellipsis">...</span>);
+      }
+      pages.push(
+        <button
+          key={totalPages}
+          onClick={() => handlePageChange(totalPages)}
+          className="pagination-button"
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    // Кнопка "Вперед"
+    pages.push(
+      <button
+        key="next"
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="pagination-next"
+      >
+        →
+      </button>
+    );
+
+    return <div className="news-pagination">{pages}</div>;
+  };
+
+  if (loading && newsData.length === 0) {
+    return (
+      <div className="news">
+      <div className="page-top" id='page-top'></div>
+
+        <div className="news__container">
+          <StarAnimation/>
+          <h2 className="news__header">СТАТЬИ И НОВОСТИ</h2>
+          <p className='news__text'>Всё о жалюзи и рулонных шторах: тренды, технологии, советы и примеры решений для бизнеса и дома</p>
+          <div className="news-loading">
+            <div className="spinner"></div>
+            <span>Загрузка новостей...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="news">
+      <div className="news__container">
+        <StarAnimation/>
+        <h2 className="news__header">СТАТЬИ И НОВОСТИ</h2>
+        <p className='news__text'>Всё о жалюзи и рулонных шторах: тренды, технологии, советы и примеры решений для бизнеса и дома</p>
+        
+        {error && (
+          <div className="news-error">
+          </div>
+        )}
+
+        {!error && newsData.length > 0 && (
+          <>
+            <div className="news__grid">
+              {newsData.map((news) => (
+                <NewsBigCard
+                  key={news.id}
+                  title={news.title}
+                  imageUrl={news.image}
+                  description={news.description || '...'}
+                />
+              ))}
+            </div>
+            
+            {renderPagination()}
+          </>
+        )}
+
+        {!error && newsData.length === 0 && (
+          <div className="news-empty">
+            <p>Новостей пока нет</p>
+          </div>
+        )}
+      </div>
+      <div className="catalog-promo-block__wrapper">
+      <CatalogPromoBlock/>
+
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default News;

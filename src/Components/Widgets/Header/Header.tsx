@@ -1,10 +1,13 @@
 import './Header.css';
 import { BrownButton } from "@/Components/UI/BrownButton/BrownButton";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import { ModalCall } from '@/Components/Widgets/ModalCall/ModalCall';
 
 
 export const Header = () => {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
         return (
             <header className="header">
@@ -28,7 +31,7 @@ export const Header = () => {
                         <div className='header-wrapper'>
                             <img src='/header/logo.png' alt='Логотип' className="header__logo" onClick={() => navigate('/')}/>
                         </div>
-                        <p className='header-text' onClick={() => navigate('/news')} >АКЦИИ</p>
+                        <p className='header-text' onClick={() => navigate('/news')} >НОВОСТИ</p>
                         <p className='header-text'onClick={() => navigate('/about')} >КОНТАКТЫ</p>
                     </nav>
 
@@ -36,14 +39,22 @@ export const Header = () => {
                     <div className="header__right">
                             <BrownButton
                                 icon={<img src="/header/basket.svg" alt="Корзина" />}
-                                onClick={() => navigate('/calc')}
+                                onClick={() => navigate('/cart')}
                             />
                             <BrownButton
                                 text="ВЫЗВАТЬ ЗАМЕРЩИКА БЕСПЛАТНО"
-                                icon={<img src="/header/call.svg" alt="Вызов замерщика" />}
-                                onClick={() => navigate('/calc')}
+                                icon={<img 
+                                    src="/header/call.svg" 
+                                    alt="Вызов замерщика" 
+                                  />}
+                                                                  
+                                  onClick={() => setIsModalOpen(true)}
                             />
                     </div>
+                    <ModalCall 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
             </header>
         );
 };

@@ -8,15 +8,15 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
+    margin: 0 20px;
 }
 
 .footer__container {
     display: flex;
-    width: 100%;
     gap: 40px;
-    max-width: 1400px;
     margin: 0 auto;
     flex-wrap: wrap;
+    margin: 0 20px;
 }
 
 .footer__col {
@@ -49,13 +49,15 @@
     line-height: 1.3;
     color: #352C2B;
     margin-bottom: 20px;
+    font-family: "Open Sans Condensed ExtraBold", sans-serif;
 }
 
 .footer__subtitle {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
     color: #352C2B;
     margin-bottom: 15px;
+    
 }
 
 .footer__text {
@@ -125,7 +127,17 @@
     width: 100%;
 }
 
+.footer__col--nav{
+    flex-direction: row;
+}
+
 /* Адаптивность */
+
+@media (max-width: 1400px) {
+    .footer__col--nav {
+        flex-direction: column;
+    }
+}
 @media (max-width: 1024px) {
     .footer__col--main {
         flex: 1;

@@ -3,7 +3,6 @@
   display: flex;
   width: 100%;
   min-height: 600px;
-  margin-bottom: 40px;
 }
 
 /* Общие стили для обоих блоков */
@@ -60,12 +59,11 @@
 
 .header-white {
   color: #FFFBF4;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans Condensed ExtraBold", sans-serif;
   font-size: 3rem;
   font-style: normal;
   font-weight: 800;
   line-height: 110%;
-  letter-spacing: -0.0495rem;
   text-transform: uppercase;
   margin: 0;
   max-width: 100%;
@@ -85,6 +83,7 @@
   max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
+  text-transform: none;
 }
 
 /* Кнопка */
@@ -107,7 +106,7 @@
 }
 
 /* Адаптивность */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .header-white {
     font-size: 2.5rem;
   }
@@ -117,11 +116,17 @@
   }
 }
 
+@media (max-width: 1210px) {
+  .header-white {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 1092px) {
   .measurement-container {
     flex-direction: column;
     min-height: auto;
-    gap: 15px;
+    gap: 20px;
   }
   
   .content-block,

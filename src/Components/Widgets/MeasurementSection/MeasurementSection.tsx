@@ -1,5 +1,8 @@
 import { Button } from '@/Components/UI/Button/Button';
 import "./MeasurementSection.css"
+import { useState } from 'react';
+import { ModalCall } from '@/Components/Widgets/ModalCall/ModalCall';
+
 interface MeasurementSectionProps {
   title?: string;
   description?: string;
@@ -22,25 +25,47 @@ export const MeasurementSection = ({
   rightImage = "/landing/zamer.png",
   buttonProps = {
     text: "вызвать замерщика бесплатно",
-    icon: <img src="/header/call.svg" alt="Каталог" />,
+    icon: <img src="/header/call.svg" alt="звонок" />,
     variant: "solid" as const,
     color: "secondary" as const,
     customColor: "#FFFFFF",
   },
 }: MeasurementSectionProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="measurement-container">
-      <div className="content-block" style={{ backgroundImage: `url(${leftBackground})` }}>
-        <div className="content-overlay">
-          <div className="text-content">
-            <h2 className='header-white'>{title}</h2>
-            <p className='regular-text-white'>{description}</p>
-            <Button {...buttonProps} className="cta-button" />
+    <>
+      <div className="measurement-container">
+        <div className="content-block" style={{ backgroundImage: `url(${leftBackground})` }}>
+          <div className="content-overlay">
+            <div className="text-content">
+              <h2 className='header-white'>{title}</h2>
+              <p className='regular-text-white'>{description}</p>
+              <Button 
+                {...buttonProps} 
+                className="cta-button" 
+                onClick={handleOpenModal}
+                size='lg'
+              />
+            </div>
           </div>
         </div>
+        <div className="image-block" style={{ backgroundImage: `url(${rightImage})` }} />
       </div>
-      <div className="image-block" style={{ backgroundImage: `url(${rightImage})` }} />
-    </div>
+
+      <ModalCall 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+      />
+    </>
   );
 };
 

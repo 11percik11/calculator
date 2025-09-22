@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router';
 import { MainLayout } from '@/Components/Layouts/MainLayout/MainLayout';
 import { Landing } from '@/Components/Pages/Landing/Landing';
 import { NotFound } from '@/Components/Pages/NotFound/NotFound';
@@ -6,23 +6,33 @@ import { News } from '@/Components/Pages/News/News';
 import { Catalog } from '@/Components/Pages/Catalog/Catalog';
 import { About } from '@/Components/Pages/About/About';
 import { Business } from '@/Components/Pages/Business/Business';
+import { Promo } from '@/Components/Pages/Promo/Promo';
+import { Product } from '@/Components/Pages/Product/Product';
+import { Offer } from '@/Components/Pages/Offer/Offer';
+import { Policy } from '@/Components/Pages/Policy/Policy';
+import { Cart } from '@/Components/Pages/Cart/Cart';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
         element: <Landing />,
       },
       {
-        path: '*',
-        element: <NotFound />,
-      },
-      {
         path: 'catalog',
         element: <Catalog />,
+      },
+      {
+        path: 'catalog/:categorySlug',
+        element: <Catalog/>
+      },
+      {
+        path: 'catalog/:categorySlug/:subcategorySlug',
+        element: <Catalog/>
       },
       {
         path: 'about',
@@ -35,9 +45,27 @@ const router = createBrowserRouter([
       {
         path: 'business',
         element: <Business />
+      },
+      {
+        path: 'promotions',
+        element: <Promo/>
+      },
+      {
+        path: 'product/:productId',
+        element: <Product/>
+      },
+      {
+        path: 'offer',
+        element: <Offer/>
+      },
+      {
+        path: 'privacy',
+        element: <Policy/>
+      },
+      {
+        path: 'cart',
+        element: <Cart/>
       }
     ],
   },
 ]);
-
-export const Router = () => <RouterProvider router={router} />;

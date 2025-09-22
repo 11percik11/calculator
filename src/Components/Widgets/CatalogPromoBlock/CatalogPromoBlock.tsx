@@ -1,46 +1,77 @@
 import { Button } from '@/Components/UI/Button/Button';
 import './CatalogPromoBlock.css'
+import { useState } from 'react';
+import { ModalCall } from '@/Components/Widgets/ModalCall/ModalCall';
 
-export const CatalogPromoBlock = () => {
+interface PropsBlock {
+  showBtn?: boolean; // сделаем опциональным с значением по умолчанию true
+}
+
+export const CatalogPromoBlock = ({ showBtn = true }: PropsBlock) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className='catalog-promo-block'>
-      <div className="catalog-promo-content">
-        <h2 className='catalog-promo-title'>
-          НАШУ ПРОДУКЦИЮ ВЫБИРАЮТ УЖЕ БОЛЬШЕ 20-ти ЛЕТ
-        </h2>
-        <p className='catalog-promo-description'>
-          Если вы затрудняетесь с выбором или "заблудились" в нашей продукции, - обратитесь к нашему
-          специалисту. Вам бесплатно помогут с выбором.
-        </p>
+    <>
+      <div className='catalog-promo-block'>
+        <div className="catalog-promo-content">
+          <h2 className='catalog-promo-title'>
+            НАШУ ПРОДУКЦИЮ ВЫБИРАЮТ УЖЕ БОЛЬШЕ 20-ти ЛЕТ
+          </h2>
+          <p className='catalog-promo-description'>
+            Если вы затрудняетесь с выбором или "заблудились" в нашей продукции, - обратитесь к нашему
+            специалисту. Вам бесплатно помогут с выбором.
+          </p>
 
-        <div className="catalog-promo-buttons">
-          <Button
-            text="Перейти в полную версию каталога"
-            icon={<img src="/header/dots.svg" alt="Каталог"/>}
-            variant="solid"
-            color="custom"
-            customColor="#FFFFFF"
-            className="catalog-button"
-          />
+          <div className="catalog-promo-buttons">
+            {/* Условие для показа первой кнопки */}
+            {showBtn && (
+              <Button
+                text="Перейти в полную версию каталога"
+                icon={<img src="/header/dots.svg" alt="Каталог"/>}
+                variant="solid"
+                color="custom"
+                customColor="#FFFFFF"
+                className="catalog-button"
+                size='lg'
+              />
+            )}
 
-          <Button
-            text="Вызвать замерщика"
-            icon={<img src="/landing/ruler.svg" alt="Замерщик"/>}
-            variant="outline"
-            color="custom"
-            customColor="#FFFFFF"
-            className="measurer-button"
-          />
+            <Button
+              text="Вызвать замерщика"
+              icon={<img src="/landing/ruler.svg" alt="Замерщик"/>}
+              variant="outline"
+              color="custom"
+              customColor="#FFFFFF"
+              className="measurer-button"
+              onClick={handleOpenModal}
+              size='lg'
+            />
 
-          <Button
-            icon={<img src="/landing/call-white.svg" alt="Позвонить"/>}
-            variant="outline"
-            color="custom"
-            customColor="#FFFFFF"
-            className="call-button"
-          />
+            <Button
+              icon={<img src="/landing/call-white.svg" alt="Позвонить"/>}
+              variant="outline"
+              color="custom"
+              customColor="#FFFFFF"
+              className="call-button"
+              onClick={handleOpenModal}
+              size='lg'
+            />
+          </div>
         </div>
       </div>
-    </div>
+
+      <ModalCall 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+      />
+    </>
   );
 };

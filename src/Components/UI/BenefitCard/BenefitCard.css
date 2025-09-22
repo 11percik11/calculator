@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: flex-end;
     overflow: hidden;
+    font-family: "Open Sans Condensed ExtraBold", sans-serif;
 }
 
 .benefit-card__image {

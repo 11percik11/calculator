@@ -1,0 +1,302 @@
+.cart{
+    width: 100%;
+    min-height: calc(100vh - 40px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding-top: 8rem;
+}
+.cart {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cart__container {
+    background-color: #ffffff;
+  flex: 1;
+  margin: 0 20px;
+  display: flex;
+  flex-direction:column;
+  gap: 20px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+
+.cart__title-header{
+    font-family: "Open Sans Condensed ExtraBold";
+    text-align: center;
+    font-size: 3.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.cart__title-text{
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-family: "Montserrat";
+    font-weight: 100;
+}
+
+.cart__object{
+    flex: 1;
+  margin: 0 20px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+
+.cart__items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #ccc; /* Пунктирная серая линия */
+}
+
+.cart__item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Одинаковый размер изображений */
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.cart__item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cart__item-title {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.cart__item-price, .cart__item-description {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin: 0;
+}
+
+.cart__item-price{
+    color: #352c2bb9;
+    font-size:2rem;
+}
+
+.cart__item-remove {
+  background: none;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 50%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cart__item-remove:hover {
+  color: #b52c23;
+}
+
+.cart__item-remove:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cart__empty {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
+
+.cart__form {
+  flex: 1;
+  max-width: 500px;
+  max-height: 450px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cart__form-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.cart__form-name,
+.cart__form-phone {
+  margin-bottom: 20px;
+}
+
+.cart__form-name-text,
+.cart__form-phone-text {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.cart__form-name-input,
+.cart__form-phone-input {
+  width: 93%;
+  padding: 12px 16px;
+  border: 2px solid #e5e5e5;
+  border-radius: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.cart__form-phone-input {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.cart__form-name-input:focus,
+.cart__form-phone-input:focus {
+  outline: none;
+  border-color: #E7392F;
+}
+
+.cart__form-name-input:disabled,
+.cart__form-phone-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.cart__form-phone-input.input-error {
+  border-color: #DC2626;
+}
+
+.phone-input-container {
+  position: relative;
+}
+
+.phone-error-message,
+.phone-success-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.phone-error-message {
+  color: #DC2626;
+}
+
+.phone-success-message {
+  color: #16A34A;
+}
+
+.cart-error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: #c33;
+  text-align: center;
+}
+
+.cart-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #22C55E;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.cart-success p {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.cart__form-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.cart__form-privacy {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.cart__form-link {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cart__form-link:hover {
+  color: #0056b3;
+}
+
+.product-block__like{
+    margin: 0 20px 20px 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cart__object {
+    flex-direction: column;
+  }
+
+  .cart__form {
+    order: -1; /* Форма наверх */
+    max-width: 100%;
+  }
+
+  .cart__items {
+    order: 1; /* Товары вниз */
+  }
+
+  .cart__item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart__item-image {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

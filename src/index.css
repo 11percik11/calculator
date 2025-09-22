@@ -27,25 +27,16 @@
   src: url(/fonts/opensanscondensed-extrabold.woff2);
 }
 /* Базовый сброс стилей */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* Блокируем горизонтальный скролл */
-}
+
 
 body {
   position: relative;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background-color: #352C2B;
-  overscroll-behavior-y: contain; /* Предотвращаем "подпрыгивание" скролла */
+margin: 0;
+padding: 0;
+background-color: #352C2B;
+overscroll-behavior-y: contain; /* Предотвращаем "подпрыгивание" скролла */
 }
 
 #root {
@@ -54,7 +45,6 @@ body {
   position: relative;
   overflow: hidden; /* Убираем возможный двойной скролл */
 }
-
 
 a {
   color: inherit;
