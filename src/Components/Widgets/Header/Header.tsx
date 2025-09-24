@@ -20,7 +20,7 @@ export const Header = () => {
                             />
                             <BrownButton
                                 icon={<img src="/header/calc.svg" alt="Калькулятор" />}
-                                onClick={() => navigate('/calc')}
+                                onClick={() => navigate('/calculator')}
                             />
                     </div>
 

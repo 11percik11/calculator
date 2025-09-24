@@ -11,6 +11,7 @@ import { Product } from '@/Components/Pages/Product/Product';
 import { Offer } from '@/Components/Pages/Offer/Offer';
 import { Policy } from '@/Components/Pages/Policy/Policy';
 import { Cart } from '@/Components/Pages/Cart/Cart';
+import { CalculatorPage } from '@/Components/Pages/Calculator/Calculator';
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart/>
+      },
+      {
+        path: 'calculator',
+        element: <CalculatorPage/>
       }
     ],
   },
