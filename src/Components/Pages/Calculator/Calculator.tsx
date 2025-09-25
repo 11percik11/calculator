@@ -1,4 +1,4 @@
-import { Calculator } from "@/Components/UI/Сalculator/Calculator"
+import { Calculator } from "@/Components/Widgets/Сalculator/Calculator"
 
 
 export const CalculatorPage = () => {
