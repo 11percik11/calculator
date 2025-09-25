@@ -2,19 +2,48 @@ import "./Calculator.css";
 import Arrow_prev from "/landing/Arrow_prev.svg";
 import Arrow_next from "/landing/Arrow_next.svg";
 import { Select } from "./ui/Select/Select";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 export interface CalculatorParent {
-  id: number,
-  name: string,
-  image: string,
+  id: number;
+  name: string;
+  image: string;
+}
+
+export interface IMaterial {
+  id: number;
+  title: string; // "Ткань синий бриз"
+  preview: string; // "material/alfa-goluboi-68d5697460b49747836512.png"
+  imageModel: string; // "material/2-68d56974610e3626884626.png"
+  product: {
+    id: number;
+    title: string; // "Рулонные"
+    price: number; // 2300
+  };
 }
 
 export const Calculator = () => {
   const [activeFon, setActiveFon] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
   const [categories, setCategories] = useState<CalculatorParent[]>([]);
+  const [materials, setMaterials] = useState<IMaterial[]>([]);
+  const [widthValue, setWidthValue] = useState(0);
+  const [heightValue, setHeightValue] = useState(0);
+
+  const priceTovar = materials[activeFon]?.product.price || 1900;
+
+  const SumPrice = useMemo(() => {
+    return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
+  }, [widthValue, heightValue, priceTovar]);
+
+  const arrPhotoColorFon = [
+    ["/photo/002.png", "#E8E8E8"],
+    ["/photo/001.png", "#FFE5B4"],
+    ["/photo/003.png", "#FFFDDF"],
+    ["/photo/004.png", "#CEEDD0"],
+    ["/photo/005.png", "#C6DEF6"],
+  ];
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,7 +63,6 @@ export const Calculator = () => {
 
     fetchData();
   }, []);
-  const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
     <div className="calculator">
@@ -45,8 +73,15 @@ export const Calculator = () => {
           </h2>
           <div className="price_calculator-design_example">
             <img
+              className="wwwww"
+              src={`https://api-vert.tusamgroup.ru/${materials[activeFon]?.imageModel}`}
+              alt=""
+              width={100}
+              height={100}
+            />
+            <img
               className="price_calculator-design_example-image"
-              src="https://hoff.ru/upload/medialibrary/319/0ckpybiopzoam13afu21d28cwu7v4568.jpg"
+              src={arrPhotoColorFon[activeColor][0]}
               alt=""
             />
           </div>
@@ -60,30 +95,38 @@ export const Calculator = () => {
                 замерщика бесплатно.
               </p>
               <div className="values_boxInput">
-                <input
-                  placeholder="Введите высоту, см"
-                  type="text"
-                  inputMode="numeric"
-                  className="values_input"
-                  onInput={(e: React.FormEvent<HTMLInputElement>) => {
-                    const input = e.currentTarget;
-                    let v = input.value.replace(/\D/g, "");
-                    if (v !== "" && Number(v) > 100000) v = "100000";
-                    input.value = v;
-                  }}
-                />
-                <input
-                  placeholder="Введите ширину, см"
-                  type="text"
-                  inputMode="numeric"
-                  className="values_input"
-                  onInput={(e: React.FormEvent<HTMLInputElement>) => {
-                    const input = e.currentTarget;
-                    let v = input.value.replace(/\D/g, "");
-                    if (v !== "" && Number(v) > 100000) v = "100000";
-                    input.value = v;
-                  }}
-                />
+                <div className="values_inputBox">
+                  <input
+                    onChange={(e) => setWidthValue(Number(e.target.value))}
+                    placeholder="Введите высоту, см"
+                    type="text"
+                    inputMode="numeric"
+                    className="values_input"
+                    onInput={(e: React.FormEvent<HTMLInputElement>) => {
+                      const input = e.currentTarget;
+                      let v = input.value.replace(/\D/g, "");
+                      if (v !== "" && Number(v) > 100000) v = "100000";
+                      input.value = v;
+                    }}
+                  />
+                  <img src="/photo/arrow-height.svg" alt="" width={25} height={25}/>
+                </div>
+                <div className="values_inputBox">
+                  <input
+                    onChange={(e) => setHeightValue(Number(e.target.value))}
+                    placeholder="Введите ширину, см"
+                    type="text"
+                    inputMode="numeric"
+                    className="values_input"
+                    onInput={(e: React.FormEvent<HTMLInputElement>) => {
+                      const input = e.currentTarget;
+                      let v = input.value.replace(/\D/g, "");
+                      if (v !== "" && Number(v) > 100000) v = "100000";
+                      input.value = v;
+                    }}
+                  />
+                  <img src="/photo/arrow-width.svg" alt="" width={25} height={25}/>
+                </div>
               </div>
             </div>
             <div>
@@ -93,9 +136,7 @@ export const Calculator = () => {
                 в выборе — обратитесь к нашему специалисту. Вам помогут с
                 выбором!
               </p>
-              <Select
-                item={categories}
-              />
+              <Select setMaterial={setMaterials} item={categories} />
             </div>
             <div>
               <h3 className="values_h3">МАТЕРИАЛ И ЦВЕТ ПОЛОТНА</h3>
@@ -109,22 +150,28 @@ export const Calculator = () => {
                   alt=""
                 />
                 <div className="valuse_colors">
-                  {values.map((num, index) => (
-                    <div
-                      onClick={() => setActiveFon(index)}
-                      key={num}
-                      className={`valuse_colors_item ${
-                        activeFon == index && "valuse_colors_item_ActiveColor"
-                      }`}
-                    >
-                      {num}
-                    </div>
-                  ))}
+                  {materials &&
+                    materials.map((material, index) => (
+                      <div
+                        onClick={() => setActiveFon(index)}
+                        key={index}
+                        className={`valuse_colors_item ${
+                          activeFon == index && "valuse_colors_item_ActiveColor"
+                        }`}
+                        style={{
+                          background: `url(https://api-vert.tusamgroup.ru/${material.preview})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      ></div>
+                    ))}
                 </div>
                 <img
                   onClick={() =>
                     setActiveFon(
-                      activeFon != values.length - 1 ? activeFon + 1 : activeFon
+                      activeFon != materials.length - 1
+                        ? activeFon + 1
+                        : activeFon
                     )
                   }
                   className="values_slider_arrow"
@@ -133,6 +180,8 @@ export const Calculator = () => {
                 />
               </div>
             </div>
+
+            {/* /////////////////////////////////////////////////////// */}
             <div>
               <h3 className="values_h3">ЦВЕТ СТЕН</h3>
               <div className="values_slider">
@@ -145,22 +194,21 @@ export const Calculator = () => {
                   alt=""
                 />
                 <div className="valuse_colors">
-                  {values.map((num, index) => (
+                  {arrPhotoColorFon.map((num, index) => (
                     <div
                       onClick={() => setActiveColor(index)}
-                      key={num}
+                      key={index}
                       className={`valuse_colors_item ${
                         activeColor == index && "valuse_colors_item_ActiveColor"
                       }`}
-                    >
-                      {num}
-                    </div>
+                      style={{ background: num[1] }}
+                    ></div>
                   ))}
                 </div>
                 <img
                   onClick={() =>
                     setActiveColor(
-                      activeColor != values.length - 1
+                      activeColor != arrPhotoColorFon.length - 1
                         ? activeColor + 1
                         : activeColor
                     )
@@ -180,7 +228,7 @@ export const Calculator = () => {
               контактам, указанным ниже мы сделаем эскиз индивидуального заказ
             </p>
             <div className="price_container">
-              <div className="price_sum">10 790 ₽</div>
+              <div className="price_sum">{SumPrice} ₽</div>
               <button className="price_buttonBasket">
                 <img src="./Vector.svg" alt="" />
                 ДОБАВИТЬ В КОРЗИНУ

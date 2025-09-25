@@ -26,6 +26,10 @@
     position: relative;
     box-sizing: border-box;
 }
+
+.calculator_block {
+    margin-bottom: 40px;
+}
 /* Добавляем эти стили к существующим */
 
 .hero__bottom-block {

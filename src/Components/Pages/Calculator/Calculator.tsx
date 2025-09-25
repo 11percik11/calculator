@@ -1,10 +1,12 @@
-import { Calculator } from "@/Components/Widgets/Сalculator/Calculator"
+import './Calculator.css';
+import { Calculator } from "@/Components/Widgets/Calculator/Calculator"
 
 
 export const CalculatorPage = () => {
   return (
-    <div>
+    <div className="calculatorPage">
         <Calculator/>
     </div>
   )
 }
+

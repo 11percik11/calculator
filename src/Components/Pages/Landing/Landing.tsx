@@ -8,6 +8,7 @@ import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/Catalo
 import MeasurementSection from '@/Components/Widgets/MeasurementSection/MeasurementSection';
 import { FrozeBlock } from '@/Components/Widgets/FrozeBlock/FrozeBlock';
 import CatalogPreviewLikeGrid from '@/Components/Widgets/CatalogPreviewLikeGrid/CatalogPreviewLikeGrid';
+import { Calculator } from '@/Components/Widgets/Calculator/Calculator';
 
 
 const benefitsData = [
@@ -63,6 +64,9 @@ export const Landing = () => {
                 <CatalogPreviewLikeGrid/>
 
                 <CatalogPromoBlock/>
+            </section>
+            <section className='calculator_block'>
+                <Calculator/>
             </section>
 
             <section className='four_block'>
