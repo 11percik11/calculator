@@ -37,6 +37,10 @@ export const Calculator = () => {
     return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
   }, [widthValue, heightValue, priceTovar]);
 
+  useEffect(() => {
+    setActiveFon(0)
+  }, [materials, setMaterials])
+
   const arrPhotoColorFon = [
     ["/photo/002.png", "#E8E8E8"],
     ["/photo/001.png", "#FFE5B4"],

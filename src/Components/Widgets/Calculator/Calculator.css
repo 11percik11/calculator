@@ -93,7 +93,7 @@
 }
 
 .values_inputBox {
-    height: 60px;
+  height: 60px;
   border: 4px solid #e7392f;
   font-size: 20px;
   font-weight: 400;
@@ -102,7 +102,6 @@
   width: 50%;
   display: flex;
   align-items: center;
-
 }
 
 .values_input {
@@ -146,16 +145,16 @@
 
 .values_slider {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  gap: clamp(4px, 0.5vw, 23px);
+  /* gap: clamp(4px, 0.5vw, 23px); */
 }
 
 .valuse_colors {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .valuse_colors_item {
@@ -228,6 +227,7 @@
   display: flex;
   align-items: center;
   gap: 30px;
+  margin-top: 2.1%;
 }
 
 .price_sum {
@@ -292,6 +292,9 @@
   .price_calculator-parameters_values {
     gap: 2%;
   }
+  .price_container {
+    margin-top: 1%;
+  }
 }
 
 @media (max-width: 1330px) {
@@ -340,7 +343,7 @@
     height: clamp(24px, 6vw, 72px);
   }
   .values_slider {
-    gap: clamp(4px, 1.5vw, 23px);
+    /* gap: clamp(4px, 1.5vw, 23px); */
     margin-top: 10px;
   }
   .values_slider_arrow {
@@ -376,6 +379,10 @@
   .price_buttonBasket {
     min-height: 60px;
     padding: 0 5px;
+  }
+
+  .values_inputBox {
+    width: 100%;
   }
 
   .price_container {
@@ -421,14 +428,14 @@
 }
 
 .wwwww {
-    position: absolute;
-    top: 39px;
-    left: 48px;
-    top: 5%;
-    left: 5.5%;
-    z-index: 12;
-    width: 703px;
-    height: 412px;
-    width: 79%;
-    height: 52.6%;
+  position: absolute;
+  top: 39px;
+  left: 48px;
+  top: 4.9%;
+  left: 5.5%;
+  z-index: 12;
+  width: 703px;
+  height: 412px;
+  width: 79%;
+  height: 52.8%;
 }
