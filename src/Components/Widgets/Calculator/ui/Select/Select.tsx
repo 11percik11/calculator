@@ -51,16 +51,14 @@ export const Select = ({ item, setMaterial }: SelectProps) => {
         className="selectComponent_value"
         onClick={() => setOnVisibleOption(!onVisibleOption)}
       >
-        <p>
-          {valueOption}
-          </p>
-          <img
-    className={`selectComponent_arrow ${onVisibleOption ? "open" : ""}`}
-    src="/photo/arrow-select.svg"
-    alt=""
-    width={35}
-    height={35}
-  />
+        <p>{valueOption}</p>
+        <img
+          className={`selectComponent_arrow ${onVisibleOption ? "open" : ""}`}
+          src="/photo/arrow-select.svg"
+          alt=""
+          width={35}
+          height={35}
+        />
       </div>
 
       {onVisibleOption && (

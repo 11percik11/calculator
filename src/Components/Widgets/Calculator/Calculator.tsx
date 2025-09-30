@@ -24,12 +24,35 @@ export interface IMaterial {
 }
 
 export const Calculator = () => {
-  const [activeFon, setActiveFon] = useState(0);
+  // const [activeFon, setActiveFon] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
   const [categories, setCategories] = useState<CalculatorParent[]>([]);
   const [materials, setMaterials] = useState<IMaterial[]>([]);
   const [widthValue, setWidthValue] = useState(0);
   const [heightValue, setHeightValue] = useState(0);
+
+
+
+
+const [page, setPage] = useState(0); // текущая страница
+const [activeFon, setActiveFon] = useState(0);
+const itemsPerPage = 9;
+
+const totalPages = Math.ceil(materials.length / itemsPerPage);
+
+const startIndex = page * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const visibleMaterials = materials.slice(startIndex, endIndex);
+
+// при смене страницы выбираем первый элемент этой страницы
+useEffect(() => {
+  if (visibleMaterials.length > 0) {
+    setActiveFon(startIndex);
+  }
+}, [page]);
+
+
+
 
   const priceTovar = materials[activeFon]?.product.price || 1900;
 
@@ -143,9 +166,41 @@ export const Calculator = () => {
               <Select setMaterial={setMaterials} item={categories} />
             </div>
             <div>
-              <h3 className="values_h3">МАТЕРИАЛ И ЦВЕТ ПОЛОТНА</h3>
+              <h3 className="values_h3 values_h3-margin">МАТЕРИАЛ И ЦВЕТ ПОЛОТНА</h3>
               <div className="values_slider">
                 <img
+      onClick={() => setPage(page > 0 ? page - 1 : 0)}
+      className="values_slider_arrow"
+      src={Arrow_prev}
+      alt=""
+    />
+
+    <div className="valuse_colors">
+      {visibleMaterials.map((material, index) => (
+        <div
+          onClick={() => setActiveFon(startIndex + index)}
+          key={startIndex + index}
+          className={`valuse_colors_item ${
+            activeFon === startIndex + index ? "valuse_colors_item_ActiveColor" : ""
+          }`}
+          style={{
+            background: `url(https://api-vert.tusamgroup.ru/${material.preview})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+      ))}
+    </div>
+
+    <img
+      onClick={() =>
+        setPage(page < totalPages - 1 ? page + 1 : page)
+      }
+      className="values_slider_arrow"
+      src={Arrow_next}
+      alt=""
+    />
+                {/* <img
                   onClick={() =>
                     setActiveFon(activeFon != 0 ? activeFon - 1 : 0)
                   }
@@ -181,13 +236,13 @@ export const Calculator = () => {
                   className="values_slider_arrow"
                   src={Arrow_next}
                   alt=""
-                />
+                /> */}
               </div>
             </div>
 
             {/* /////////////////////////////////////////////////////// */}
             <div>
-              <h3 className="values_h3">ЦВЕТ СТЕН</h3>
+              <h3 className="values_h3 values_h3-margin">ЦВЕТ СТЕН</h3>
               <div className="values_slider">
                 <img
                   onClick={() =>
