@@ -9,7 +9,7 @@
 
 .calculator {
   background-color: rgba(53, 44, 43, 1);
-  padding: 0px 20px;
+  /* padding: 0px 20px; */
   /* margin-top: 102px; */
 }
 
@@ -220,6 +220,8 @@
   font-weight: 800;
   font-family: "Open Sans Condensed ExtraBold", sans-serif;
   letter-spacing: -0.3px;
+      display: flex;
+    justify-content: space-between;
 }
 
 .price_text {

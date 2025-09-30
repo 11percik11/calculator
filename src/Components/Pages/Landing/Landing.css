@@ -1,342 +1,358 @@
 .landing {
-    width: 100%;
-    min-height: calc(100vh - 40px);
-    overflow-x: hidden;
-    box-sizing: border-box;
-    text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+  width: 100%;
+  min-height: calc(100vh - 40px);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  /* padding: 0 20px; */
 }
 .error-message {
-    color: red;
-    text-align: center;
-    padding: 10px;
-    background-color: #ffe6e6;
-    margin-bottom: 10px;
-  }
+  color: red;
+  text-align: center;
+  padding: 10px;
+  background-color: #ffe6e6;
+  margin-bottom: 10px;
+}
 .landing__back {
-    margin: 20px;
-    min-height: calc(100vh - 40px);
-    border-radius: 40px;
-    background-image: url('/landing/back.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    box-sizing: border-box;
+  /* margin: 20px; */
+  min-height: calc(100vh - 40px);
+  border-radius: 40px;
+  background-image: url("/landing/back.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .calculator_block {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 /* Добавляем эти стили к существующим */
 
 .hero__bottom-block {
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    width: auto;
-    max-width: 90%; /* Увеличиваем для мобильных */
-    background-color: #E7392F;
-    border-radius: 30px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px; /* Расстояние между текстом и стрелкой */
-    transition: all 0.3s ease;
-    z-index: 10;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  width: auto;
+  max-width: 90%; /* Увеличиваем для мобильных */
+  background-color: #e7392f;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px; /* Расстояние между текстом и стрелкой */
+  transition: all 0.3s ease;
+  z-index: 10;
 }
 
 /* Расположение элементов внутри блока */
 .bottom-block__title {
-    color: white;
-    font-size: 24px;
-    line-height: 1.2;
-    margin: 0;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding-right: 40px;
-    text-align: left; /* Текст прижимаем к левому краю */
-    flex-grow: 1; /* Занимает все доступное пространство */
+  color: white;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-right: 40px;
+  text-align: left; /* Текст прижимаем к левому краю */
+  flex-grow: 1; /* Занимает все доступное пространство */
 }
 
 .bottom-block__arrow {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    flex-shrink: 0; /* Запрещаем уменьшение */
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0; /* Запрещаем уменьшение */
 }
 
 /* Адаптация для разных экранов */
 @media (min-width: 768px) {
-    .hero__bottom-block {
-        max-width: 60%;
-    }
-    .bottom-block__title {
-        font-size: 28px;
-    }
+  .hero__bottom-block {
+    max-width: 60%;
+  }
+  .bottom-block__title {
+    font-size: 28px;
+  }
 }
 
 @media (min-width: 992px) {
-    .hero__bottom-block {
-        max-width: 50%;
-    }
-    .bottom-block__title {
-        font-size: 32px;
-    }
+  .hero__bottom-block {
+    max-width: 50%;
+  }
+  .bottom-block__title {
+    font-size: 32px;
+  }
 }
 
 @media (min-width: 1200px) {
-    .hero__bottom-block {
-        max-width: 40%;
-    }
-    .bottom-block__title {
-        font-size: 34px;
-    }
+  .hero__bottom-block {
+    max-width: 40%;
+  }
+  .bottom-block__title {
+    font-size: 34px;
+  }
 }
 
 @media (min-width: 1400px) {
-    .hero__bottom-block {
-        max-width: 30%;
-    }
+  .hero__bottom-block {
+    max-width: 30%;
+  }
 }
 
 /* Для очень маленьких экранов */
 @media (max-width: 480px) {
-    .hero__bottom-block {
-        padding: 15px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        gap: 10px;
-    }
+  .hero__bottom-block {
+    padding: 15px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    gap: 10px;
+  }
 
-
-
-    .bottom-block__arrow {
-        width: 30px;
-        height: 30px;
-    }
+  .bottom-block__arrow {
+    width: 30px;
+    height: 30px;
+  }
 }
+
+/* @media (max-width: 425px) {
+    .landing__back {
+    margin: 20px 5px;
+    }
+} */
 
 /* Ховер-эффекты (только для десктопов) */
 @media (hover: hover) {
-    .hero__bottom-block:hover {
-        background-color: rgba(231, 57, 47, 0.8);
-        backdrop-filter: blur(5px);
-    }
+  .hero__bottom-block:hover {
+    background-color: rgba(231, 57, 47, 0.8);
+    backdrop-filter: blur(5px);
+  }
 
-    .hero__bottom-block:hover::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border: 3px solid white;
-        border-radius: 30px;
-        pointer-events: none;
-    }
-}
-
-/* section 2 */
-
-.second_block{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin: 0 20px
-}
-
-/* section 3 */
-
-.third-block{
-    margin: 0 20px;
-    height: auto;
-    background-color: white;
-    border-radius: 40px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-    padding: 1px 20px;
-}
-.third-block-title-header{
-    text-align: center;
-    font-family: "Open Sans Condensed ExtraBold", sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    padding: 0 20%;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-.third-block-title-text{
-    text-align: center;
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    font-family: "Montserrat";
-    font-weight: 100;
-    text-transform: none;
-}
-
-@media (max-width: 768px) {
-    .third-block-title-header {
-        padding: 0;
-        font-size: 28px;
-    }
-
-    .third-block-title-text {
-        padding: 0;
-    }
-}
-/* section 4 */
-
-.four_block{
-    padding-bottom: 40px;
-    margin: 0 20px;
-}
-
-/* section 5 */
-.five-block {
-    margin-bottom: 40px;
-    display: flex;
-    min-height: 500px; /* Минимальная высота блока */
-    position: relative;
-    color: white; /* Белый текст для всего блока */
-    margin: 0 20px;
-}
-.five-block-description{
-    font-weight: 300;
-}
-
-.five-block-left,
-.five-block-right {
-    flex: 1; /* Одинаковая ширина */
-    min-height: 100%;
-    position: relative;
-}
-
-/* Левый блок с фоновым изображением */
-.five-block-left {
-    background-image: url(/landing/bg-two.png);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    border-radius: 40px;
-    gap: 30px;
-    padding: 20px;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-/* Контент левого блока */
-.five-block-content {
-    max-width: 600px;
-    padding: 40px;
-    position: relative;
-    z-index: 2;
-}
-
-.five-block-content h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    text-align: left; /* Текст прилегает к левому краю */
-    line-height: 1.3;
-}
-
-.five-block-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    text-align: left; /* Текст прилегает к левому краю */
-    line-height: 1.5;
-}
-
-/* Правый блок с фоновым изображением */
-.five-block-right {
-    background-image: url('/landing/zamer.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 40px;
-}
-
-/* Кнопка (уже готовая) */
-.five-block-call-button {
-    --button-text-color: #E7392F !important;
-    margin-top: 20px;
-}
-
-/* Затемнение фона для лучшей читаемости текста */
-.five-block-left::before {
-    content: '';
+  .hero__bottom-block:hover::after {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    border: 3px solid white;
+    border-radius: 30px;
+    pointer-events: none;
+  }
+}
+
+/* section 2 */
+
+.second_block {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* margin: 0 20px */
+}
+
+/* section 3 */
+
+.third-block {
+  /* margin: 0 20px; */
+  height: auto;
+  background-color: white;
+  border-radius: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  padding: 1px 20px;
+}
+.third-block-title-header {
+  text-align: center;
+  font-family: "Open Sans Condensed ExtraBold", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  padding: 0 20%;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.third-block-title-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-family: "Montserrat";
+  font-weight: 100;
+  text-transform: none;
+}
+
+@media (max-width: 768px) {
+  .third-block-title-header {
+    padding: 0;
+    font-size: 28px;
+  }
+
+  .third-block-title-text {
+    padding: 0;
+  }
+}
+/* section 4 */
+
+.four_block {
+  padding-bottom: 40px;
+  /* margin: 0 20px; */
+}
+
+/* section 5 */
+.five-block {
+  margin-bottom: 40px;
+  display: flex;
+  min-height: 500px; /* Минимальная высота блока */
+  position: relative;
+  color: white; /* Белый текст для всего блока */
+  /* margin: 0 20px; */
+}
+.five-block-description {
+  font-weight: 300;
+}
+
+.five-block-left,
+.five-block-right {
+  flex: 1; /* Одинаковая ширина */
+  min-height: 100%;
+  position: relative;
+}
+
+/* Левый блок с фоновым изображением */
+.five-block-left {
+  background-image: url(/landing/bg-two.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  border-radius: 40px;
+  gap: 30px;
+  padding: 20px;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Контент левого блока */
+.five-block-content {
+  max-width: 600px;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.five-block-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: left; /* Текст прилегает к левому краю */
+  line-height: 1.3;
+}
+
+.five-block-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: left; /* Текст прилегает к левому краю */
+  line-height: 1.5;
+}
+
+/* Правый блок с фоновым изображением */
+.five-block-right {
+  background-image: url("/landing/zamer.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 40px;
+}
+
+/* Кнопка (уже готовая) */
+.five-block-call-button {
+  --button-text-color: #e7392f !important;
+  margin-top: 20px;
+}
+
+/* Затемнение фона для лучшей читаемости текста */
+.five-block-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 /* Адаптивность */
 @media (max-width: 992px) {
-    .five-block {
-        flex-direction: column;
-    }
+  .five-block {
+    flex-direction: column;
+  }
 
-    .five-block-left,
-    .five-block-right {
-        min-height: 400px;
-    }
+  .five-block-left,
+  .five-block-right {
+    min-height: 400px;
+  }
 
-    .five-block-content {
-        max-width: 100%;
-        padding: 30px 20px;
-    }
+  .five-block-content {
+    max-width: 100%;
+    padding: 30px 20px;
+  }
 
-    .five-block-content h2 {
-        font-size: 28px;
-    }
+  .five-block-content h2 {
+    font-size: 28px;
+  }
 }
 
 @media (max-width: 576px) {
-    .five-block-content h2 {
-        font-size: 24px;
-    }
+  .five-block-content h2 {
+    font-size: 24px;
+  }
 
-    .five-block-content p {
-        font-size: 16px;
-    }
+  .five-block-content p {
+    font-size: 16px;
+  }
 }
 
-
 .benefits-section {
-    margin: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 20px;
-    margin-bottom: 40px;
+  /* margin: 0 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 0 20px; */
+  margin-bottom: 40px;
 }
 
 .section-title {
-    font-family: "Open Sans Condensed", sans-serif;
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 3rem;
-    color: #ffffff;
-    margin: 20px;
-    margin-top: 0;
+  font-family: "Open Sans Condensed", sans-serif;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 3rem;
+  color: #ffffff;
+  margin: 20px;
+  margin-top: 0;
 }
 
 @media (max-width: 768px) {
-    .benefits-section {
-        padding: 50px 15px;
-    }
+  .benefits-section {
+    /* padding: 50px 15px; */
+  }
 
-    .section-title {
-        font-size: 28px;
-        margin-bottom: 30px;
-    }
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
 }
+
+/* @media (max-width: 768px) {
+  .landing {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .landing {
+    padding: 0 5px;
+  }
+} */

@@ -17,7 +17,7 @@
 .cart__container {
     background-color: #ffffff;
   flex: 1;
-  margin: 0 20px;
+  /* margin: 0 20px; */
   display: flex;
   flex-direction:column;
   gap: 20px;
@@ -272,7 +272,7 @@
 }
 
 .product-block__like{
-    margin: 0 20px 20px 20px;
+    /* margin: 0 20px 20px 20px; */
 }
 
 /* Адаптивность */

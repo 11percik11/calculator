@@ -24,35 +24,30 @@ export interface IMaterial {
 }
 
 export const Calculator = () => {
-  // const [activeFon, setActiveFon] = useState(0);
   const [activeColor, setActiveColor] = useState(0);
   const [categories, setCategories] = useState<CalculatorParent[]>([]);
   const [materials, setMaterials] = useState<IMaterial[]>([]);
   const [widthValue, setWidthValue] = useState(0);
   const [heightValue, setHeightValue] = useState(0);
 
+  const [page, setPage] = useState(0);
+  const [activeFon, setActiveFon] = useState(0);
+  const itemsPerPage = 9;
 
+  const totalPages = Math.ceil(materials.length / itemsPerPage);
 
+  const startIndex = page * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleMaterials = materials.slice(startIndex, endIndex);
 
-const [page, setPage] = useState(0); // текущая страница
-const [activeFon, setActiveFon] = useState(0);
-const itemsPerPage = 9;
+  // console.log(materials[activeFon].product.price, "activeFon:", activeFon);
+  
 
-const totalPages = Math.ceil(materials.length / itemsPerPage);
-
-const startIndex = page * itemsPerPage;
-const endIndex = startIndex + itemsPerPage;
-const visibleMaterials = materials.slice(startIndex, endIndex);
-
-// при смене страницы выбираем первый элемент этой страницы
-useEffect(() => {
-  if (visibleMaterials.length > 0) {
-    setActiveFon(startIndex);
-  }
-}, [page]);
-
-
-
+  useEffect(() => {
+    if (visibleMaterials.length > 0) {
+      setActiveFon(startIndex);
+    }
+  }, [page]);
 
   const priceTovar = materials[activeFon]?.product.price || 1900;
 
@@ -61,8 +56,8 @@ useEffect(() => {
   }, [widthValue, heightValue, priceTovar]);
 
   useEffect(() => {
-    setActiveFon(0)
-  }, [materials, setMaterials])
+    setActiveFon(0);
+  }, [materials, setMaterials]);
 
   const arrPhotoColorFon = [
     ["/photo/002.png", "#E8E8E8"],
@@ -136,7 +131,12 @@ useEffect(() => {
                       input.value = v;
                     }}
                   />
-                  <img src="/photo/arrow-height.svg" alt="" width={25} height={25}/>
+                  <img
+                    src="/photo/arrow-height.svg"
+                    alt=""
+                    width={25}
+                    height={25}
+                  />
                 </div>
                 <div className="values_inputBox">
                   <input
@@ -152,7 +152,12 @@ useEffect(() => {
                       input.value = v;
                     }}
                   />
-                  <img src="/photo/arrow-width.svg" alt="" width={25} height={25}/>
+                  <img
+                    src="/photo/arrow-width.svg"
+                    alt=""
+                    width={25}
+                    height={25}
+                  />
                 </div>
               </div>
             </div>
@@ -166,40 +171,44 @@ useEffect(() => {
               <Select setMaterial={setMaterials} item={categories} />
             </div>
             <div>
-              <h3 className="values_h3 values_h3-margin">МАТЕРИАЛ И ЦВЕТ ПОЛОТНА</h3>
+              <h3 className="values_h3 values_h3-margin">
+                МАТЕРИАЛ И ЦВЕТ ПОЛОТНА
+              </h3>
               <div className="values_slider">
                 <img
-      onClick={() => setPage(page > 0 ? page - 1 : 0)}
-      className="values_slider_arrow"
-      src={Arrow_prev}
-      alt=""
-    />
+                  onClick={() => setPage(page > 0 ? page - 1 : 0)}
+                  className="values_slider_arrow"
+                  src={Arrow_prev}
+                  alt=""
+                />
 
-    <div className="valuse_colors">
-      {visibleMaterials.map((material, index) => (
-        <div
-          onClick={() => setActiveFon(startIndex + index)}
-          key={startIndex + index}
-          className={`valuse_colors_item ${
-            activeFon === startIndex + index ? "valuse_colors_item_ActiveColor" : ""
-          }`}
-          style={{
-            background: `url(https://api-vert.tusamgroup.ru/${material.preview})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
-      ))}
-    </div>
+                <div className="valuse_colors">
+                  {visibleMaterials.map((material, index) => (
+                    <div
+                      onClick={() => setActiveFon(startIndex + index)}
+                      key={startIndex + index}
+                      className={`valuse_colors_item ${
+                        activeFon === startIndex + index
+                          ? "valuse_colors_item_ActiveColor"
+                          : ""
+                      }`}
+                      style={{
+                        background: `url(https://api-vert.tusamgroup.ru/${material.preview})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    ></div>
+                  ))}
+                </div>
 
-    <img
-      onClick={() =>
-        setPage(page < totalPages - 1 ? page + 1 : page)
-      }
-      className="values_slider_arrow"
-      src={Arrow_next}
-      alt=""
-    />
+                <img
+                  onClick={() =>
+                    setPage(page < totalPages - 1 ? page + 1 : page)
+                  }
+                  className="values_slider_arrow"
+                  src={Arrow_next}
+                  alt=""
+                />
                 {/* <img
                   onClick={() =>
                     setActiveFon(activeFon != 0 ? activeFon - 1 : 0)
@@ -281,7 +290,7 @@ useEffect(() => {
           </div>
 
           <div className="price_calculator-parameters_price">
-            <h3 className="price_title">ИТОГОВАЯ СТОИМОСТЬ</h3>
+            <h3 className="price_title"><p>ИТОГОВАЯ СТОИМОСТЬ</p> <p>{materials[activeFon]?.product?.price || 0} руб./м</p></h3>
             <p className="price_text">
               Если вы не нашли подходящий вариант — обратитесь к нам по
               контактам, указанным ниже мы сделаем эскиз индивидуального заказ

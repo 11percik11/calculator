@@ -1,148 +1,168 @@
 .header {
-    width: calc(100% - 40px);
-    height: 80px;
-    background-color: rgba(217, 217, 217, 0.2);
-    backdrop-filter: blur(29px);
-    border-radius: 120px;
-    margin: 20px;
-    position: fixed;
+  width: calc(100%);
+  border-radius: 120px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.header_box {
+  max-width: 2560px;
+  width: calc(100% - 40px);
+  height: 80px;
+  background-color: rgba(217, 217, 217, 0.2);
+  backdrop-filter: blur(29px);
+  border-radius: 120px;
+  margin: 20px;
+  /* position: fixed;
     top: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 16px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    font-family: "Open Sans Condensed";
+    left: 0; */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-family: "Open Sans Condensed";
 }
 
 .header__left,
 .header__right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex: 0 0 auto;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
 .header__center {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .header__logo {
-    height: 7em;
-    position: relative;
-    top: 1em;
-    cursor: pointer;
-    width: auto;
-    margin: 0 20px;
-    transition: all 0.3s ease;
+  height: 7em;
+  position: relative;
+  top: 1em;
+  cursor: pointer;
+  width: auto;
+  margin: 0 20px;
+  transition: all 0.3s ease;
 }
 
 .header-text {
-    color: #352C2B;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 16px;
-    text-transform: uppercase;
-    white-space: nowrap;
+  color: #352c2b;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .header-text:hover {
-    color: #E7392F;
+  color: #e7392f;
 }
 @media (max-width: 1563px) {
-    .header-text {
-        font-size: 14px;
-    }
-    .header__center {
-        gap: 20px;
-    }
+  .header-text {
+    font-size: 14px;
+  }
+  .header__center {
+    gap: 20px;
+  }
 }
 /* Адаптивность */
 @media (max-width: 1484px) {
-    .header-text {
-        display: none;
-    }
-    .header__center {
-        gap: 20px;
-    }
+  .header-text {
+    display: none;
+  }
+  .header__center {
+    gap: 20px;
+  }
 }
 
 @media (max-width: 1200px) {
-    .header__center {
-        gap: 15px;
-    }
-    .header__logo {
-        height: 6em;
-        margin: 0 15px;
-    }
+  .header__center {
+    gap: 15px;
+  }
+  /* .header__logo {
+    height: 6em;
+    margin: 0 15px;
+  } */
 }
 
 @media (max-width: 992px) {
-    .header {
-        height: 70px;
-        padding: 0 12px;
-    }
+  .header {
+    height: 70px;
+  }
 
-    /* Скрываем текст навигации */
-    .header-text {
-        display: none;
-    }
+  /* Скрываем текст навигации */
+  .header-text {
+    display: none;
+  }
 
-    .header__logo {
-        height: 5em;
-        top: 0.8em;
-        margin: 0;
-    }
+  .header__logo {
+    /* height: 5em; */
+    /* top: 0.8em;
+    margin: 0; */
+  }
 
-    /* Уменьшаем кнопки */
-    .header__left,
-    .header__right {
-        gap: 10px;
-    }
+  /* Уменьшаем кнопки */
+  .header__left,
+  .header__right {
+    gap: 10px;
+  }
 }
 
 @media (max-width: 768px) {
-    .header {
-        height: 60px;
-        margin: 10px 20px;
-        border-radius: 60px;
-    }
+  .header {
+    height: 60px;
+    border-radius: 60px;
+  }
 
-    /* Скрываем текст на кнопках */
-    .BrownButton span {
-        display: none;
-    }
+  /* Скрываем текст на кнопках */
+  .BrownButton span {
+    display: none;
+  }
 
-    /* Уменьшаем отступы */
-    .header__left,
-    .header__right {
-        gap: 8px;
-    }
+  /* Уменьшаем отступы */
+  .header__left,
+  .header__right {
+    gap: 8px;
+  }
 }
 
 @media (max-width: 576px) {
-    .header {
+  /* Скрываем кнопку калькулятора */
+  .header__left .BrownButton:nth-child(2) {
+    display: none;
+  }
+
+  /* Скрываем иконку на кнопке вызова замерщика */
+  .header__right .BrownButton:nth-child(2) img {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .header_box {
+    width: calc(100%);
+    margin: 10px 5px;
         padding: 0 4px;
-    }
+  }
 
-
-    /* Скрываем кнопку калькулятора */
-    .header__left .BrownButton:nth-child(2) {
-        display: none;
-    }
-
-    /* Скрываем иконку на кнопке вызова замерщика */
-    .header__right .BrownButton:nth-child(2) img {
-        display: none;
-    }
+    .header__logo {
+    height: 21vw;
+    top: 0;
+    margin: 0;
+  }
 }

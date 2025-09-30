@@ -6,7 +6,7 @@
     min-height: 100vh;
     overflow: hidden;
     box-sizing: border-box;
-    margin: 0 20px;
+    /* margin: 0 20px; */
 }
 
 .froze-block__left, 
@@ -117,7 +117,7 @@
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .froze-block__container {
-        padding: 15px;
+        /* padding: 15px; */
     }
     
     .froze-block__left, 
@@ -135,7 +135,7 @@
     }
     
     .froze-block__content-overlay {
-        padding: 25px 20px;
+        padding: 25px 15px;
         border-radius: 25px;
     }
     
@@ -160,7 +160,7 @@
     }
     
     .froze-block__content-overlay {
-        padding: 20px 20px;
+        padding: 10px 10px;
     }
     
     .froze-block__regular-text-white {
