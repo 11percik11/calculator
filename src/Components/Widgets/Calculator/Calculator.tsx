@@ -13,13 +13,13 @@ export interface CalculatorParent {
 
 export interface IMaterial {
   id: number;
-  title: string; // "Ткань синий бриз"
-  preview: string; // "material/alfa-goluboi-68d5697460b49747836512.png"
-  imageModel: string; // "material/2-68d56974610e3626884626.png"
+  title: string;
+  preview: string;
+  imageModel: string;
   product: {
     id: number;
-    title: string; // "Рулонные"
-    price: number; // 2300
+    title: string;
+    price: number;
   };
 }
 
@@ -32,7 +32,7 @@ export const Calculator = () => {
 
   const [page, setPage] = useState(0);
   const [activeFon, setActiveFon] = useState(0);
-  const itemsPerPage = 9;
+  const [itemsPerPage, setItemsPerPage] = useState(9); // значение по умолчанию
 
   const totalPages = Math.ceil(materials.length / itemsPerPage);
 
@@ -40,8 +40,28 @@ export const Calculator = () => {
   const endIndex = startIndex + itemsPerPage;
   const visibleMaterials = materials.slice(startIndex, endIndex);
 
-  // console.log(materials[activeFon].product.price, "activeFon:", activeFon);
-  
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth <= 656) {
+        setItemsPerPage(5);
+        console.log('Mobile:', window.innerWidth);
+      } else {
+        setItemsPerPage(9); // или другое значение для десктопа
+      }
+    };
+
+    // Вызываем сразу
+    updateItemsPerPage();
+
+    // Добавляем слушатель
+    window.addEventListener('resize', updateItemsPerPage);
+
+    // Убираем слушатель при размонтировании
+    return () => {
+      window.removeEventListener('resize', updateItemsPerPage);
+    };
+  }, []);
 
   useEffect(() => {
     if (visibleMaterials.length > 0) {
@@ -186,17 +206,18 @@ export const Calculator = () => {
                   {visibleMaterials.map((material, index) => (
                     <div
                       onClick={() => setActiveFon(startIndex + index)}
+                      style={{
+                        backgroundImage: `url("https://api-vert.tusamgroup.ru/${material.preview}")`,
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat", // фон вокруг изображения
+                      }}
                       key={startIndex + index}
                       className={`valuse_colors_item ${
                         activeFon === startIndex + index
                           ? "valuse_colors_item_ActiveColor"
                           : ""
                       }`}
-                      style={{
-                        background: `url(https://api-vert.tusamgroup.ru/${material.preview})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
                     ></div>
                   ))}
                 </div>
@@ -290,7 +311,10 @@ export const Calculator = () => {
           </div>
 
           <div className="price_calculator-parameters_price">
-            <h3 className="price_title"><p>ИТОГОВАЯ СТОИМОСТЬ</p> <p>{materials[activeFon]?.product?.price || 0} руб./м</p></h3>
+            <h3 className="price_title">
+              <p>ИТОГОВАЯ СТОИМОСТЬ</p>{" "}
+              <p>{materials[activeFon]?.product?.price || 0} руб./м</p>
+            </h3>
             <p className="price_text">
               Если вы не нашли подходящий вариант — обратитесь к нам по
               контактам, указанным ниже мы сделаем эскиз индивидуального заказ

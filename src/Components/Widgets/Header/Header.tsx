@@ -1,12 +1,16 @@
 import "./Header.css";
 import { BrownButton } from "@/Components/UI/BrownButton/BrownButton";
-import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useLocation, useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 import { ModalCall } from "@/Components/Widgets/ModalCall/ModalCall";
 
 export const Header = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [location.pathname])
 
   return (
     <header className="header">

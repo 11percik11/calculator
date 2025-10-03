@@ -5,7 +5,9 @@
 .selectComponent_value {
   width: 100%;
   /* height: 60px; */
-  height: clamp(60px, 3.16vw, 3.16vw);
+  /* height: clamp(60px, 3.16vw, 3.16vw); */
+  /* height: clamp(40px, 3.16vw, 3.16vw); */
+  height: clamp(40px, 3.16vw, 81px);
   border: 4px solid #e7392f;
   border-radius: 100px;
   display: flex;
@@ -13,16 +15,17 @@
   justify-content: space-between;
   color: #e7392f;
   /* font-size: 20px; */
-  font-size: clamp(20px, 0.9vw, 0.9vw);
-  padding: 20px;
+  /* font-size: clamp(20px, 0.9vw, 0.9vw); */
+  font-size: clamp(13px, 1.05vw, 26px);
+  padding: 0px 20px;
   font-family: "OpenSansBold", sans-serif;
   letter-spacing: 0.6px;
   font-weight: 400;
   cursor: pointer;
-    user-select: none;
+  user-select: none;
   -webkit-user-select: none; /* Chrome, Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none; 
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;
 }
 
 .selectComponent_options {
@@ -43,17 +46,19 @@
   color: #e7392f;
   /* border-radius: 30px; */
   /* font-size: 20px; */
-    font-size: clamp(20px, 0.9vw, 0.9vw);
+  /* font-size: clamp(20px, 0.9vw, 0.9vw); */
+  /* font-size: clamp(16px, 1.1vw, 1.8vw); */
+  font-size: clamp(13px, 1.05vw, 26px);
   font-family: "OpenSansBold", sans-serif;
   letter-spacing: 0.6px;
   font-weight: 400;
   padding: 10px 20px;
   cursor: pointer;
   /* background: #816b6b; */
-    user-select: none;
+  user-select: none;
   -webkit-user-select: none; /* Chrome, Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none; 
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;
 }
 
 .selectComponent_option:hover {
@@ -70,10 +75,16 @@
 }
 
 @media (max-width: 1600px) {
-  .selectComponent_value {
+  /* .selectComponent_value {
     height: 50px;
-  }
+  } */
   .selectComponent_options {
     top: 55px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .selectComponent_value {
+    height: clamp(40px, 6vw, 55px);
   }
 }

@@ -4,10 +4,11 @@ export interface NewsItemProps {
     imageUrl: string;
     title: string;
     description: string,
+    onClick: () => void,
 }
-export const NewsItem = ({ imageUrl, title, description }: NewsItemProps) => {
+export const NewsItem = ({ imageUrl, title, description, onClick }: NewsItemProps) => {
     return (
-        <div className="news-item">
+        <div className="news-item" onClick={onClick}>
             <div className='news-item__left'>
                 <img src={imageUrl} alt={title} className="news-item__image"/>
                 <h3 className="news-item__title">{title}</h3>

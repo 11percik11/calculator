@@ -1,4 +1,3 @@
-import { Footer } from '@/Components/Widgets/Footer/Footer';
 import './News.css';
 import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
 import StarAnimation from '@/Components/UI/StartAnimation/StartAnimation';
@@ -136,8 +135,7 @@ export const News = () => {
 
   if (loading && newsData.length === 0) {
     return (
-      <div className="news">
-      <div className="page-top" id='page-top'></div>
+      <>
 
         <div className="news__container">
           <StarAnimation/>
@@ -148,12 +146,12 @@ export const News = () => {
             <span>Загрузка новостей...</span>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="news">
+    <>
       <div className="news__container">
         <StarAnimation/>
         <h2 className="news__header">СТАТЬИ И НОВОСТИ</h2>
@@ -191,8 +189,7 @@ export const News = () => {
       <CatalogPromoBlock/>
 
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

@@ -1,101 +1,109 @@
 /* Основные стили блока */
 .catalog-promo-block {
-    display: flex;
-    position: relative;
-    color: white;
-    border-radius: 30px;
-    margin: 0 0 20px;
-    background-image: url('/landing/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 500px;
-    padding: 40px;
-    box-sizing: border-box;
+  display: flex;
+  position: relative;
+  color: white;
+  border-radius: 30px;
+  background-image: url("/landing/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* Контентная область */
+.catalog-promo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 50%;
+}
+
+.keep-together {
+  white-space: nowrap;
+}
+
+/* Заголовок */
+.catalog-promo-title {
+  font-family: "Open Sans Condensed ExtraBold";
+  /* font-size: 3rem; */
+  font-size: 66px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* Описание */
+.catalog-promo-description {
+  font-family: "Open Sans Condensed";
+  font-size: 24px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+/* Группа кнопок */
+.catalog-promo-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1440px) {
+  .catalog-promo-block {
+    padding: 20px;
   }
-  
-  /* Контентная область */
-  .catalog-promo-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 50%;
-  }
-  
-  /* Заголовок */
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
   .catalog-promo-title {
-    font-family: "Open Sans Condensed ExtraBold";
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.2;
+    font-size: 2.5rem;
   }
-  
-  /* Описание */
-  .catalog-promo-description {
-    font-family: 'Open Sans Condensed';
-    font-size: 16px;
-    margin-bottom: 30px;
-    line-height: 1.5;
-    text-transform: none;
+}
+
+@media (max-width: 992px) {
+  .catalog-promo-block {
+    min-height: 400px;
   }
-  
-  /* Группа кнопок */
+
+  .catalog-promo-content {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-promo-block {
+    background-position: 70% center;
+    padding: 10px;
+  }
+
+  .catalog-promo-content {
+    max-width: 100%;
+  }
+
+  .catalog-promo-title {
+    font-size: 2rem;
+  }
+
   .catalog-promo-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  /* Адаптивность */
-  @media (max-width: 1200px) {
-    .catalog-promo-title {
-      font-size: 2.5rem;
-    }
+}
+
+@media (max-width: 576px) {
+  .catalog-promo-block {
+    min-height: 350px;
   }
-  
-  @media (max-width: 992px) {
-    .catalog-promo-block {
-      min-height: 400px;
-      padding: 30px;
-    }
-    
-    .catalog-promo-content {
-      max-width: 60%;
-    }
+
+  .catalog-promo-title {
+    font-size: 28px;
   }
-  
-  @media (max-width: 768px) {
-    .catalog-promo-block {
-      background-position: 70% center;
-      padding: 25px;
-    }
-    
-    .catalog-promo-content {
-      max-width: 100%;
-    }
-    
-    .catalog-promo-title {
-      font-size: 2rem;
-    }
-    
-    .catalog-promo-buttons {
-      flex-direction: column;
-      gap: 10px;
-    }
+
+  .catalog-promo-description {
+    font-size: 14px;
   }
-  
-  @media (max-width: 576px) {
-    .catalog-promo-block {
-      padding: 20px;
-      min-height: 350px;
-    }
-    
-    .catalog-promo-title {
-      font-size: 28px;
-    }
-    
-    .catalog-promo-description {
-      font-size: 14px;
-    }
-  }
+}

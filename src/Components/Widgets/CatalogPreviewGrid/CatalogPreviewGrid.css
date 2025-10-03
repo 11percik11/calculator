@@ -1,14 +1,12 @@
 .catalog-preview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1.2fr));
-    gap: 24px;
-    padding: 24px;
+    gap: 20px;
 }
 
 @media (max-width: 768px) {
     .catalog-preview-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 16px;
-        padding: 16px;
+        gap: 10px;
     }
 }

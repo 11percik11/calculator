@@ -1,169 +1,166 @@
 /* Подключение шрифтов */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Montserrat:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Montserrat:wght@400;500;700&display=swap");
 
 .froze-block__container {
-    display: flex;
-    min-height: 100vh;
-    overflow: hidden;
-    box-sizing: border-box;
-    /* margin: 0 20px; */
+  display: flex;
+  /* min-height: 100vh; */
+  overflow: hidden;
+  box-sizing: border-box;
+  /* margin: 0 20px; */
 }
 
-.froze-block__left, 
+.froze-block__left,
 .froze-block__right {
-    flex: 1;
-    border-radius: 40px;
-    overflow: hidden;
-    position: relative;
+  flex: 1;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
 }
 
 .froze-block__left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5;
-    min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  min-height: 400px;
 }
 
 .froze-block__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 40px;
 }
 
 .froze-block__content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-image: url(/landing/froze-back.png);
-    border-radius: 40px;
-    min-height: 400px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url(/landing/froze-back.png);
+  border-radius: 40px;
+  min-height: 400px;
 }
 
 .froze-block__content-overlay {
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-    box-sizing: border-box;
-    border-radius: 40px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .froze-block__text-content {
-    max-width: 100%;
-    color: white;
+  max-width: 100%;
+  color: white;
 }
 
 .froze-block__header-white {
-    font-family: "Open Sans Condensed ExtraBold", sans-serif;
-    color: #000000;
-    font-weight: 700;
-    font-size: 3rem;
-    margin-bottom: 25px;
-    line-height: 1.2;
-    text-transform: uppercase;
+  font-family: "Open Sans Condensed ExtraBold", sans-serif;
+  color: #000000;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .froze-block__regular-text-white {
-    font-family: "Montserrat", sans-serif;
-    color: #000000;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    text-transform: none;
-    font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-transform: none;
+  font-weight: 400;
 }
 
 .froze-block__list {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .froze-block__list li {
-    margin-bottom: 15px;
-    text-transform: none;
+  margin-bottom: 15px;
+  text-transform: none;
 }
 
-/* Адаптивность для планшетов */
+@media (max-width: 1440px) {
+  .froze-block__content-overlay {
+    padding: 20px;
+  }
+}
 @media (max-width: 1024px) {
-    .froze-block__container {
-        flex-direction: column;
-        min-height: auto;
-        gap: 20px;
-    }
-    
-    .froze-block__left, 
-    .froze-block__right {
-        min-height: 350px;
-        width: 100%;
-    }
-    
-    .froze-block__content-overlay {
-        padding: 30px;
-    }
-    
-    .froze-block__header-white {
-        font-size: 2.2rem;
-    }
-    
-    .froze-block__regular-text-white {
-        font-size: 1rem;
-    }
+  .froze-block__container {
+    flex-direction: column;
+    min-height: auto;
+    gap: 20px;
+  }
+
+  .froze-block__left,
+  .froze-block__right {
+    min-height: 350px;
+    width: 100%;
+  }
+
+  .froze-block__header-white {
+    font-size: 2.2rem;
+  }
+
+  .froze-block__regular-text-white {
+    font-size: 1rem;
+  }
 }
 
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-    .froze-block__container {
-        /* padding: 15px; */
-    }
-    
-    .froze-block__left, 
-    .froze-block__right {
-        border-radius: 25px;
-        min-height: 300px;
-    }
-    
-    .froze-block__image {
-        border-radius: 25px;
-    }
-    
-    .froze-block__content {
-        border-radius: 25px;
-    }
-    
-    .froze-block__content-overlay {
-        padding: 25px 15px;
-        border-radius: 25px;
-    }
-    
-    .froze-block__header-white {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
-    
-    .froze-block__regular-text-white {
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-    }
-    
-    .froze-block__list li {
-        margin-bottom: 12px;
-    }
+
+  .froze-block__left,
+  .froze-block__right {
+    border-radius: 25px;
+    min-height: 300px;
+  }
+
+  .froze-block__image {
+    border-radius: 25px;
+  }
+
+  .froze-block__content {
+    border-radius: 25px;
+  }
+
+  .froze-block__content-overlay {
+    padding: 10px;
+    border-radius: 25px;
+  }
+
+  .froze-block__header-white {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .froze-block__regular-text-white {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  .froze-block__list li {
+    margin-bottom: 12px;
+  }
 }
 
 @media (max-width: 480px) {
-    .froze-block__header-white {
-        font-size: 1.8rem;
-    }
-    
-    .froze-block__content-overlay {
-        padding: 10px 10px;
-    }
-    
-    .froze-block__regular-text-white {
-        font-size: 0.9rem;
-    }
+  .froze-block__header-white {
+    font-size: 1.8rem;
+  }
+
+  .froze-block__content-overlay {
+    padding: 10px 10px;
+  }
+
+  .froze-block__regular-text-white {
+    font-size: 0.9rem;
+  }
 }

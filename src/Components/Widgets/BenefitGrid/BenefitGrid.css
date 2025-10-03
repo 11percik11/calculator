@@ -32,6 +32,6 @@
 
 @media (max-width: 480px) {
     .benefit-grid > * {
-        min-width: 100%;
+        width: 100%;
     }
 }

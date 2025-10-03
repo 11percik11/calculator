@@ -1,4 +1,3 @@
-import { Footer } from '@/Components/Widgets/Footer/Footer';
 import './About.css';
 import { MeasurementSection } from '@/Components/Widgets/MeasurementSection/MeasurementSection';
 import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
@@ -46,9 +45,7 @@ export const About = () => {
   }
 
   return (
-    <div className="about">
-      <div className="page-top" id='page-top'></div>
-      <div className="about__container">
+    <>
       <MeasurementSection 
         title="Рулонные шторы и жалюзи — наша история длиною в два десятилетия"
         description="Более 20 лет мы создаем уют, комфорт и эстетику пространства благодаря качественным рулонным шторам и элегантным жалюзи. Мы гордимся своей историей, накопленным опытом и безупречной репутацией среди клиентов, которым важно создать гармоничную атмосферу своего дома или офиса.
@@ -73,9 +70,7 @@ export const About = () => {
       />
       
       <CatalogPromoBlock/>
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

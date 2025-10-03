@@ -1,4 +1,3 @@
-import { Footer } from '@/Components/Widgets/Footer/Footer';
 import './Business.css'
 import { MeasurementSection } from '@/Components/Widgets/MeasurementSection/MeasurementSection'
 import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
@@ -41,10 +40,7 @@ export const Business = () => {
   }
 
   return (
-    <div className="business">
-              <div className="page-top" id='page-top'></div>
-
-        <div className="business__container">
+    <>
         <MeasurementSection 
         title="Решения для бизнеса: надёжно, эффективно, профессионально"
         description="Мы предлагаем комплексные услуги для компаний любого масштаба — от малого бизнеса до крупных корпоративных клиентов. Работаем официально, по договору, с полным пакетом закрывающих документов и соблюдением сроков.
@@ -72,9 +68,7 @@ export const Business = () => {
       />
       
       <CatalogPromoBlock/>
-        </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

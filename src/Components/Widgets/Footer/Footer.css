@@ -1,178 +1,242 @@
 .footer {
-    display: flex;
-    background-color: #FFFBF4;
-    border-radius: 40px;
-    padding: 20px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    /* margin: 0 20px; */
+  display: flex;
+  background-color: #fffbf4;
+  border-radius: 40px;
+  padding: 30px;
+  /* margin-bottom: 30px; */
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  /* margin: 0 20px; */
+  position: relative;
 }
 
 .footer__container {
-    display: flex;
-    gap: 40px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    margin: 0 20px;
+  display: flex;
+  /* justify-content: center; */
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  /* margin: 0 20px; */
 }
 
 .footer__col {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-    min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-width: 200px;
 }
 
-.footer__col--main {
+/* .footer__col--main {
     flex: 2;
-}
+} */
 
 .footer-four-col {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .footer__logo {
-    width: 180px;
-    height: auto;
-    margin-bottom: 20px;
+  width: 180px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .footer__title {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.3;
-    color: #352C2B;
-    margin-bottom: 20px;
-    font-family: "Open Sans Condensed ExtraBold", sans-serif;
+  /* font-size: 24px; */
+  font-weight: 600;
+  line-height: 1.3;
+  color: #352c2b;
+  /* margin-bottom: 20px; */
+  margin: 0;
+  font-family: "Open Sans Condensed ExtraBold", sans-serif;
 }
 
 .footer__subtitle {
-    font-size: 20px;
-    font-weight: 600;
-    color: #352C2B;
-    margin-bottom: 15px;
-    
+  /* font-size: 20px; */
+  font-size: clamp(25px, calc(1.49rem + 0.38vw), 36px);
+  font-weight: 600;
+  color: #352c2b;
+  margin-bottom: 15px;
 }
 
 .footer__text {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #5A5352;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5a5352;
 }
 
 .footer__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .footer__list-item {
-    margin: 0;
+  margin: 0;
 }
 
 .footer__link {
-    font-size: 14px;
-    color: #5A5352;
-    text-decoration: none;
-    transition: color 0.2s;
+  /* font-size: 20px; */
+  font-size: clamp(14px , 1vw, 20px);
+  color: #5a5352;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .footer__link:hover {
-    color: #E7392F;
+  color: #e7392f;
 }
 
 .footer__button {
-    margin-top: 20px;
-    max-width: 300px;
+  margin-top: 20px;
+  max-width: 300px;
 }
 
 /* Стили для кнопки "Наверх" */
 .footer__scroll-top {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: auto; /* Перемещает кнопку вправо */
-    align-self: flex-start;
-    display: flex;
-    align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0.7vw;
+  right: 0.7vw;
 }
 
 .footer__scroll-top img {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s ease;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
 }
 
 .footer__scroll-top:hover img {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .footer__copyright {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(58, 45, 43, 0.1);
-    color: #5A5352;
-    font-size: 14px;
-    width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(58, 45, 43, 0.1);
+  color: #5a5352;
+  font-size: 14px;
+  width: 100%;
 }
 
-.footer__col--nav{
-    flex-direction: row;
+.footer__col--nav {
+  flex-direction: row;
 }
+
+@media (max-width: 1920px) {
+.footer__scroll-top {
+  /* top: 1vw;
+  right: 1vw; */
+  top: 4%;
+    right: 1%;
+}}
 
 /* Адаптивность */
 
-@media (max-width: 1400px) {
-    .footer__col--nav {
-        flex-direction: column;
-    }
+@media (max-width: 1440px) {
+  .footer {
+    padding: 20px;
+  }
+
+  .footer__scroll-top {
+
+  top: 4%;
+    right: 1%;
 }
+  .footer__col--nav {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1120px) {
+  .footer__container {
+    gap: 20px;
+  }
+  .footer__col {
+    flex: 0 0 auto;
+    width: calc(50% - 40px);
+    gap: 0px;
+  }
+
+  .footer__list {
+    gap: 2px;
+  }
+  .footer__title {
+    margin: 0;
+  }
+}
+
 @media (max-width: 1024px) {
-    .footer__col--main {
-        flex: 1;
-    }
 }
 
 @media (max-width: 768px) {
-    .footer {
-        padding: 30px 20px;
-        border-radius: 30px;
-    }
+  .footer__button {
+    max-width: none;
+  }
+  .footer {
+    padding: 20px 10px;
+    border-radius: 30px;
+  }
 
-    .footer__container {
-        gap: 30px;
-    }
+  .footer__col {
+    flex: 0 0 auto;
+    width: 51%;
+  }
 
-    .footer-four-col {
-        flex-direction: column;
-    }
+  .footer__logo {
+    margin: auto;
+  }
+
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-four-col {
+    flex-direction: column;
+  }
+
+  .footer__scroll-top {
+    top: 1%;
+    right: 2%;
+  }
 }
 
 @media (max-width: 576px) {
-    .footer__title {
-        font-size: 20px;
-    }
+  .footer__col {
+    width: 70%;
+  }
+  .footer__title {
+    font-size: 20px;
+  }
 
-    .footer__subtitle {
-        font-size: 16px;
-    }
+  .footer__subtitle {
+    font-size: 16px;
+  }
 
-    .footer__text, .footer__link {
-        font-size: 14px;
-    }
+  .footer__text{
+    font-size: 14px;
+  }
 
-    .footer__button {
-        max-width: 100%;
-    }
+  .footer__button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .footer__col {
+    width: 100%;
+  }
 }

@@ -1,10 +1,10 @@
-import { Button } from '@/Components/UI/Button/Button';
-import { useParams } from 'react-router';
-import { useState, useEffect } from 'react';
-import { getProductById } from '@/Api/queries';
-import './Product.css';
-import { Footer } from '@/Components/Widgets/Footer/Footer';
-import CatalogPreviewGrid from '@/Components/Widgets/CatalogPreviewLikeGrid/CatalogPreviewLikeGrid';
+import { Button } from "@/Components/UI/Button/Button";
+import { useParams } from "react-router";
+import { useState, useEffect } from "react";
+import { getProductById } from "@/Api/queries";
+import "./Product.css";
+import CatalogPreviewGrid from "@/Components/Widgets/CatalogPreviewLikeGrid/CatalogPreviewLikeGrid";
+import { Calculator } from "@/Components/Widgets/Calculator/Calculator";
 
 interface Product {
   id: number;
@@ -61,8 +61,8 @@ export const Product = () => {
         setProduct(productData);
         setError(null);
       } catch (err) {
-        console.error('Ошибка загрузки товара:', err);
-        setError('Не удалось загрузить товар');
+        console.error("Ошибка загрузки товара:", err);
+        setError("Не удалось загрузить товар");
       } finally {
         setLoading(false);
       }
@@ -100,19 +100,22 @@ export const Product = () => {
       title: product.title,
       description: product.description,
       price: product.price,
-      image: product.productsImages?.[0]?.image || product.image || '/placeholder-product.jpg',
+      image:
+        product.productsImages?.[0]?.image ||
+        product.image ||
+        "/placeholder-product.jpg",
     };
 
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]') as CartItem[];
-    console.log('Текущая корзина перед добавлением:', cart); // Отладка
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]") as CartItem[];
+    console.log("Текущая корзина перед добавлением:", cart); // Отладка
     if (!cart.find((item) => item.id === product.id)) {
       cart.push(cartItem);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      console.log('Товар добавлен, новая корзина:', cart); // Отладка
-      alert('Товар добавлен в корзину!');
+      localStorage.setItem("cart", JSON.stringify(cart));
+      console.log("Товар добавлен, новая корзина:", cart); // Отладка
+      alert("Товар добавлен в корзину!");
     } else {
-      console.log('Товар уже в корзине:', cartItem); // Отладка
-      alert('Товар уже в корзине!');
+      console.log("Товар уже в корзине:", cartItem); // Отладка
+      alert("Товар уже в корзине!");
     }
   };
 
@@ -128,21 +131,25 @@ export const Product = () => {
     return <div className="product-not-found">Товар не найден</div>;
   }
 
-  const hasMultipleImages = product.productsImages && product.productsImages.length > 1;
+  const hasMultipleImages =
+    product.productsImages && product.productsImages.length > 1;
   const currentImage =
     product.productsImages && product.productsImages.length > 0
       ? product.productsImages[currentImageIndex].image
-      : product.image || '/placeholder-product.jpg';
+      : product.image || "/placeholder-product.jpg";
 
   return (
-    <div className="product-block">
-      <div className="page-top" id='page-top'></div>
+    <>
       <div className="product-block__container">
         <div className="product-block__slider">
           <div className="product-slider">
             {/* Основное изображение */}
             <div className="product-slider__main">
-              <img src={currentImage} alt={product.title} className="product-main-image" />
+              <img
+                src={currentImage}
+                alt={product.title}
+                className="product-main-image"
+              />
 
               {/* Кнопки навигации если есть multiple images */}
               {hasMultipleImages && (
@@ -171,10 +178,15 @@ export const Product = () => {
                 {product.productsImages!.map((img, index) => (
                   <button
                     key={img.id}
-                    className={`product-slider__thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                    className={`product-slider__thumbnail ${
+                      index === currentImageIndex ? "active" : ""
+                    }`}
                     onClick={() => selectImage(index)}
                   >
-                    <img src={img.image} alt={`${product.title} ${index + 1}`} />
+                    <img
+                      src={img.image}
+                      alt={`${product.title} ${index + 1}`}
+                    />
                   </button>
                 ))}
               </div>
@@ -184,20 +196,28 @@ export const Product = () => {
 
         <div className="product-block__info">
           <h2 className="product-block__title">{product.title}</h2>
-          <h3 className="product-block__price">{product.price.toLocaleString('ru-RU')} РУБ</h3>
-          <p className="product-block__description">{product.description || 'Описание отсутствует'}</p>
+          <h3 className="product-block__price">
+            {product.price.toLocaleString("ru-RU")} РУБ
+          </h3>
+          <p className="product-block__description">
+            {product.description || "Описание отсутствует"}
+          </p>
 
           <div className="product-block__sub-description">
             {product.materials && product.materials.length > 0 && (
               <p className="product-block__material">
-                Материал: {product.materials.map((m) => m.title).join(', ')}
+                Материал: {product.materials.map((m) => m.title).join(", ")}
               </p>
             )}
             {product.category && (
-              <p className="product-block__counrty">Страна производитель: {product.category.name}</p>
+              <p className="product-block__counrty">
+                Страна производитель: {product.category.name}
+              </p>
             )}
             {product.category && (
-              <p className="product-block__category">Категория: {product.category.name}</p>
+              <p className="product-block__category">
+                Категория: {product.category.name}
+              </p>
             )}
           </div>
 
@@ -209,8 +229,8 @@ export const Product = () => {
               fullWidth={true}
               customColor="#E7392F"
               onClick={addToCart}
-              size='lg'
-              hoverEffect='underline'
+              size="lg"
+              hoverEffect="underline"
             />
             <Button
               text="Рассчитать на калькуляторе"
@@ -218,8 +238,8 @@ export const Product = () => {
               customColor="#352C2B"
               icon={<img src="/landing/ruler.svg" alt="Калькулятор" />}
               fullWidth={true}
-              size='lg'
-              hoverEffect='underline'
+              size="lg"
+              hoverEffect="underline"
             />
           </div>
         </div>
@@ -229,8 +249,7 @@ export const Product = () => {
         <h2 className="product-block__like-title">ВАМ МОЖЕТ ПОНРАВИТЬСЯ</h2>
         <CatalogPreviewGrid />
       </div>
-
-      <Footer />
-    </div>
+      <Calculator />
+    </>
   );
 };

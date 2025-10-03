@@ -24,8 +24,10 @@
   cursor: pointer;
   user-select: none; /* запрет выделять как текст */
   -webkit-user-drag: none; /* запрет перетаскивания в Chrome/Safari */
-  height: clamp(60px, 3.2vw, 3.13vw);
-  width: clamp(60px, 3.2vw, 3.13vw);
+  /* height: clamp(60px, 3.2vw, 3.13vw);
+  width: clamp(60px, 3.2vw, 3.13vw); */
+  width: clamp(47px, 3.4vw, 87px);
+  height: clamp(47px, 3.4vw, 87px);
 }
 
 .price_calculator_container {
@@ -36,7 +38,7 @@
 .price_calculator-design {
   background: rgba(255, 255, 255, 1);
   border-radius: 50px;
-  padding: 15px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -44,7 +46,7 @@
 
 .price_calculator-design_title {
   /* font-size: 72px; */
-  font-size: clamp(24px, 4vw, 72px);
+  font-size: clamp(26px, 4vw, 72px);
   font-weight: 800;
   font-family: "Open Sans Condensed ExtraBold", sans-serif;
   letter-spacing: -1px;
@@ -86,7 +88,9 @@
   flex-direction: column;
   /* gap: 46px; */
   /* gap: clamp(12px, 2.4vw, 46px); */
-  gap: clamp(12px, calc(0.5 * 5.5vw), 2.4vw);
+  /* gap: clamp(12px, calc(0.5 * 5.5vw), 2.4vw);  */
+  /* gap: clamp(12px, calc(0.5 * 5.5vw), 61px); */
+  gap: 4%;
 }
 
 .values_boxInput {
@@ -104,15 +108,18 @@
   width: 50%;
   display: flex;
   align-items: center;
-  height: clamp(60px, 3.16vw, 3.16vw);
+  /* height: clamp(40px, 3.16vw, 3.16vw); */
+  height: clamp(40px, 3.16vw, 81px);
 }
 
 .values_input {
   height: 100%;
   /* border: 4px solid #e7392f; */
   color: #e7392f;
-  font-size: 20px;
-  font-size: clamp(20px, 0.9vw, 0.9vw);
+  /* font-size: 20px; */
+  /* font-size: clamp(20px, 0.9vw, 0.9vw); */
+  /* font-size: clamp(16px, 1.1vw, 1.8vw); */
+  font-size: clamp(13px, 1.05vw, 26px);
   font-weight: 400;
   border-radius: 100px;
   padding: 0px 10px;
@@ -141,14 +148,16 @@
 
 .values_h3 {
   /* font-size: 36px; */
-  font-size: clamp(22px, 2vw, 1.76vw);
+  /* font-size: clamp(22px, 2vw, 1.76vw); */
+  /* font-size: clamp(25px, calc(1.49rem + 0.38vw), 36px); */
+  font-size: clamp(22px, 1.9vw, 44px);
   font-weight: 800;
   font-family: "Open Sans Condensed ExtraBold", sans-serif;
   letter-spacing: -0.4px;
 }
 
 .values_h3-margin {
-  margin-bottom: 1vw;
+  margin-bottom: clamp(0px, 1vw, 25.6px);
 }
 
 .values_slider {
@@ -166,8 +175,8 @@
 }
 
 .valuse_colors_item {
-  width: clamp(44px, 3.2vw, 3.13vw);
-  height: clamp(44px, 3.2vw, 3.13vw);
+  width: clamp(47px, 3.4vw, 87px);
+  height: clamp(47px, 3.4vw, 87px);
   /* width: 60px;
   height: 60px; */
   border-radius: 100px;
@@ -175,8 +184,11 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  background: #e7392f;
+  /* background: #e7392f; */
   cursor: pointer;
+  background-size: cover; /* или contain */
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .valuse_colors_item:hover {
@@ -192,7 +204,8 @@
 
 .values_text {
   /* font-size: 20px; */
-  font-size: clamp(14px, 1.1vw, 0.8vw);
+  /* font-size: clamp(14px, 1.1vw, 0.8vw); */
+  font-size: clamp(13px, 1.05vw, 26px);
   font-family: "MontserratMedium";
   letter-spacing: -0.3px;
   margin-bottom: 18px;
@@ -216,17 +229,21 @@
 
 .price_title {
   /* font-size: 36px; */
-  font-size: clamp(16px, 2vw, 1.9vw);
+  /* font-size: clamp(16px, 2vw, 1.9vw); */
+  /* font-size: clamp(25px, calc(1.49rem + 0.38vw), 36px); */
+  font-size: clamp(22px, 1.9vw, 44px);
   font-weight: 800;
   font-family: "Open Sans Condensed ExtraBold", sans-serif;
   letter-spacing: -0.3px;
-      display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .price_text {
   /* font-size: 20px; */
-  font-size: clamp(10px, 1.4vw, 1.05vw);
+  /* font-size: clamp(10px, 1.4vw, 1.05vw); */
+  /* font-size: clamp(14px, 1.1vw, 0.8vw); */
+  font-size: clamp(13px, 1.05vw, 26px);
   font-weight: 500;
   font-family: "MontserratMedium";
   line-height: 152%;
@@ -237,12 +254,12 @@
   display: flex;
   align-items: center;
   gap: 30px;
-  margin-top: 1.3vw;
+  margin-top: clamp(0px, 1.3vw, 33.3px);
 }
 
 .price_sum {
   /* font-size: 84px; */
-  font-size: clamp(42px, 4.1vw, 4.4vw);
+  font-size: clamp(42px, 4.4vw, 112px);
   font-weight: 700;
   font-family: "OpenSansBold", sans-serif;
   margin-left: auto;
@@ -252,11 +269,12 @@
 .price_buttonBasket {
   flex: 1;
   /* height: 60px; */
-  height: clamp(60px, 3.16vw, 3.16vw);
+  height: clamp(60px, 3.16vw, 81px);
   background: rgba(231, 57, 47, 1);
   color: #ffffff;
   font-size: 24px;
-  font-size: clamp(24px, 1.05vw, 1.05vw);
+  /* font-size: clamp(24px, 1.05vw, 1.05vw); */
+  font-size: clamp(16px, 1.25vw, 30px);
   font-weight: 700;
   letter-spacing: -0.3px;
   font-family: "OpenSansBold";
@@ -275,10 +293,6 @@
 }
 
 @media (max-width: 1900px) {
-  .price_calculator-parameters_values {
-    gap: 4%;
-  }
-
   .values_text {
     margin-bottom: 10px;
   }
@@ -286,12 +300,12 @@
 
 @media (max-width: 1600px) {
   .price_calculator-parameters_values {
-    gap: 3%;
+    /* gap: 3%; */
     padding: 10px 20px;
   }
-  .values_input {
+  /* .values_input {
     height: 50px;
-  }
+  } */
   .price_buttonBasket {
     height: 50px;
   }
@@ -301,29 +315,55 @@
 }
 
 @media (max-width: 1400px) {
-  .price_calculator-parameters_values {
+  /* .price_calculator-parameters_values {
     gap: 2%;
-  }
+  } */
   .price_container {
     margin-top: 1%;
   }
 }
 
 @media (max-width: 1330px) {
-  .price_calculator-parameters_values {
+  /* .price_calculator-parameters_values {
     gap: 1%;
-  }
+  } */
 }
 
 @media (max-width: 1270px) {
   .price_calculator-parameters_values {
-    gap: 0;
+    gap: 3%;
+  }
+
+  .values_slider_arrow {
+    width: clamp(44px, 3.2vw, 3.13vw);
+    height: clamp(44px, 3.2vw, 3.13vw);
   }
 }
 
 @media (max-width: 1220px) {
+    .price_calculator-parameters_values {
+    gap: 4%;
+  }
+  .valuse_colors_item {
+    width: clamp(50px, 7.2vw, 70px);
+    height: clamp(50px, 7.2vw, 70px);
+  }
+  .values_slider_arrow {
+    width: clamp(50px, 7.2vw, 70px);
+    height: clamp(50px, 7.2vw, 70px);
+  }
+
+  .values_inputBox {
+    height: clamp(50px, 4.16vw, 81px);
+  }
+
   .price_calculator {
     flex-direction: column;
+    gap: clamp(10px, 3.13vw, 60px);
+  }
+
+  .price_calculator-parameters {
+    gap: clamp(10px, 3.13vw, 60px);
   }
 
   .price_calculator-parameters_values {
@@ -342,30 +382,30 @@
     padding: 20px 20px;
   }
 
-  .values_h3 {
+  /* .values_h3 {
     font-size: clamp(22px, 3vw, 36px);
-  }
+  } */
 
-  .values_text {
+  /* .values_text {
     font-size: clamp(18px, 1.4vw, 20px);
-  }
+  } */
 
-  .valuse_colors_item {
+  /* .valuse_colors_item {
     width: clamp(24px, 6vw, 72px);
     height: clamp(24px, 6vw, 72px);
-  }
+  } */
   .values_slider {
     /* gap: clamp(4px, 1.5vw, 23px); */
     margin-top: 10px;
   }
-  .values_slider_arrow {
+  /* .values_slider_arrow {
     width: clamp(24px, 6vw, 72px);
     height: clamp(24px, 6vw, 72px);
-  }
+  } */
 
-  .price_text {
+  /* .price_text {
     font-size: clamp(18px, 1.4vw, 20px);
-  }
+  } */
 
   .price_sum {
     font-size: 74px;
@@ -374,9 +414,9 @@
     gap: 10px;
     margin-top: 10px;
   }
-  .price_title {
+  /* .price_title {
     font-size: 32px;
-  }
+  } */
 }
 
 @media (max-width: 768px) {
@@ -384,17 +424,36 @@
     flex-direction: column;
   }
 
+  .price_calculator-design {
+    gap: 12px;
+  }
+
   .values_input {
     width: 100%;
   }
 
   .price_buttonBasket {
-    min-height: 60px;
+    min-height: 50px;
     padding: 0 5px;
+    width: 97%;
+  }
+
+  .price_calculator-design {
+    padding: 25px 10px 10px 10px;
   }
 
   .values_inputBox {
     width: 100%;
+    border-radius: 22px;
+  }
+
+  .price_calculator-parameters_values {
+    padding: 30px 10px 30px 10px;
+    gap: 10px;
+  }
+
+  .price_calculator-parameters_price {
+    padding: 25px 10px 10px 10px;
   }
 
   .price_container {
@@ -407,17 +466,32 @@
     margin: 0;
   }
 
-  .price_title {
+  /* .price_title {
     font-size: 26px;
-  }
+  } */
   .price_sum {
     font-size: 64px;
   }
 }
 
+@media (max-width: 656px) {
+  .valuse_colors_item {
+    width: clamp(40px, 10.2vw, 80px);
+    height: clamp(40px, 10.2vw, 80px);
+  }
+  .values_slider_arrow {
+    width: clamp(40px, 10.2vw, 80px);
+    height: clamp(40px, 10.2vw, 80px);
+  }
+}
+
 @media (max-width: 425px) {
+  .price_title {
+    flex-direction: column;
+  }
+
   .price_calculator-design {
-    padding: 20px 10px;
+    padding: 25px 10px 10px 10px;
   }
   .price_calculator-parameters_values {
     padding: 20px 10px;
@@ -425,17 +499,17 @@
   .values_text {
     margin-bottom: 15px;
   }
-  .price_calculator-parameters_price {
-    padding: 20px 10px;
-  }
+  /* .price_calculator-parameters_price {
+    padding: 20px 10px 10px 10px;
+  } */
 }
 
 @media (max-width: 375px) {
   .price_calculator-design {
-    padding: 20px 5px;
+    padding: 25px 10px 10px 10px;
   }
   .price_calculator-parameters_values {
-    padding: 30px 5px;
+    padding: 30px 10px;
   }
 }
 

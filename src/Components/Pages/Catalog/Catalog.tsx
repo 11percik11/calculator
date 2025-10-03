@@ -1,44 +1,46 @@
 // Components/Widgets/Catalog/Catalog.tsx
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
 import StarAnimation from "@/Components/UI/StartAnimation/StartAnimation";
-import { CatalogCardFull } from '@/Components/UI/CatalogCardFull/CatalogCardFull'; // исправляем импорт
-import { getProductsByCategory, getAllCategories } from '@/Api/queries';
-import { CategoriesCatalog, Category } from '@/Components/Widgets/CategoriesCatalog/CategoriesCatalog';
-import { PaginationCatalog } from '@/Components/Widgets/PaginationCatalog/PaginationCatalog';
-import { Footer } from '@/Components/Widgets/Footer/Footer';
-import './Catalog.css';
-import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
+import { CatalogCardFull } from "@/Components/UI/CatalogCardFull/CatalogCardFull"; // исправляем импорт
+import { getProductsByCategory, getAllCategories } from "@/Api/queries";
+import {
+  CategoriesCatalog,
+  Category,
+} from "@/Components/Widgets/CategoriesCatalog/CategoriesCatalog";
+import { PaginationCatalog } from "@/Components/Widgets/PaginationCatalog/PaginationCatalog";
+import "./Catalog.css";
+import { CatalogPromoBlock } from "@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock";
 
 interface Product {
-    id: number;
-    title: string;
-    description?: string;
-    image?: string;
-    price: number;
-    category?: Category;
-    materials?: Material[];
-    productsImages?: ProductImage[];
-  }
-  
-  interface ProductImage {
-    id: number;
-    image: string;
-  }
-  
-  interface Material {
-    id: number;
-    title: string;
-    name: string;
-  }
+  id: number;
+  title: string;
+  description?: string;
+  image?: string;
+  price: number;
+  category?: Category;
+  materials?: Material[];
+  productsImages?: ProductImage[];
+}
+
+interface ProductImage {
+  id: number;
+  image: string;
+}
+
+interface Material {
+  id: number;
+  title: string;
+  name: string;
+}
 
 export const Catalog = () => {
-  const { categorySlug, subcategorySlug } = useParams<{ 
-    categorySlug?: string; 
-    subcategorySlug?: string 
+  const { categorySlug, subcategorySlug } = useParams<{
+    categorySlug?: string;
+    subcategorySlug?: string;
   }>();
   const navigate = useNavigate();
-  
+
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,7 +48,9 @@ export const Catalog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState<number | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<number | null>(
+    null
+  );
 
   const itemsPerPage = 12;
 
@@ -59,36 +63,38 @@ export const Catalog = () => {
         setCategories(categoriesData);
         setError(null);
       } catch (err) {
-        console.error('Ошибка загрузки категорий:', err);
-        setError('Не удалось загрузить категории');
+        console.error("Ошибка загрузки категорий:", err);
+        setError("Не удалось загрузить категории");
       } finally {
         setLoading(false);
       }
     };
-    
+
     loadCategories();
   }, []);
 
   // Определение выбранной категории из URL
   useEffect(() => {
     if (categories.length > 0 && categorySlug) {
-      const category = categories.find(cat => cat.slug === categorySlug);
+      const category = categories.find((cat) => cat.slug === categorySlug);
       if (category) {
         setSelectedCategory(category.id);
-        
+
         if (subcategorySlug && category.children) {
-          const subcategory = category.children.find(sub => sub.slug === subcategorySlug);
+          const subcategory = category.children.find(
+            (sub) => sub.slug === subcategorySlug
+          );
           if (subcategory) {
             setSelectedSubcategory(subcategory.id);
           } else {
             setSelectedSubcategory(null);
-            setError('Подкатегория не найдена');
+            setError("Подкатегория не найдена");
           }
         } else {
           setSelectedSubcategory(null);
         }
       } else {
-        setError('Категория не найдена');
+        setError("Категория не найдена");
       }
     } else if (categories.length > 0 && !categorySlug) {
       setSelectedCategory(null);
@@ -109,20 +115,24 @@ export const Catalog = () => {
         setLoading(false);
       }
     };
-    
+
     loadProducts();
   }, [selectedCategory, selectedSubcategory, currentPage]);
 
   const loadProductsByCategory = async (categoryId: number) => {
     try {
       setLoading(true);
-      const response = await getProductsByCategory(categoryId, currentPage, itemsPerPage);
+      const response = await getProductsByCategory(
+        categoryId,
+        currentPage,
+        itemsPerPage
+      );
       setProducts(response.data);
       setTotalPages(response.meta.pagination.totalPages);
       setError(null);
     } catch (err) {
-      console.error('Ошибка загрузки товаров:', err);
-      setError('Не удалось загрузить товары');
+      console.error("Ошибка загрузки товаров:", err);
+      setError("Не удалось загрузить товары");
     } finally {
       setLoading(false);
     }
@@ -136,7 +146,9 @@ export const Catalog = () => {
 
   const handleSubcategorySelect = (subcategory: Category) => {
     if (selectedCategory) {
-      const mainCategory = categories.find(cat => cat.id === selectedCategory);
+      const mainCategory = categories.find(
+        (cat) => cat.id === selectedCategory
+      );
       if (mainCategory) {
         navigate(`/catalog/${mainCategory.slug}/${subcategory.slug}`);
         setCurrentPage(1);
@@ -148,30 +160,30 @@ export const Catalog = () => {
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const getProductImage = (product: Product): string => {
     // Берем первую фотку из productsImages если она есть
     if (product.productsImages && product.productsImages.length > 0) {
-        return product.productsImages[0].image;
+      return product.productsImages[0].image;
     }
     // Если нет, используем основное image
-    return product.image || '/placeholder-product.jpg';
-};
+    return product.image || "/placeholder-product.jpg";
+  };
 
   return (
-    <div className="catalog">
-      <div className="page-top" id='page-top'></div>
-
+    <>
       <div className="catalog__container">
         <div className="catalog__header">
           <StarAnimation />
-          <h2 className="catalog__header-title">КАТАЛОГ ПРОДУКЦИИ: ЖАЛЮЗИ И РУЛОННЫЕ ШТОРЫ</h2>
-          <p className='catalog__header-text'>
-            Широкий выбор жалюзи и рулонных штор для дома и офиса.
-            Качественные материалы, современные технологии и индивидуальный подход.
+          <h2 className="catalog__header-title">
+            КАТАЛОГ ПРОДУКЦИИ: ЖАЛЮЗИ И РУЛОННЫЕ ШТОРЫ
+          </h2>
+          <p className="catalog__header-text">
+            Широкий выбор жалюзи и рулонных штор для дома и офиса. Качественные
+            материалы, современные технологии и индивидуальный подход.
           </p>
         </div>
 
@@ -198,33 +210,43 @@ export const Catalog = () => {
           {error && (
             <div className="catalog__error">
               <p>{error}</p>
-              <button onClick={() => window.location.reload()} className="catalog__retry-button">
+              <button
+                onClick={() => window.location.reload()}
+                className="catalog__retry-button"
+              >
                 Попробовать снова
               </button>
             </div>
           )}
 
-          {!loading && !error && products.length === 0 && (selectedCategory || selectedSubcategory) && (
-            <div className="catalog__empty">
-              <p>Товары не найдены в выбранной категории</p>
-            </div>
-          )}
+          {!loading &&
+            !error &&
+            products.length === 0 &&
+            (selectedCategory || selectedSubcategory) && (
+              <div className="catalog__empty">
+                <p>Товары не найдены в выбранной категории</p>
+              </div>
+            )}
 
-          {!loading && !error && products.length === 0 && !selectedCategory && !selectedSubcategory && (
-            <div className="catalog__empty">
-              <p>Выберите категорию для просмотра товаров</p>
-            </div>
-          )}
+          {!loading &&
+            !error &&
+            products.length === 0 &&
+            !selectedCategory &&
+            !selectedSubcategory && (
+              <div className="catalog__empty">
+                <p>Выберите категорию для просмотра товаров</p>
+              </div>
+            )}
 
           {!loading && !error && products.length > 0 && (
             <>
               <div className="catalog__grid">
-                {products.map(product => (
+                {products.map((product) => (
                   <CatalogCardFull
                     key={product.id}
                     image={getProductImage(product)}
                     title={product.title}
-                    price={`${product.price.toLocaleString('ru-RU')} ₽`}
+                    price={`${product.price.toLocaleString("ru-RU")} ₽`}
                     productId={product.id} // передаем ID продукта
                   />
                 ))}
@@ -238,10 +260,9 @@ export const Catalog = () => {
             </>
           )}
         </div>
-        <CatalogPromoBlock showBtn={false}/>
+        <CatalogPromoBlock showBtn={false} />
       </div>
-      <Footer/>
-    </div>
+    </>
   );
 };
 

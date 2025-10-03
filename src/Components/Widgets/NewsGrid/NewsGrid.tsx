@@ -3,12 +3,22 @@ import NewsItem, { NewsItemProps } from '@/Components/UI/NewsItem/NewsItem';
 import { getMainNews } from '@/Api/queries';
 import { useState, useEffect } from 'react';
 import { API_URL } from '@/Api/const';
+import { ModalNewsPromo } from '../ModalNewsPromo/ModalNewsPromo';
 
 
 const NewsGrid = () => {
   const [newsItems, setNewsItems] = useState<NewsItemProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+    const [selectedPromo, setSelectedPromo] = useState<null>(null);
+    
+      const handleCloseModal = () => {
+    setSelectedPromo(null);
+  };
+
+    const handlePromoClick = (promo: any) => {
+    setSelectedPromo(promo);
+  };
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -50,6 +60,7 @@ const NewsGrid = () => {
         <div className="news-grid">
           {newsItems.map((newsItem, index) => (
             <NewsItem
+              onClick={() => handlePromoClick(newsItem)}
               key={`news-${index}`}
               imageUrl={newsItem.imageUrl}
               title={newsItem.title}
@@ -58,6 +69,16 @@ const NewsGrid = () => {
           ))}
         </div>
       )}
+
+      {selectedPromo && (
+              <ModalNewsPromo
+                isOpen={!!selectedPromo}
+                onClose={handleCloseModal}
+                imageUrl={selectedPromo.imageUrl}
+                title={selectedPromo.title}
+                description={selectedPromo.description}
+              />
+            )}
     </div>
   );
 };

@@ -1,8 +1,7 @@
 .gallery-section {
     background: white;
     border-radius: 30px;
-    padding: 40px;
-    margin: 20px auto;
+    padding: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
@@ -129,13 +128,19 @@
       transform: translateY(0) rotateX(0);
     }
   }
+
+    @media (max-width: 1440px) {
+    .gallery-section {
+      padding: 20px;
+    }
+  }
   
   /* Адаптивность */
   @media (max-width: 768px) {
     .gallery-section {
-      padding: 20px;
+      padding: 10px;
     }
-    
+
     .gallery-title {
       font-size: 2rem;
     }

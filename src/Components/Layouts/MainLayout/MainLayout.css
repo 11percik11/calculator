@@ -1,18 +1,29 @@
 .main-layout {
-    max-width: 2560px;
-    margin: auto;
-    padding: 0 20px;
+  max-width: 2560px;
+  margin: auto;
+  padding: 8.5rem 20px 30px 20px;
 }
 
+.main-layout__content {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: flex;
+    flex-direction: column;
+    /* gap: 60px; */
+    gap: clamp(10px, 3.13vw, 60px);
+}
 
 @media (max-width: 768px) {
   .main-layout {
-    padding: 0 10px;
+      padding: 7.5rem 10px 20px 10px;
   }
 }
 
 @media (max-width: 425px) {
   .main-layout {
-    padding: 0 5px;
+    padding: 5.5rem 5px 10px 5px;
   }
 }

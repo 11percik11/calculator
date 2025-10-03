@@ -23,7 +23,7 @@ export const CatalogPromoBlock = ({ showBtn = true }: PropsBlock) => {
       <div className='catalog-promo-block'>
         <div className="catalog-promo-content">
           <h2 className='catalog-promo-title'>
-            НАШУ ПРОДУКЦИЮ ВЫБИРАЮТ УЖЕ БОЛЬШЕ 20-ти ЛЕТ
+            НАШУ ПРОДУКЦИЮ ВЫБИРАЮТ УЖЕ БОЛЬШЕ <span className="keep-together">20-ти ЛЕТ</span>
           </h2>
           <p className='catalog-promo-description'>
             Если вы затрудняетесь с выбором или "заблудились" в нашей продукции, - обратитесь к нашему

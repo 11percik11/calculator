@@ -1,10 +1,9 @@
-import { Footer } from '@/Components/Widgets/Footer/Footer';
-import './Promo.css';
-import { CatalogPromoBlock } from '@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock';
-import StarAnimation from '@/Components/UI/StartAnimation/StartAnimation';
-import { NewsBigCard } from '@/Components/UI/NewsBigCard/NewsBigCard';
-import { getAllPromo } from '@/Api/queries';
-import { useState, useEffect } from 'react';
+import "./Promo.css";
+import { CatalogPromoBlock } from "@/Components/Widgets/CatalogPromoBlock/CatalogPromoBlock";
+import StarAnimation from "@/Components/UI/StartAnimation/StartAnimation";
+import { NewsBigCard } from "@/Components/UI/NewsBigCard/NewsBigCard";
+import { getAllPromo } from "@/Api/queries";
+import { useState, useEffect } from "react";
 
 interface NewsItem {
   id: number;
@@ -26,13 +25,13 @@ export const Promo = () => {
     try {
       setLoading(true);
       const response = await getAllPromo(page, itemsPerPage);
-      
+
       setNewsData(response.data);
       setTotalPages(response.meta.pagination.totalPages);
       setError(null);
     } catch (err) {
-      console.error('Ошибка при загрузке новостей:', err);
-      setError('Не удалось загрузить новости.');
+      console.error("Ошибка при загрузке новостей:", err);
+      setError("Не удалось загрузить новости.");
       setNewsData([]);
     } finally {
       setLoading(false);
@@ -46,7 +45,7 @@ export const Promo = () => {
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -86,7 +85,11 @@ export const Promo = () => {
         </button>
       );
       if (startPage > 2) {
-        pages.push(<span key="ellipsis1" className="pagination-ellipsis">...</span>);
+        pages.push(
+          <span key="ellipsis1" className="pagination-ellipsis">
+            ...
+          </span>
+        );
       }
     }
 
@@ -96,7 +99,7 @@ export const Promo = () => {
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`pagination-button ${currentPage === i ? 'active' : ''}`}
+          className={`pagination-button ${currentPage === i ? "active" : ""}`}
         >
           {i}
         </button>
@@ -106,7 +109,11 @@ export const Promo = () => {
     // Последняя страница
     if (endPage < totalPages) {
       if (endPage < totalPages - 1) {
-        pages.push(<span key="ellipsis2" className="pagination-ellipsis">...</span>);
+        pages.push(
+          <span key="ellipsis2" className="pagination-ellipsis">
+            ...
+          </span>
+        );
       }
       pages.push(
         <button
@@ -136,32 +143,34 @@ export const Promo = () => {
 
   if (loading && newsData.length === 0) {
     return (
-      <div className="news">
-        <div className="page-top" id='page-top'></div>
+      <>
         <div className="news__container">
-          <StarAnimation/>
+          <StarAnimation />
           <h2 className="news__header">ПРОМОАКЦИИ</h2>
-          <p className='news__text'>Лучшие предложения на современные жалюзи и рулонные шторы для уюта и комфорта.</p>
+          <p className="news__text">
+            Лучшие предложения на современные жалюзи и рулонные шторы для уюта и
+            комфорта.
+          </p>
           <div className="news-loading">
             <div className="spinner"></div>
             <span>Загрузка новостей...</span>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="news">
+    <>
       <div className="news__container">
-        <StarAnimation/>
+        <StarAnimation />
         <h2 className="news__header">ПРОМОАКЦИИ</h2>
-        <p className='news__text'>Лучшие предложения на современные жалюзи и рулонные шторы для уюта и комфорта.</p>
-        
-        {error && (
-          <div className="news-error">
-          </div>
-        )}
+        <p className="news__text">
+          Лучшие предложения на современные жалюзи и рулонные шторы для уюта и
+          комфорта.
+        </p>
+
+        {error && <div className="news-error"></div>}
 
         {!error && newsData.length > 0 && (
           <>
@@ -171,11 +180,11 @@ export const Promo = () => {
                   key={news.id}
                   title={news.title}
                   imageUrl={news.image}
-                  description={news.description || '...'}
+                  description={news.description || "..."}
                 />
               ))}
             </div>
-            
+
             {renderPagination()}
           </>
         )}
@@ -187,10 +196,9 @@ export const Promo = () => {
         )}
       </div>
       <div className="catalog-promo-block__wrapper">
-        <CatalogPromoBlock/>
+        <CatalogPromoBlock />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 
