@@ -1,155 +1,165 @@
 .gallery-section {
-    background: white;
-    border-radius: 30px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  background: white;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-header.animated {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.gallery-title {
+  color: #352c2b;
+  text-align: center;
+  font-family: "Open Sans Condensed ExtraBold", sans-serif;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 110%; /* 4.95rem */
+  letter-spacing: -0.0495rem;
+  text-transform: uppercase;
+  will-change: transform, opacity;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.gallery-title.animated {
+  animation: titleAppear 1s 0.3s ease-out forwards;
+}
+
+.gallery-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-family: "Montserrat";
+  font-weight: 100;
+}
+
+.gallery-description.animated {
+  animation: textAppear 1s 0.6s ease-out forwards;
+}
+
+/* Masonry-галерея с анимациями */
+.gallery-container {
+  columns: 4 250px;
+  column-gap: 20px;
+  perspective: 1000px;
+}
+
+.gallery-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  break-inside: avoid;
+  will-change: transform, opacity;
+}
+
+.gallery-item.animated {
+  animation: galleryItemAppear 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center bottom;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.08);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .gallery-header {
-    text-align: center;
-    margin-bottom: 40px;
+  to {
+    opacity: 1;
   }
-  
-  .gallery-header.animated {
-    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes titleAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .gallery-title {
-    color: #352C2B;
-    text-align: center;
-    font-family: "Open Sans Condensed ExtraBold", sans-serif;
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 110%; /* 4.95rem */
-    letter-spacing: -0.0495rem;
-    text-transform: uppercase;
-    will-change: transform, opacity;
-    margin: 0;
-    margin-bottom: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .gallery-title.animated {
-    animation: titleAppear 1s 0.3s ease-out forwards;
+}
+
+@keyframes textAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .gallery-description {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    font-family: "Montserrat";
-    font-weight: 100;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .gallery-description.animated {
-    animation: textAppear 1s 0.6s ease-out forwards;
+}
+
+@keyframes galleryItemAppear {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotateX(15deg);
   }
-  
-  /* Masonry-галерея с анимациями */
-  .gallery-container {
-    columns: 4 250px;
-    column-gap: 20px;
-    perspective: 1000px;
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
   }
-  
+}
+
+@media (max-width: 1440px) {
+  .gallery-section {
+    padding: 20px;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
   .gallery-item {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease;
-    break-inside: avoid;
-    will-change: transform, opacity;
+    margin-bottom: 10px;
   }
-  
-  .gallery-item.animated {
-    animation: galleryItemAppear 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  .gallery-section {
+    padding: 10px;
   }
-  
-  .gallery-item:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-  }
-  
-  .gallery-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-origin: center bottom;
-  }
-  
-  .gallery-item:hover .gallery-image {
-    transform: scale(1.08);
-  }
-  
-  /* Анимации */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes titleAppear {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes textAppear {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes galleryItemAppear {
-    from {
-      opacity: 0;
-      transform: translateY(50px) rotateX(15deg);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotateX(0);
-    }
+  .gallery-container {
+    column-gap: 10px;
   }
 
-    @media (max-width: 1440px) {
-    .gallery-section {
-      padding: 20px;
-    }
+  .gallery-title {
+    font-size: 2rem;
   }
-  
-  /* Адаптивность */
-  @media (max-width: 768px) {
-    .gallery-section {
-      padding: 10px;
-    }
 
-    .gallery-title {
-      font-size: 2rem;
-    }
-    
-    .gallery-description {
-      font-size: 1rem;
-    }
-    
-    .gallery-container {
-      columns: 2 150px;
-    }
+  .gallery-description {
+    font-size: 1rem;
   }
+
+  .gallery-container {
+    columns: 2 150px;
+  }
+}

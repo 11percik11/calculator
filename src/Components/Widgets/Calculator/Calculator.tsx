@@ -13,14 +13,10 @@ export interface CalculatorParent {
 
 export interface IMaterial {
   id: number;
-  title: string;
   preview: string;
   imageModel: string;
-  product: {
-    id: number;
-    title: string;
-    price: number;
-  };
+  title: string;
+  price: number;
 }
 
 export const Calculator = () => {
@@ -29,6 +25,7 @@ export const Calculator = () => {
   const [materials, setMaterials] = useState<IMaterial[]>([]);
   const [widthValue, setWidthValue] = useState(0);
   const [heightValue, setHeightValue] = useState(0);
+  const [nameCatego, setNameCatego] = useState("");
 
   const [page, setPage] = useState(0);
   const [activeFon, setActiveFon] = useState(0);
@@ -40,12 +37,11 @@ export const Calculator = () => {
   const endIndex = startIndex + itemsPerPage;
   const visibleMaterials = materials.slice(startIndex, endIndex);
 
-
   useEffect(() => {
     const updateItemsPerPage = () => {
       if (window.innerWidth <= 656) {
         setItemsPerPage(5);
-        console.log('Mobile:', window.innerWidth);
+        console.log("Mobile:", window.innerWidth);
       } else {
         setItemsPerPage(9); // или другое значение для десктопа
       }
@@ -55,11 +51,11 @@ export const Calculator = () => {
     updateItemsPerPage();
 
     // Добавляем слушатель
-    window.addEventListener('resize', updateItemsPerPage);
+    window.addEventListener("resize", updateItemsPerPage);
 
     // Убираем слушатель при размонтировании
     return () => {
-      window.removeEventListener('resize', updateItemsPerPage);
+      window.removeEventListener("resize", updateItemsPerPage);
     };
   }, []);
 
@@ -69,22 +65,60 @@ export const Calculator = () => {
     }
   }, [page]);
 
-  const priceTovar = materials[activeFon]?.product.price || 1900;
+  const handleAddToCart = () => {
+  if (!materials[activeFon]) return;
 
-  const SumPrice = useMemo(() => {
+  const newItem = {
+    id: materials[activeFon].id,
+    title: "Тип изделия: "+ nameCatego + " Материал: " + materials[activeFon].title,
+    description: "", // пустое поле
+    size: `${widthValue}x${heightValue}`, // размер отдельным полем
+    price: Number(SumPrice), // итоговая цена
+    image: `https://api-vert.tusamgroup.ru/${materials[activeFon].preview}`,
+  };
+
+  // Получаем текущую корзину
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  // Проверяем, есть ли товар с таким id
+  const itemExists = existingCart.some((item: any) => item.id === newItem.id);
+
+  if (!itemExists) {
+    // Добавляем товар
+    const updatedCart = [...existingCart, newItem];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    alert("✅ Товар добавлен в корзину!");
+  } else {
+    alert("⚠️ Этот товар уже есть в корзине.");
+  }
+};
+
+  // const priceTovar = materials[activeFon]?.product.price || 1900;
+
+  // const SumPrice = useMemo(() => {
+  //   return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
+  // }, [widthValue, heightValue, priceTovar]);
+  let SumPrice = "0";
+  const priceTovar = materials[activeFon]?.price || 1000;
+  SumPrice = useMemo(() => {
     return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
   }, [widthValue, heightValue, priceTovar]);
+  useEffect(() => {
+    if (materials[0]?.price) {
+      console.log(materials[activeFon].price);
+    }
+  }, [activeFon, materials]);
 
   useEffect(() => {
     setActiveFon(0);
   }, [materials, setMaterials]);
 
   const arrPhotoColorFon = [
-    ["/photo/002.png", "#E8E8E8"],
-    ["/photo/001.png", "#FFE5B4"],
-    ["/photo/003.png", "#FFFDDF"],
-    ["/photo/004.png", "#CEEDD0"],
-    ["/photo/005.png", "#C6DEF6"],
+    ["/photo/002.webp", "#E8E8E8"],
+    ["/photo/001.webp", "#FFE5B4"],
+    ["/photo/003.webp", "#FFFDDF"],
+    ["/photo/004.webp", "#CEEDD0"],
+    ["/photo/005.webp", "#C6DEF6"],
   ];
   useEffect(() => {
     const fetchData = async () => {
@@ -114,13 +148,15 @@ export const Calculator = () => {
             КАЛЬКУЛЯТОР ЖАЛЮЗИ И РУЛОННЫХ ШТОР
           </h2>
           <div className="price_calculator-design_example">
-            <img
-              className="wwwww"
-              src={`https://api-vert.tusamgroup.ru/${materials[activeFon]?.imageModel}`}
-              alt=""
-              width={100}
-              height={100}
-            />
+            {materials[activeFon]?.imageModel && (
+              <img
+                className="wwwww"
+                src={`https://api-vert.tusamgroup.ru/${materials[activeFon]?.imageModel}`}
+                alt=""
+                width={100}
+                height={100}
+              />
+            )}
             <img
               className="price_calculator-design_example-image"
               src={arrPhotoColorFon[activeColor][0]}
@@ -188,7 +224,7 @@ export const Calculator = () => {
                 в выборе — обратитесь к нашему специалисту. Вам помогут с
                 выбором!
               </p>
-              <Select setMaterial={setMaterials} item={categories} />
+              <Select setMaterial={setMaterials} item={categories} setNameCatego={setNameCatego} />
             </div>
             <div>
               <h3 className="values_h3 values_h3-margin">
@@ -230,43 +266,6 @@ export const Calculator = () => {
                   src={Arrow_next}
                   alt=""
                 />
-                {/* <img
-                  onClick={() =>
-                    setActiveFon(activeFon != 0 ? activeFon - 1 : 0)
-                  }
-                  className="values_slider_arrow"
-                  src={Arrow_prev}
-                  alt=""
-                />
-                <div className="valuse_colors">
-                  {materials &&
-                    materials.map((material, index) => (
-                      <div
-                        onClick={() => setActiveFon(index)}
-                        key={index}
-                        className={`valuse_colors_item ${
-                          activeFon == index && "valuse_colors_item_ActiveColor"
-                        }`}
-                        style={{
-                          background: `url(https://api-vert.tusamgroup.ru/${material.preview})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                        }}
-                      ></div>
-                    ))}
-                </div>
-                <img
-                  onClick={() =>
-                    setActiveFon(
-                      activeFon != materials.length - 1
-                        ? activeFon + 1
-                        : activeFon
-                    )
-                  }
-                  className="values_slider_arrow"
-                  src={Arrow_next}
-                  alt=""
-                /> */}
               </div>
             </div>
 
@@ -313,7 +312,7 @@ export const Calculator = () => {
           <div className="price_calculator-parameters_price">
             <h3 className="price_title">
               <p>ИТОГОВАЯ СТОИМОСТЬ</p>{" "}
-              <p>{materials[activeFon]?.product?.price || 0} руб./м</p>
+              <p>{materials[activeFon]?.price || 0} руб./м</p>
             </h3>
             <p className="price_text">
               Если вы не нашли подходящий вариант — обратитесь к нам по
@@ -321,8 +320,7 @@ export const Calculator = () => {
             </p>
             <div className="price_container">
               <div className="price_sum">{SumPrice} ₽</div>
-              <button className="price_buttonBasket">
-                <img src="./Vector.svg" alt="" />
+              <button className="price_buttonBasket" onClick={handleAddToCart}>
                 ДОБАВИТЬ В КОРЗИНУ
               </button>
             </div>

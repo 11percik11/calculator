@@ -65,7 +65,8 @@
 }
 
 .footer__text {
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: clamp(14px, 1vw, 20px);
   line-height: 1.5;
   color: #5a5352;
 }
@@ -85,7 +86,7 @@
 
 .footer__link {
   /* font-size: 20px; */
-  font-size: clamp(14px , 1vw, 20px);
+  font-size: clamp(14px, 1vw, 20px);
   color: #5a5352;
   text-decoration: none;
   transition: color 0.2s;
@@ -135,12 +136,13 @@
 }
 
 @media (max-width: 1920px) {
-.footer__scroll-top {
-  /* top: 1vw;
+  .footer__scroll-top {
+    /* top: 1vw;
   right: 1vw; */
-  top: 4%;
+    top: 4%;
     right: 1%;
-}}
+  }
+}
 
 /* Адаптивность */
 
@@ -150,10 +152,9 @@
   }
 
   .footer__scroll-top {
-
-  top: 4%;
+    top: 4%;
     right: 1%;
-}
+  }
   .footer__col--nav {
     flex-direction: column;
   }
@@ -224,10 +225,6 @@
 
   .footer__subtitle {
     font-size: 16px;
-  }
-
-  .footer__text{
-    font-size: 14px;
   }
 
   .footer__button {

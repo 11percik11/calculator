@@ -6,9 +6,10 @@ import { CalculatorParent, IMaterial } from "../../Calculator";
 interface SelectProps {
   item: CalculatorParent[];
   setMaterial: (item: IMaterial[]) => void;
+  setNameCatego: (item: string) => void;
 }
 
-export const Select = ({ item, setMaterial }: SelectProps) => {
+export const Select = ({ item, setMaterial, setNameCatego }: SelectProps) => {
   const [onVisibleOption, setOnVisibleOption] = useState(false);
   const [valueOption, setValueOption] = useState("Вертикальные");
   const [categoryId, setCategoryId] = useState<number | null>(null);
@@ -37,6 +38,7 @@ export const Select = ({ item, setMaterial }: SelectProps) => {
 
   const onChangeOption = (option: CalculatorParent) => {
     setValueOption(option.name);
+    setNameCatego(option.name)
     setCategoryId(option.id);
     setOnVisibleOption(false);
   };

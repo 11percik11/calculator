@@ -354,7 +354,8 @@
   }
 
   .values_inputBox {
-    height: clamp(50px, 4.16vw, 81px);
+    /* height: clamp(50px, 4.16vw, 81px); */
+            height: clamp(40px, 6vw, 55px);
   }
 
   .price_calculator {

@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1220px) {
   .selectComponent_value {
     height: clamp(40px, 6vw, 55px);
   }

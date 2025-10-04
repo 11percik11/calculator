@@ -12,6 +12,7 @@ interface CartItem {
   description?: string;
   price: number;
   image: string;
+  size: string;
 }
 
 export const Cart = () => {
@@ -24,6 +25,15 @@ export const Cart = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false); // Флаг загрузки данных
   const [formattedPhone, setFormattedPhone] = useState(""); // Отображаемый форматированный номер
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  const handleCheckboxChange = (id: number) => {
+    setSelectedItems((prevSelected) =>
+      prevSelected.includes(id)
+        ? prevSelected.filter((itemId) => itemId !== id)
+        : [...prevSelected, id]
+    );
+  };
 
   // Загружаем товары из localStorage
   useEffect(() => {
@@ -109,15 +119,43 @@ export const Cart = () => {
       }
 
       // Отправка запроса на бэкенд
+      // await axiosInstance.post(
+      //   "/api/call",
+      //   {
+      //     name: formData.name.trim(),
+      //     phone: formData.phone,
+      //     items: cartItems.map((item) => ({
+      //       id: item.id,
+      //       title: item.title,
+      //       price: item.price,
+      //     })),
+      //   },
+      //   {
+      //     headers: {
+      //       Accept: "application/json",
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+
+      const selectedCartItems = cartItems.filter((item) =>
+        selectedItems.includes(item.id)
+      );
+
+      if (selectedCartItems.length === 0) {
+        throw new Error("Выберите хотя бы один товар для заказа");
+      }
+
       await axiosInstance.post(
         "/api/call",
         {
           name: formData.name.trim(),
           phone: formData.phone,
-          items: cartItems.map((item) => ({
+          items: selectedCartItems.map((item) => ({
             id: item.id,
             title: item.title,
             price: item.price,
+            size: item.size || "Нет размера",
           })),
         },
         {
@@ -133,6 +171,7 @@ export const Cart = () => {
         setSuccess(false);
         setFormData({ name: "", phone: "" });
         setCartItems([]); // Очищаем корзину только после успешной отправки
+        // setSelectedItems([]);
       }, 2000);
     } catch (err: unknown) {
       let errorMessage = "Ошибка при отправке заказа";
@@ -175,6 +214,12 @@ export const Cart = () => {
             ) : (
               cartItems.map((item) => (
                 <div key={item.id} className="cart__item">
+                  <input
+                    className="cart__item_input"
+                    type="checkbox"
+                    checked={selectedItems.includes(item.id)}
+                    onChange={() => handleCheckboxChange(item.id)}
+                  />
                   <img
                     src={item.image}
                     alt={item.title}
@@ -185,7 +230,7 @@ export const Cart = () => {
                   />
                   <div className="cart__item-info">
                     <h3 className="cart__item-title">{item.title}</h3>
-                    <p className="cart__item-description">{item.description}</p>
+                    <p className="cart__item-description">{item.description || item.size}</p>
                     <p className="cart__item-price">
                       {item.price.toLocaleString("ru-RU")} PУБ
                     </p>
@@ -196,7 +241,7 @@ export const Cart = () => {
                       onClick={() => handleRemoveItem(item.id)}
                       disabled={loading}
                     >
-                      <img src="/landing/cross.svg" alt="" />
+                      <img src="/photo/trash_can.svg" alt="Корзина" />
                     </button>
                   </div>
                 </div>

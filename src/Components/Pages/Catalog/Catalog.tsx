@@ -210,12 +210,12 @@ export const Catalog = () => {
           {error && (
             <div className="catalog__error">
               <p>{error}</p>
-              <button
+              {/* <button
                 onClick={() => window.location.reload()}
                 className="catalog__retry-button"
               >
                 Попробовать снова
-              </button>
+              </button> */}
             </div>
           )}
 

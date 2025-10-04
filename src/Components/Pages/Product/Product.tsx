@@ -1,6 +1,6 @@
 import { Button } from "@/Components/UI/Button/Button";
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getProductById } from "@/Api/queries";
 import "./Product.css";
 import CatalogPreviewGrid from "@/Components/Widgets/CatalogPreviewLikeGrid/CatalogPreviewLikeGrid";
@@ -50,6 +50,12 @@ export const Product = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const targetRef = useRef<HTMLDivElement | null>(null);
+
+  const handleScroll = () => {
+    targetRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -240,6 +246,7 @@ export const Product = () => {
               fullWidth={true}
               size="lg"
               hoverEffect="underline"
+              onClick={handleScroll}
             />
           </div>
         </div>
@@ -249,7 +256,9 @@ export const Product = () => {
         <h2 className="product-block__like-title">ВАМ МОЖЕТ ПОНРАВИТЬСЯ</h2>
         <CatalogPreviewGrid />
       </div>
+      <div ref={targetRef}>
       <Calculator />
+      </div>
     </>
   );
 };
