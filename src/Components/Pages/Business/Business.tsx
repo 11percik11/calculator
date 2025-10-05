@@ -51,7 +51,7 @@ export const Business = () => {
 - Персонального менеджера
 - Прозрачную отчётность и юридическую чистоту
 - Быстрый документооборот и электронную подпись"
-        rightImage='/landing/for-business.png'
+        rightImage='/landing/for-business.webp'
         buttonProps={{
           text: "Заказать звонок специалиста",
           icon: <img src="/header/call.svg" alt="Замер" />,

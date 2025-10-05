@@ -6,7 +6,7 @@ import { CalculatorParent, IMaterial } from "../../Calculator";
 interface SelectProps {
   item: CalculatorParent[];
   setMaterial: (item: IMaterial[]) => void;
-  setNameCatego: (item: string) => void;
+  setNameCatego: (data: [string, string]) => void;
 }
 
 export const Select = ({ item, setMaterial, setNameCatego }: SelectProps) => {
@@ -14,22 +14,24 @@ export const Select = ({ item, setMaterial, setNameCatego }: SelectProps) => {
   const [valueOption, setValueOption] = useState("Вертикальные");
   const [categoryId, setCategoryId] = useState<number | null>(null);
 
+  // При первой загрузке устанавливаем первую категорию и передаем ее наверх
   useEffect(() => {
     if (item.length > 0) {
-      setValueOption(item[0].name);
-      setCategoryId(item[0].id); // предполагаю, что CalculatorParent имеет id
+      const firstCategory = item[0];
+      setValueOption(firstCategory.name);
+      setCategoryId(firstCategory.id);
+      setNameCatego([firstCategory.name, firstCategory.image]); // ✅ передаем данные наверх
     }
-  }, [item]);
+  }, [item, setNameCatego]);
 
+  // Загружаем материалы, когда выбранная категория изменилась
   useEffect(() => {
     if (categoryId !== null) {
       axios
         .get<IMaterial[]>(
           `https://api-vert.tusamgroup.ru/api/material?categoryId=${categoryId}`
         )
-        .then((res) => {
-          setMaterial(res.data);
-        })
+        .then((res) => setMaterial(res.data))
         .catch((err) => {
           console.error("Ошибка при загрузке материалов:", err);
         });
@@ -38,8 +40,8 @@ export const Select = ({ item, setMaterial, setNameCatego }: SelectProps) => {
 
   const onChangeOption = (option: CalculatorParent) => {
     setValueOption(option.name);
-    setNameCatego(option.name)
     setCategoryId(option.id);
+    setNameCatego([option.name, option.image]);
     setOnVisibleOption(false);
   };
 

@@ -244,7 +244,7 @@ export const Footer = () => {
                   // { name: "Контакты", path: "/contacts" },
                   { name: "Оферта", path: "/offer" },
                   { name: "Политика конфиденциальности", path: "/privacy" },
-                  { name: "Согласие на обработку данных", path: "/requisites" },
+                  { name: "Согласие на обработку данных", path: "/agreement" },
                 ].map((item, index) => (
                   <li key={index} className="footer__list-item">
                     <span

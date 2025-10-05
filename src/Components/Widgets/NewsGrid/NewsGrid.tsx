@@ -7,10 +7,10 @@ import { ModalNewsPromo } from '../ModalNewsPromo/ModalNewsPromo';
 
 
 const NewsGrid = () => {
-  const [newsItems, setNewsItems] = useState<NewsItemProps[]>([]);
+  const [newsItems, setNewsItems] = useState<NewsItemProps[] | any>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-    const [selectedPromo, setSelectedPromo] = useState<null>(null);
+    const [selectedPromo, setSelectedPromo] = useState<null| any>(null);
     
       const handleCloseModal = () => {
     setSelectedPromo(null);
@@ -58,7 +58,7 @@ const NewsGrid = () => {
       )}
       {!loading && !error && newsItems.length > 0 && (
         <div className="news-grid">
-          {newsItems.map((newsItem, index) => (
+          {newsItems.map((newsItem: any, index: any) => (
             <NewsItem
               onClick={() => handlePromoClick(newsItem)}
               key={`news-${index}`}

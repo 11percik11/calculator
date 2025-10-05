@@ -74,7 +74,7 @@ export const Landing = () => {
           description="Наши замерщики учитывают все особенности ваших окон, чтобы
                         шторы идеально легли и выглядели безупречно. Точный замер — залог идеальной посадки штор и
                         стильного интерьера."
-          rightImage="/landing/zamer.png"
+          rightImage="/landing/zamer.webp"
           buttonProps={{
             text: "Заказать звонок специалиста",
             icon: <img src="/header/call.svg" alt="Замер" />,

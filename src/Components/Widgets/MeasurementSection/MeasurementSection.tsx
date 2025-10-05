@@ -22,7 +22,7 @@ export const MeasurementSection = ({
   title = "Замерка окон нашими специалистами гарантирует, что ваши шторы \"встанут как надо\"",
   description = "Наши замерщики учитывают все особенности ваших окон, чтобы шторы идеально легли и выглядели безупречно. Точный замер — залог идеальной посадки штор и стильного интерьера.",
   leftBackground = "/landing/bg-two.png",
-  rightImage = "/landing/zamer.png",
+  rightImage = "/landing/zamer.webp",
   buttonProps = {
     text: "вызвать замерщика бесплатно",
     icon: <img src="/header/call.svg" alt="звонок" />,

@@ -1,0 +1,164 @@
+.policy__content {
+            max-width: 800px;
+            border-radius: 12px;
+            padding: 40px 0px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .policy__title {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            margin: 0 0 40px 0;
+            border-bottom: 3px solid #e7392f;
+            padding-bottom: 15px;
+        }
+
+        .policy__section {
+            margin-bottom: 30px;
+        }
+
+        .policy__subtitle {
+            font-family: "Open Sans Condensed", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0 0 15px 0;
+            padding-left: 10px;
+            border-left: 4px solid #e7392f;
+        }
+
+        .policy__text {
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #d3d3d3;
+            margin: 0 0 15px 0;
+            text-align: justify;
+        }
+
+        .policy__text:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy__list {
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #b4b4b4;
+            margin: 10px 0 15px 20px;
+        }
+
+        .policy__list li {
+            margin-bottom: 8px;
+        }
+
+        .policy__list li::marker {
+            color: #e7392f;
+            font-weight: bold;
+        }
+
+        .policy__footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .policy__date {
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .policy__content {
+                padding: 20px 10px;
+            }
+
+            .policy__title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .policy__subtitle {
+                font-size: 18px;
+            }
+
+            .policy__text {
+                font-size: 15px;
+            }
+
+            .policy__list {
+                font-size: 15px;
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .policy__title {
+                font-size: 20px;
+            }
+
+            .policy__subtitle {
+                font-size: 16px;
+                padding-left: 8px;
+            }
+
+            .policy__content {
+                padding: 15px;
+            }
+        }
+        
+        .highlight {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-left: 4px solid #e7392f;
+            margin: 15px 0;
+        }
+        
+        .term {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .subsection {
+            margin-left: 20px;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            color: #d3d3d3;
+        }
+        
+        .table th {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #444;
+            font-weight: 600;
+        }
+        
+        .table td {
+            padding: 12px;
+            border: 1px solid #444;
+            vertical-align: top;
+        }
+        
+        .table tr:nth-child(even) {
+            background-color: #222;
+        }
+        
+        .table tr:hover {
+            background-color: #333;
+        }

@@ -25,7 +25,7 @@ export const Calculator = () => {
   const [materials, setMaterials] = useState<IMaterial[]>([]);
   const [widthValue, setWidthValue] = useState(0);
   const [heightValue, setHeightValue] = useState(0);
-  const [nameCatego, setNameCatego] = useState("");
+  const [nameCatego, setNameCatego] = useState(["", ""]);
 
   const [page, setPage] = useState(0);
   const [activeFon, setActiveFon] = useState(0);
@@ -65,26 +65,32 @@ export const Calculator = () => {
     }
   }, [page]);
 
-  const handleAddToCart = () => {
+const handleAddToCart = () => {
+  // Проверяем, чтобы размеры не были нулевыми
+  if (widthValue <= 0 || heightValue <= 0) {
+    alert("⚠️ Укажите корректные размеры (высоту и ширину)!");
+    return;
+  }
+
   if (!materials[activeFon]) return;
 
   const newItem = {
     id: materials[activeFon].id,
-    title: "Тип изделия: "+ nameCatego + " Материал: " + materials[activeFon].title,
-    description: "", // пустое поле
-    size: `${widthValue}x${heightValue}`, // размер отдельным полем
-    price: Number(SumPrice), // итоговая цена
-    image: `https://api-vert.tusamgroup.ru/${materials[activeFon].preview}`,
+    title:
+      "Тип изделия: " +
+      nameCatego?.[0] +
+      ". Материал: " +
+      materials[activeFon].title,
+    description: "",
+    size: `${widthValue}x${heightValue}`,
+    price: Number(SumPrice),
+    image: `https://api-vert.tusamgroup.ru/${nameCatego?.[1]}`,
   };
 
-  // Получаем текущую корзину
   const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-  // Проверяем, есть ли товар с таким id
   const itemExists = existingCart.some((item: any) => item.id === newItem.id);
 
   if (!itemExists) {
-    // Добавляем товар
     const updatedCart = [...existingCart, newItem];
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     alert("✅ Товар добавлен в корзину!");
@@ -92,6 +98,7 @@ export const Calculator = () => {
     alert("⚠️ Этот товар уже есть в корзине.");
   }
 };
+
 
   // const priceTovar = materials[activeFon]?.product.price || 1900;
 

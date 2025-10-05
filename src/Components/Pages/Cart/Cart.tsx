@@ -170,8 +170,14 @@ export const Cart = () => {
       setTimeout(() => {
         setSuccess(false);
         setFormData({ name: "", phone: "" });
-        setCartItems([]); // Очищаем корзину только после успешной отправки
-        // setSelectedItems([]);
+
+        // ✅ Удаляем только те товары, которые были заказаны
+        setCartItems((prevCart) =>
+          prevCart.filter((item) => !selectedItems.includes(item.id))
+        );
+
+        // ✅ Очищаем выбор после удаления
+        setSelectedItems([]);
       }, 2000);
     } catch (err: unknown) {
       let errorMessage = "Ошибка при отправке заказа";
@@ -230,7 +236,15 @@ export const Cart = () => {
                   />
                   <div className="cart__item-info">
                     <h3 className="cart__item-title">{item.title}</h3>
-                    <p className="cart__item-description">{item.description || item.size}</p>
+                    <p className="cart__item-description">
+                      {item.description || (
+                        <>
+                          Высота: {item.size.split("x")[0]} см
+                          <br />
+                          Ширина: {item.size.split("x")[1]} см
+                        </>
+                      )}
+                    </p>
                     <p className="cart__item-price">
                       {item.price.toLocaleString("ru-RU")} PУБ
                     </p>

@@ -4,7 +4,7 @@ export const FrozeBlock = () => {
     return (
         <div className='froze-block__container'>
             <div className="froze-block__left">
-                <img src="/landing/froze.png" alt="Изображение замеров окон" className="froze-block__image" />
+                <img src="/landing/froze.webp" alt="Изображение замеров окон" className="froze-block__image" />
             </div>
             <div className="froze-block__right">
                 <div className="froze-block__content">

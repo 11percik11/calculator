@@ -12,6 +12,7 @@ import { Offer } from '@/Components/Pages/Offer/Offer';
 import { Policy } from '@/Components/Pages/Policy/Policy';
 import { Cart } from '@/Components/Pages/Cart/Cart';
 import { CalculatorPage } from '@/Components/Pages/Calculator/Calculator';
+import { AgreementPage } from '@/Components/Pages/AgreementPage/AgreementPage';
 
 export const router = createBrowserRouter([
   {
@@ -70,7 +71,12 @@ export const router = createBrowserRouter([
       {
         path: 'calculator',
         element: <CalculatorPage/>
+      },
+      {
+        path: '/agreement',
+        element: <AgreementPage/>
       }
     ],
   },
 ]);
+
