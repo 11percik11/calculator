@@ -32,7 +32,7 @@
 }
 
 .policy__text {
-  font-family: "Open Sans", sans-serif;
+  font-family: "OpenSansBold", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #d3d3d3;
@@ -45,7 +45,7 @@
 }
 
 .policy__list {
-  font-family: "Open Sans", sans-serif;
+  font-family: "OpenSansBold", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #b4b4b4;
@@ -69,7 +69,7 @@
 }
 
 .policy__date {
-  font-family: "Open Sans", sans-serif;
+  font-family: "OpenSansBold", sans-serif;
   font-size: 14px;
   color: #888;
   margin: 0;

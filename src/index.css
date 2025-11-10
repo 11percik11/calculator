@@ -1,9 +1,9 @@
 :root {
   /* Цветовая палитра */
-  --primary-bg: #352C2B;
-  --accent-color: #E7392F;
-  --text-light: #FFFFFF;
-  --text-dark: #352C2B;
+  --primary-bg: #352c2b;
+  --accent-color: #e7392f;
+  --text-light: #ffffff;
+  --text-dark: #352c2b;
 
   /* Размеры */
   --header-height: 80px;
@@ -18,42 +18,40 @@
   --transition-normal: 0.3s ease;
 
   --vh: 1vh; /* Добавляем переменную для мобильных устройств */
-
 }
-
-
-
 
 @font-face {
   font-family: "Open Sans Condensed ExtraBold";
-  src: url(/fonts/opensanscondensed-extrabold.woff2);
+  src: url("/fonts/opensanscondensed-extrabold.woff2") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 /* Базовый сброс стилей */
 
 @font-face {
-    font-family: 'OpenSansBold';
-    src: url('/fonts/OpenSans_Condensed-Bold.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-  font-family: 'MontserratMedium';
-  src: url('/fonts/Montserrat-Medium.ttf') format('truetype');
+  font-family: "OpenSansBold";
+  src: url("/fonts/OpenSans_Condensed-Bold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "MontserratMedium";
+  src: url("/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
   position: relative;
   min-height: 100vh;
-margin: 0;
-padding: 0;
-background-color: #352C2B;
-overscroll-behavior-y: contain; /* Предотвращаем "подпрыгивание" скролла */
+  margin: 0;
+  padding: 0;
+  background-color: #352c2b;
+  overscroll-behavior-y: contain; /* Предотвращаем "подпрыгивание" скролла */
 }
 
 #root {
@@ -73,7 +71,8 @@ a:hover {
   color: var(--accent-color);
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   height: auto;
   display: block;

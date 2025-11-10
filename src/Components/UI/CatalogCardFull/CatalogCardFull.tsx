@@ -23,7 +23,7 @@ export const CatalogCardFull = ({ image, title, price, productId }: CatalogCardF
                 <img src={image} alt={title} />
             </div>
             <div className="catalog-card-full__content">
-                <h3 className="catalog-card-full__title">{title}</h3>
+                <h4 className="catalog-card-full__title">{title}</h4>
                 <span className="catalog-card-full__price">{price}</span>
                 <div className="catalog-card-full__footer">
                     <div className="catalog-card-full__actions">

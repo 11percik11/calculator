@@ -140,11 +140,19 @@
 import "./Footer.css";
 import { Button } from "@/Components/UI/Button/Button";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalCall } from "@/Components/Widgets/ModalCall/ModalCall";
+import axios from "axios";
+
+interface ICategiry {
+    id: number;
+    name: string;
+    image: string;
+}
 
 export const Footer = () => {
   const navigate = useNavigate();
+  const [categiry, setCategory] = useState<ICategiry[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleNavigation = (path: string) => {
     navigate(path);
@@ -157,6 +165,16 @@ export const Footer = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+    useEffect(() => {
+      axios.get<ICategiry[]>(
+          `https://api-vert.tusamgroup.ru/api/category/parent`
+        )
+        .then((res) => setCategory(res.data))
+        .catch((err) => {
+          console.error("Ошибка при загрузке категорий:", err);
+        });
+    }, []);
 
   return (
     <>
@@ -189,19 +207,11 @@ export const Footer = () => {
           <div className="footer__col">
             <h2 className="footer__subtitle">Продукция</h2>
             <ul className="footer__list">
-              {[
-                { name: "Вертикальные жалюзи", path: "/catalog/vertical" },
-                { name: "Горизонтальные жалюзи", path: "/catalog/horizontal" },
-                { name: "Шторы плиссе", path: "/catalog/plisse" },
-                { name: "Рулонные шторы", path: "/catalog/roll" },
-                { name: "Мультифактурные", path: "/catalog/multifabric" },
-                { name: "Жалюзи «День-ночь»", path: "/catalog/day-night" },
-                { name: "Римские шторы", path: "/catalog/roman" },
-              ].map((item, index) => (
+              {categiry?.map((item, index) => (
                 <li key={index} className="footer__list-item">
                   <span
                     className="footer__link"
-                    onClick={() => handleNavigation(item.path)}
+                    onClick={() => navigate("/catalog")}
                     style={{ cursor: "pointer" }}
                   >
                     {item.name}
@@ -242,7 +252,7 @@ export const Footer = () => {
                   { name: "Новости", path: "/news" },
                   { name: "Для юридических лиц", path: "/business" },
                   // { name: "Контакты", path: "/contacts" },
-                  { name: "Оферта", path: "/offer" },
+                  { name: "ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ", path: "/user" },
                   { name: "Политика конфиденциальности", path: "/privacy" },
                   { name: "Согласие на обработку данных", path: "/agreement" },
                 ].map((item, index) => (

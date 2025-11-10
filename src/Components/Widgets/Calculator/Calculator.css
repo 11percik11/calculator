@@ -81,7 +81,8 @@
   width: 100%;
   /* height: 762px; */
   height: 72.8%;
-  padding: 30px 20px;
+  /* padding: 30px 20px; */
+  padding: 23px 20px 30px 20px;
   border-radius: 50px;
   background: rgba(255, 255, 255, 1);
   display: flex;
@@ -119,7 +120,7 @@
   /* font-size: 20px; */
   /* font-size: clamp(20px, 0.9vw, 0.9vw); */
   /* font-size: clamp(16px, 1.1vw, 1.8vw); */
-  font-size: clamp(13px, 1.05vw, 26px);
+  font-size: clamp(15px, 1.05vw, 26px);
   font-weight: 400;
   border-radius: 100px;
   padding: 0px 10px;
@@ -341,7 +342,7 @@
 }
 
 @media (max-width: 1220px) {
-    .price_calculator-parameters_values {
+  .price_calculator-parameters_values {
     gap: 4%;
   }
   .valuse_colors_item {
@@ -355,7 +356,7 @@
 
   .values_inputBox {
     /* height: clamp(50px, 4.16vw, 81px); */
-            height: clamp(40px, 6vw, 55px);
+    height: clamp(40px, 6vw, 55px);
   }
 
   .price_calculator {
@@ -471,7 +472,7 @@
     font-size: 26px;
   } */
   .price_sum {
-    font-size: 64px;
+    font-size: 54px;
   }
 }
 
@@ -491,11 +492,18 @@
     flex-direction: column;
   }
 
+  .price_buttonBasket {
+    min-height: 40px;
+  }
+  .price_title_metr {
+    margin: auto;
+  }
+
   .price_calculator-design {
     padding: 25px 10px 10px 10px;
   }
   .price_calculator-parameters_values {
-    padding: 20px 10px;
+    padding: 23px 10px;
   }
   .values_text {
     margin-bottom: 15px;
@@ -510,7 +518,7 @@
     padding: 25px 10px 10px 10px;
   }
   .price_calculator-parameters_values {
-    padding: 30px 10px;
+    padding: 33px 10px;
   }
 }
 

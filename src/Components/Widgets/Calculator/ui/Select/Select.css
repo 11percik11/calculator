@@ -16,8 +16,8 @@
   color: #e7392f;
   /* font-size: 20px; */
   /* font-size: clamp(20px, 0.9vw, 0.9vw); */
-  font-size: clamp(13px, 1.05vw, 26px);
-  padding: 0px 20px;
+  font-size: clamp(15px, 1.05vw, 26px);
+      padding: 0px 5px 0px 20px;
   font-family: "OpenSansBold", sans-serif;
   letter-spacing: 0.6px;
   font-weight: 400;
@@ -48,7 +48,7 @@
   /* font-size: 20px; */
   /* font-size: clamp(20px, 0.9vw, 0.9vw); */
   /* font-size: clamp(16px, 1.1vw, 1.8vw); */
-  font-size: clamp(13px, 1.05vw, 26px);
+  font-size: clamp(15px, 1.05vw, 26px);
   font-family: "OpenSansBold", sans-serif;
   letter-spacing: 0.6px;
   font-weight: 400;

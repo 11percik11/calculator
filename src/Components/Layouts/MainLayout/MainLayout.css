@@ -7,7 +7,7 @@
 .main-layout__content {
     width: 100%;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "OpenSansBold", sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
     display: flex;

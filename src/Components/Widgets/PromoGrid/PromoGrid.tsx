@@ -1,9 +1,10 @@
 import './PromoGrid.css';
-import PromoItem, { PromoItemProps } from '@/Components/UI/PromoItem/PromoItem';
+import { PromoItemProps } from '@/Components/UI/PromoItem/PromoItem';
 import { getMainPromos } from '@/Api/queries';
 import { useState, useEffect } from 'react';
 import { API_URL } from '@/Api/const';
 import { ModalNewsPromo } from '@/Components/Widgets/ModalNewsPromo/ModalNewsPromo';
+import NewsItem from '@/Components/UI/NewsItem/NewsItem';
 
 interface PromoItemWithDescription extends PromoItemProps {
   description: string;
@@ -62,12 +63,19 @@ const PromoGrid = () => {
       {!loading && !error && promoItems.length > 0 && (
         <div className="promo-grid">
           {promoItems.map((promo, index) => (
-            <div key={`promo-${index}`} onClick={() => handlePromoClick(promo)}>
-              <PromoItem
-                imageUrl={promo.imageUrl}
-                title={promo.title}
-              />
-            </div>
+            // <div key={`promo-${index}`} onClick={() => handlePromoClick(promo)}>
+              // <PromoItem
+              //   imageUrl={promo.imageUrl}
+              //   title={promo.title}
+              // />
+              <NewsItem
+                            onClick={() => handlePromoClick(promo)}
+                            key={`news-${index}`}
+                            imageUrl={promo.imageUrl}
+                            title={promo.title}
+                            description={promo.description}
+                          />
+            // </div>
           ))}
         </div>
       )}

@@ -29,12 +29,36 @@ export const Landing = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="landing__back">
-        {/* Блок в левом нижнем углу */}
+      {/* <section className="landing__back">
         <div className="hero__bottom-block" onClick={() => navigate('/catalog')}>
           <img
             src="/landing/arrow.svg"
-            alt="Стрелка"
+            alt="Стрелка для полробной информции"
+            className="bottom-block__arrow"
+          />
+          <h1 className="bottom-block__title">
+            Жалюзи и рулонные шторы в Ижевске от производителя
+          </h1>
+        </div>
+      </section> */}
+      <section className="landing__back">
+        <img
+          src="/landing/back.webp"
+          srcSet="/landing/back-700.jpg 700w, /landing/back.webp 1200w"
+          sizes="100vw"
+          alt="Фон секции с жалюзи и шторами в Ижевске"
+          className="landing__back-image"
+          fetchPriority="high"
+          decoding="async"
+        />
+
+        <div
+          className="hero__bottom-block"
+          onClick={() => navigate("/catalog")}
+        >
+          <img
+            src="/landing/arrow.svg"
+            alt="Стрелка для подробной информации"
             className="bottom-block__arrow"
           />
           <h1 className="bottom-block__title">
@@ -49,7 +73,7 @@ export const Landing = () => {
         <StarAnimation />
         <div className="third-block-title">
           <h1 className="third-block-title-header">
-            каталог продукции: жалюзи и рулонные шторы
+            КАТАЛОГ ПРОДУКЦИИ: ЖАЛЮЗИ И РУЛОННЫЕ ШТОРЫ
           </h1>
           <p className="third-block-title-text">
             Изготовим на заказ за 3 дня. Бесплатный замер, доставка и монтаж по
@@ -86,7 +110,7 @@ export const Landing = () => {
       </section>
       <section className="froze-block">
         <StarAnimation />
-        <h2 className="section-title">как сделать замеры самому?</h2>
+        <h2 className="section-title">КАК СДЕЛАТЬ ЗАМЕРЫ САМОМУ?</h2>
         <FrozeBlock />
       </section>
       <section className="benefits-section">

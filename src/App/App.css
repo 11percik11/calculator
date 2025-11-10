@@ -6,7 +6,7 @@
 
 .header-white{
   color: #FFFBF4;
-  font-family: "Open Sans", sans-serif;
+  font-family: "OpenSansBold", sans-serif;
   font-size: 4.5rem;
   font-style: normal;
   font-weight: 800;
@@ -18,7 +18,7 @@
 .header-black{
   color: #352C2B;
   text-align: center;
-  font-family: "Open Sans";
+  font-family: "OpenSansBold";
   font-size: 4.5rem;
   font-style: normal;
   font-weight: 800;
@@ -40,7 +40,7 @@
 .regular-text-black{
   color: #1E1E1E;
   text-align: center;
-  font-family: "Open Sans";
+  font-family: "OpenSansBold";
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;

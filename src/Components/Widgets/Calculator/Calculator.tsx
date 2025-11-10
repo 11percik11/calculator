@@ -1,3 +1,366 @@
+// import "./Calculator.css";
+// import Arrow_prev from "/landing/Arrow_prev.svg";
+// import Arrow_next from "/landing/Arrow_next.svg";
+// import { Select } from "./ui/Select/Select";
+// import { useEffect, useMemo, useState } from "react";
+// import axios from "axios";
+
+// export interface CalculatorParent {
+//   id: number;
+//   name: string;
+//   image: string;
+// }
+
+// export interface IMaterial {
+//   id: number;
+//   preview: string;
+//   imageModel: string;
+//   title: string;
+//   price: number;
+// }
+
+// export const Calculator = () => {
+//   const [activeColor, setActiveColor] = useState(0);
+//   const [categories, setCategories] = useState<CalculatorParent[]>([]);
+//   const [materials, setMaterials] = useState<IMaterial[]>([]);
+//   const [widthValue, setWidthValue] = useState(0);
+//   const [heightValue, setHeightValue] = useState(0);
+//   const [nameCatego, setNameCatego] = useState(["", ""]);
+
+//   const [page, setPage] = useState(0);
+//   const [activeFon, setActiveFon] = useState(0);
+//   const [itemsPerPage, setItemsPerPage] = useState(9); // значение по умолчанию
+
+//   const totalPages = Math.ceil(materials.length / itemsPerPage);
+
+//   const startIndex = page * itemsPerPage;
+//   const endIndex = startIndex + itemsPerPage;
+//   // const visibleMaterials = materials.slice(startIndex, endIndex);
+//   const visibleMaterials = useMemo(() => {
+//     return materials.slice(startIndex, endIndex);
+//   }, [materials, startIndex, endIndex]);
+
+//   // useEffect(() => {
+//   //   const updateItemsPerPage = () => {
+//   //     if (window.innerWidth <= 656) {
+//   //       setItemsPerPage(5);
+//   //       console.log("Mobile:", window.innerWidth);
+//   //     } else {
+//   //       setItemsPerPage(9); // или другое значение для десктопа
+//   //     }
+//   //   };
+
+//   //   // Вызываем сразу
+//   //   updateItemsPerPage();
+
+//   //   // Добавляем слушатель
+//   //   window.addEventListener("resize", updateItemsPerPage);
+
+//   //   // Убираем слушатель при размонтировании
+//   //   return () => {
+//   //     window.removeEventListener("resize", updateItemsPerPage);
+//   //   };
+//   // }, []);
+
+//   useEffect(() => {
+//     const updateItemsPerPage = () => {
+//       if (window.innerWidth <= 656) {
+//         setItemsPerPage(5);
+//         console.log("Mobile:", window.innerWidth);
+//       } else {
+//         setItemsPerPage(9); // или другое значение для десктопа
+//       }
+//     };
+//     const handleResize = () => {
+//       clearTimeout((window as any)._resizeTimer);
+//       (window as any)._resizeTimer = setTimeout(updateItemsPerPage, 150);
+//     };
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   useEffect(() => {
+//     if (visibleMaterials.length > 0) {
+//       setActiveFon(startIndex);
+//     }
+//   }, [page]);
+
+//   const handleAddToCart = () => {
+//     // Проверяем, чтобы размеры не были нулевыми
+//     if (widthValue <= 0 || heightValue <= 0) {
+//       alert("⚠️ Укажите корректные размеры (высоту и ширину)!");
+//       return;
+//     }
+
+//     if (!materials[activeFon]) return;
+
+//     const newItem = {
+//       id: materials[activeFon].id,
+//       title:
+//         "Тип изделия: " +
+//         nameCatego?.[0] +
+//         ". Материал: " +
+//         materials[activeFon].title,
+//       description: "",
+//       size: `${widthValue}x${heightValue}`,
+//       price: Number(SumPrice),
+//       image: `https://api-vert.tusamgroup.ru/${nameCatego?.[1]}`,
+//     };
+
+//     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+//     const itemExists = existingCart.some((item: any) => item.id === newItem.id);
+
+//     if (!itemExists) {
+//       const updatedCart = [...existingCart, newItem];
+//       localStorage.setItem("cart", JSON.stringify(updatedCart));
+//       alert("✅ Товар добавлен в корзину!");
+//     } else {
+//       alert("⚠️ Этот товар уже есть в корзине.");
+//     }
+//   };
+
+//   let SumPrice = "0";
+//   const priceTovar = materials[activeFon]?.price || 1000;
+//   SumPrice = useMemo(() => {
+//     return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
+//   }, [widthValue, heightValue, priceTovar]);
+
+//   useEffect(() => {
+//     setPage(0);
+//     setActiveFon(0);
+//   }, [materials, setMaterials]);
+
+//   const arrPhotoColorFon = [
+//     ["/photo/002.webp", "#E8E8E8"],
+//     ["/photo/001.webp", "#FFE5B4"],
+//     ["/photo/003.webp", "#FFFDDF"],
+//     ["/photo/004.webp", "#CEEDD0"],
+//     ["/photo/005.webp", "#C6DEF6"],
+//   ];
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await axios.get(
+//           "https://api-vert.tusamgroup.ru/api/category/parent",
+//           {
+//             headers: {
+//               accept: "application/json",
+//             },
+//           }
+//         );
+//         setCategories(response.data);
+//       } catch (error) {
+//         console.error("Ошибка запроса:", error);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div className="calculator">
+//       <div className="price_calculator">
+//         <div className="price_calculator_container price_calculator-design">
+//           <h2 className="price_calculator-design_title">
+//             КАЛЬКУЛЯТОР ЖАЛЮЗИ И РУЛОННЫХ ШТОР
+//           </h2>
+//           <div className="price_calculator-design_example">
+//             {materials[activeFon]?.imageModel && (
+//               // <img
+//               //   className="wwwww"
+//               //   src={`https://api-vert.tusamgroup.ru/${materials[activeFon]?.imageModel}`}
+//               //   alt=""
+//               //   width={100}
+//               //   height={100}
+//               // />
+//               <img
+//                 src={`https://api-vert.tusamgroup.ru/${materials[activeFon]?.imageModel}`}
+//                 alt=""
+//                 width={100}
+//                 height={100}
+//                 loading="lazy"
+//               />
+//             )}
+//             <img
+//               className="price_calculator-design_example-image"
+//               src={arrPhotoColorFon[activeColor][0]}
+//               alt=""
+//             />
+//           </div>
+//         </div>
+//         <div className="price_calculator_container price_calculator-parameters">
+//           <div className="price_calculator-parameters_values">
+//             <div>
+//               <h3 className="values_h3">ВВОД РАЗМЕРОВ ОКНА</h3>
+//               <p className="values_text">
+//                 Укажите точные размеры проёма. Если не знаете — вызовите
+//                 замерщика бесплатно.
+//               </p>
+//               <div className="values_boxInput">
+//                 <div className="values_inputBox">
+//                   <input
+//                     onChange={(e) => setWidthValue(Number(e.target.value))}
+//                     placeholder="Введите высоту, см"
+//                     type="text"
+//                     inputMode="numeric"
+//                     className="values_input"
+//                     onInput={(e: React.FormEvent<HTMLInputElement>) => {
+//                       const input = e.currentTarget;
+//                       let v = input.value.replace(/\D/g, "");
+//                       if (v !== "" && Number(v) > 100000) v = "100000";
+//                       input.value = v;
+//                     }}
+//                   />
+//                   <img
+//                     src="/photo/arrow-height.svg"
+//                     alt=""
+//                     width={25}
+//                     height={25}
+//                   />
+//                 </div>
+//                 <div className="values_inputBox">
+//                   <input
+//                     onChange={(e) => setHeightValue(Number(e.target.value))}
+//                     placeholder="Введите ширину, см"
+//                     type="text"
+//                     inputMode="numeric"
+//                     className="values_input"
+//                     onInput={(e: React.FormEvent<HTMLInputElement>) => {
+//                       const input = e.currentTarget;
+//                       let v = input.value.replace(/\D/g, "");
+//                       if (v !== "" && Number(v) > 100000) v = "100000";
+//                       input.value = v;
+//                     }}
+//                   />
+//                   <img
+//                     src="/photo/arrow-width.svg"
+//                     alt=""
+//                     width={25}
+//                     height={25}
+//                   />
+//                 </div>
+//               </div>
+//             </div>
+//             <div>
+//               <h3 className="values_h3">ВЫБОР ТИПА ИЗДЕЛИЯ</h3>
+//               <p className="values_text">
+//                 Выберите предпочтительный тип жалюзи или штор. Если сомневатесь
+//                 в выборе — обратитесь к нашему специалисту. Вам помогут с
+//                 выбором!
+//               </p>
+//               <Select
+//                 setMaterial={setMaterials}
+//                 item={categories}
+//                 setNameCatego={setNameCatego}
+//               />
+//             </div>
+//             <div>
+//               <h3 className="values_h3 values_h3-margin">
+//                 МАТЕРИАЛ И ЦВЕТ ПОЛОТНА
+//               </h3>
+//               <div className="values_slider">
+//                 <img
+//                   onClick={() => setPage(page > 0 ? page - 1 : 0)}
+//                   className="values_slider_arrow"
+//                   src={Arrow_prev}
+//                   alt=""
+//                 />
+
+//                 <div className="valuse_colors">
+//                   {visibleMaterials.map((material, index) => (
+//                     <div
+//                       onClick={() => setActiveFon(startIndex + index)}
+//                       style={{
+//                         backgroundImage: `url("https://api-vert.tusamgroup.ru/${material.preview}")`,
+//                         backgroundSize: "contain",
+//                         backgroundPosition: "center",
+//                         backgroundRepeat: "no-repeat", // фон вокруг изображения
+//                       }}
+//                       key={startIndex + index}
+//                       className={`valuse_colors_item ${
+//                         activeFon === startIndex + index
+//                           ? "valuse_colors_item_ActiveColor"
+//                           : ""
+//                       }`}
+//                     ></div>
+//                   ))}
+//                 </div>
+
+//                 <img
+//                   onClick={() =>
+//                     setPage(page < totalPages - 1 ? page + 1 : page)
+//                   }
+//                   className="values_slider_arrow"
+//                   src={Arrow_next}
+//                   alt=""
+//                 />
+//               </div>
+//             </div>
+
+//             {/* /////////////////////////////////////////////////////// */}
+//             <div>
+//               <h3 className="values_h3 values_h3-margin">ЦВЕТ СТЕН</h3>
+//               <div className="values_slider">
+//                 <img
+//                   onClick={() =>
+//                     setActiveColor(activeColor != 0 ? activeColor - 1 : 0)
+//                   }
+//                   className="values_slider_arrow"
+//                   src={Arrow_prev}
+//                   alt=""
+//                 />
+//                 <div className="valuse_colors">
+//                   {arrPhotoColorFon.map((num, index) => (
+//                     <div
+//                       onClick={() => setActiveColor(index)}
+//                       key={index}
+//                       className={`valuse_colors_item ${
+//                         activeColor == index && "valuse_colors_item_ActiveColor"
+//                       }`}
+//                       style={{ background: num[1] }}
+//                     ></div>
+//                   ))}
+//                 </div>
+//                 <img
+//                   onClick={() =>
+//                     setActiveColor(
+//                       activeColor != arrPhotoColorFon.length - 1
+//                         ? activeColor + 1
+//                         : activeColor
+//                     )
+//                   }
+//                   className="values_slider_arrow"
+//                   src={Arrow_next}
+//                   alt=""
+//                 />
+//               </div>
+//             </div>
+//           </div>
+
+//           <div className="price_calculator-parameters_price">
+//             <h3 className="price_title">
+//               <p>ИТОГОВАЯ СТОИМОСТЬ</p>{" "}
+//               <p className="price_title_metr">
+//                 {materials[activeFon]?.price || 0} руб./м
+//               </p>
+//             </h3>
+//             <p className="price_text">
+//               Если вы не нашли подходящий вариант — обратитесь к нам по
+//               контактам, указанным ниже мы сделаем эскиз индивидуального заказ
+//             </p>
+//             <div className="price_container">
+//               <div className="price_sum">{SumPrice} ₽</div>
+//               <button className="price_buttonBasket" onClick={handleAddToCart}>
+//                 ДОБАВИТЬ В КОРЗИНУ
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
 import "./Calculator.css";
 import Arrow_prev from "/landing/Arrow_prev.svg";
 import Arrow_next from "/landing/Arrow_next.svg";
@@ -65,58 +428,59 @@ export const Calculator = () => {
     }
   }, [page]);
 
-const handleAddToCart = () => {
-  // Проверяем, чтобы размеры не были нулевыми
-  if (widthValue <= 0 || heightValue <= 0) {
-    alert("⚠️ Укажите корректные размеры (высоту и ширину)!");
-    return;
-  }
+  const handleAddToCart = () => {
+    // Проверяем, чтобы размеры не были нулевыми
+    if (widthValue <= 0 || heightValue <= 0) {
+      alert("⚠️ Укажите корректные размеры (высоту и ширину)!");
+      return;
+    }
 
-  if (!materials[activeFon]) return;
+    if (!materials[activeFon]) return;
 
-  const newItem = {
-    id: materials[activeFon].id,
-    title:
-      "Тип изделия: " +
-      nameCatego?.[0] +
-      ". Материал: " +
-      materials[activeFon].title,
-    description: "",
-    size: `${widthValue}x${heightValue}`,
-    price: Number(SumPrice),
-    image: `https://api-vert.tusamgroup.ru/${nameCatego?.[1]}`,
+    const newItem = {
+      id: materials[activeFon].id,
+      title:
+        "Тип изделия: " +
+        nameCatego?.[0] +
+        ". Материал: " +
+        materials[activeFon].title,
+      description: "",
+      size: `${widthValue}x${heightValue}`,
+      price: Number(SumPrice),
+      image: `https://api-vert.tusamgroup.ru/${nameCatego?.[1]}`,
+    };
+
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const itemExists = existingCart.some((item: any) => item.id === newItem.id);
+
+    if (!itemExists) {
+      const updatedCart = [...existingCart, newItem];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
-
-  const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const itemExists = existingCart.some((item: any) => item.id === newItem.id);
-
-  if (!itemExists) {
-    const updatedCart = [...existingCart, newItem];
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    alert("✅ Товар добавлен в корзину!");
-  } else {
-    alert("⚠️ Этот товар уже есть в корзине.");
-  }
-};
-
 
   // const priceTovar = materials[activeFon]?.product.price || 1900;
 
   // const SumPrice = useMemo(() => {
   //   return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
   // }, [widthValue, heightValue, priceTovar]);
-  let SumPrice = "0";
-  const priceTovar = materials[activeFon]?.price || 1000;
+  let SumPrice = 0;
+  const priceTovar = materials[activeFon]?.price || 0;
   SumPrice = useMemo(() => {
-    return (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
-  }, [widthValue, heightValue, priceTovar]);
-  useEffect(() => {
-    if (materials[0]?.price) {
-      console.log(materials[activeFon].price);
+    let sum = (((widthValue * heightValue) / 10000) * priceTovar).toFixed(0);
+    if (Number(sum) < Number(priceTovar)) {
+      if (Number(sum) == 0) {
+        return 0
+      }else {
+        return Number(priceTovar)
+      }
+    }else {
+      return Number(sum)
     }
-  }, [activeFon, materials]);
+  }, [widthValue, heightValue, priceTovar]);
 
   useEffect(() => {
+    setPage(0);
     setActiveFon(0);
   }, [materials, setMaterials]);
 
@@ -231,7 +595,11 @@ const handleAddToCart = () => {
                 в выборе — обратитесь к нашему специалисту. Вам помогут с
                 выбором!
               </p>
-              <Select setMaterial={setMaterials} item={categories} setNameCatego={setNameCatego} />
+              <Select
+                setMaterial={setMaterials}
+                item={categories}
+                setNameCatego={setNameCatego}
+              />
             </div>
             <div>
               <h3 className="values_h3 values_h3-margin">

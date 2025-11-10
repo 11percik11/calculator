@@ -114,9 +114,10 @@
   }
 }
 
+
+
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-
   .froze-block__left,
   .froze-block__right {
     border-radius: 25px;
@@ -150,6 +151,8 @@
     margin-bottom: 12px;
   }
 }
+
+
 
 @media (max-width: 480px) {
   .froze-block__header-white {

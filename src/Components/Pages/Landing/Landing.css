@@ -5,15 +5,25 @@
   background-color: #ffe6e6;
   margin-bottom: 10px;
 }
+
 .landing__back {
+  position: relative;
   min-height: calc(100vh - 7.5rem - 20px);
   border-radius: 40px;
-  background-image: url("/landing/back.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  box-sizing: border-box;
+  overflow: hidden; /* чтобы края картинки не вылезали */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing__back-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0; /* под контентом */
 }
 /* Добавляем эти стили к существующим */
 
@@ -40,6 +50,7 @@
   color: white;
   font-size: 24px;
   line-height: 1.2;
+  font-family: "OpenSansBold";
   margin: 0;
   text-transform: uppercase;
   font-weight: 700;
@@ -324,14 +335,14 @@
 }
 
 @media (max-width: 768px) {
-  .benefits-section {
-    /* padding: 50px 15px; */
-  }
-
   .section-title {
     font-size: 28px;
     margin-bottom: 30px;
   }
+
+  /* .landing__back {
+    background-image: url("/landing/back-700.jpg");
+  } */
 }
 
 /* @media (max-width: 768px) {

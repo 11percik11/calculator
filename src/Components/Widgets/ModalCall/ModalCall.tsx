@@ -116,12 +116,12 @@ export const ModalCall = ({ isOpen, onClose }: ModalCallProps) => {
   };
 
   const handlePrivacyPolicyClick = () => {
-    navigate("/privacy-policy");
+    navigate("/privacy");
     onClose();
   };
 
   const handleDataPolicyClick = () => {
-    navigate("/data-policy");
+    navigate("/agreement");
     onClose();
   };
 

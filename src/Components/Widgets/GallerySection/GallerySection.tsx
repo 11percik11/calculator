@@ -1,6 +1,6 @@
-import StarAnimation from '@/Components/UI/StartAnimation/StartAnimation';
-import './GallerySection.css';
-import { useEffect, useRef } from 'react';
+import StarAnimation from "@/Components/UI/StartAnimation/StartAnimation";
+import "./GallerySection.css";
+import { useEffect, useRef } from "react";
 
 interface GalleryItem {
   image: string;
@@ -16,7 +16,7 @@ export const GallerySection = ({
   title = "",
   description = "",
   icons = [],
-}: GallerySectionProps) => {   
+}: GallerySectionProps) => {
   const galleryItemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -28,14 +28,14 @@ export const GallerySection = ({
 
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px"
+      rootMargin: "0px 0px -100px 0px",
     };
 
     // Анимация для заголовков
     const headerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
+          entry.target.classList.add("animated");
           headerObserver.unobserve(entry.target);
         }
       });
@@ -50,14 +50,14 @@ export const GallerySection = ({
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            entry.target.classList.add('animated');
+            entry.target.classList.add("animated");
           }, 150 * (index % 5));
           itemObserver.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    galleryItemsRef.current.forEach(item => {
+    galleryItemsRef.current.forEach((item) => {
       if (item) itemObserver.observe(item);
     });
 
@@ -71,23 +71,23 @@ export const GallerySection = ({
     <section className="gallery-section">
       <StarAnimation />
       <div className="gallery-header" ref={headerRef}>
-        <h2 
-          className="gallery-title" 
+        <h2
+          className="gallery-title"
           ref={titleRef}
-          style={{ opacity: 0, transform: 'translateY(30px)' }}
+          style={{ opacity: 0, transform: "translateY(30px)" }}
         >
           {title}
         </h2>
-        <p 
-          className="gallery-description" 
+        <p
+          className="gallery-description"
           ref={descRef}
-          style={{ opacity: 0, transform: 'translateY(20px)' }}
+          style={{ opacity: 0, transform: "translateY(20px)" }}
         >
           {description}
         </p>
       </div>
-      
-      <div className="gallery-container">
+
+      {/* <div className="gallery-container">
         {icons.map((icon, index) => (
           <div 
             key={index}
@@ -111,6 +111,47 @@ export const GallerySection = ({
             />
           </div>
         ))}
+      </div> */}
+      <div className="gallery-container">
+        {icons.map((icon, index) => {
+          const videoExtensions = [".mp4", ".avi", ".mov", ".webm"];
+          const isVideo = videoExtensions.some((ext) =>
+            icon.image.toLowerCase().endsWith(ext)
+          );
+
+          return (
+            <div
+              key={index}
+              ref={(el) => {
+                if (el) galleryItemsRef.current[index] = el;
+              }}
+              className="gallery-item"
+              style={{
+                opacity: 0,
+                transform: "translateY(50px) rotateX(15deg)",
+                animationDelay: `${index * 0.05}s`,
+              }}
+            >
+              {isVideo ? (
+                <video
+                  src={icon.image}
+                  className="gallery-image"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={icon.image}
+                  alt={`Gallery item ${index}`}
+                  className="gallery-image"
+                  loading="lazy"
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

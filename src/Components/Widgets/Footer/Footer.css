@@ -53,6 +53,7 @@
   color: #352c2b;
   /* margin-bottom: 20px; */
   margin: 0;
+  margin-top: 20px;
   font-family: "Open Sans Condensed ExtraBold", sans-serif;
 }
 
@@ -173,9 +174,9 @@
   .footer__list {
     gap: 2px;
   }
-  .footer__title {
+  /* .footer__title {
     margin: 0;
-  }
+  } */
 }
 
 @media (max-width: 1024px) {
@@ -190,9 +191,26 @@
     border-radius: 30px;
   }
 
+  .footer__list {
+    align-items: center;
+  }
+
+  .footer__subtitle {
+    text-align: center;
+  }
+
+  .footer__title {
+    text-align: center;
+  }
+
+  .footer__text {
+    text-align: center;
+  }
+
   .footer__col {
     flex: 0 0 auto;
     width: 51%;
+    align-items: center;
   }
 
   .footer__logo {

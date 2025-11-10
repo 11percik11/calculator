@@ -196,11 +196,11 @@ export const Cart = () => {
   };
 
   const handlePrivacyPolicyClick = () => {
-    navigate("/privacy-policy");
+    navigate("/privacy");
   };
 
   const handleDataPolicyClick = () => {
-    navigate("/data-policy");
+    navigate("/agreement");
   };
 
   return (

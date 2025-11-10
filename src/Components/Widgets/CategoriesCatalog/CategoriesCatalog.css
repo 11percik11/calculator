@@ -117,14 +117,14 @@
   text-align: center;
   font-size: 1rem;
   color: #333;
-  max-width: 120px;
+  /* max-width: 120px; */
   word-wrap: break-word;
   line-height: 1.3;
 }
 
 .categories-catalog__item--sub .categories-catalog__name {
   font-size: 0.9rem;
-  max-width: 100px;
+  /* max-width: 100px; */
 }
 
 .categories-catalog__item--active .categories-catalog__name {
@@ -168,12 +168,12 @@
 
   .categories-catalog__name {
     font-size: 0.9rem;
-    max-width: 100px;
+    /* max-width: 100px; */
   }
 
   .categories-catalog__item--sub .categories-catalog__name {
     font-size: 0.8rem;
-    max-width: 180px;
+    /* max-width: 180px; */
   }
 
   .categories-catalog__title {
